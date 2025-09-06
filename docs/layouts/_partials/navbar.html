@@ -32,12 +32,12 @@
 </style>
 <div class="navbar">
   <div>
-    <a class="flexy-button flexy-button--icon" href="/">
+    <a class="flexy-button flexy-button--icon" href="{{ .Site.BaseURL }}/">
       <span class="material-symbol">
         {{- partial "material-symbol.html" "home/rounded/400" }}
       </span>
     </a>
-    <a class="flexy-button" href="/components/">
+    <a class="flexy-button" href="{{ .Site.BaseURL }}/components/">
       <span>Components</span>
     </a>
   </div>
