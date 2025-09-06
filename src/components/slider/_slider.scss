@@ -86,6 +86,12 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
     outline-offset: 2px;
   }
 
+  &--noanimation &__inactive-track,
+  &--noanimation &__active-track,
+  &--noanimation &__thumb {
+    transition-duration: 0ms;
+  }
+
   &--sliding &__inactive-track,
   &--sliding &__active-track,
   &--sliding &__thumb {
