@@ -1,0 +1,138 @@
+@use 'sass:map';
+@use '../../tokens';
+@use '../../utils';
+
+$_button: tokens.$flexy-comp-button;
+
+.flexy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: map.get($_button, 'spacing');
+
+  background-color: transparent;
+  border: none;
+  border-radius: map.get($_button, 'shape');
+  box-sizing: border-box;
+  color: currentcolor;
+  cursor: pointer;
+  position: relative;
+  padding: 0px map.get($_button, 'padding');
+  height: map.get($_button, 'height');
+
+  font-family: tokens.$flexy-sys-typography-sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: none;
+  user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
+
+  &::after {
+    content: '';
+    @include utils.absolute-center();
+    @include utils.size(100%);
+    @include utils.min-size(tokens.$flexy-sys-ref-touch-size);
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 2px;
+  }
+
+  &--sharp {
+    border-radius: 0px;
+  }
+
+  &--rounded {
+    border-radius: map.get(tokens.$flexy-sys-shape, 'full');
+  }
+
+  &--icon {
+    padding: 0px;
+    width: map.get($_button, 'height');
+  }
+
+  &--circular {
+    border-radius: 50%;
+    padding: 0px;
+    width: map.get($_button, 'height');
+  }
+
+  &--primary,
+  &--tonal-primary,
+  &--outlined-primary {
+    color: tokens.$flexy-sys-color-primary;
+  }
+
+  &--error,
+  &--tonal-error,
+  &--outlined-error {
+    color: tokens.$flexy-sys-color-error;
+  }
+
+  &--tonal-neutral::before,
+  &--tonal-primary::before,
+  &--tonal-error::before {
+    content: '';
+    background-color: currentcolor;
+    border-radius: inherit;
+    opacity: 0.08;
+    pointer-events: none;
+    @include utils.absolute-fill();
+  }
+
+  &--outlined-neutral::before,
+  &--outlined-primary::before,
+  &--outlined-error::before {
+    content: '';
+    border-radius: inherit;
+    border: 1px solid currentcolor;
+    box-sizing: border-box;
+    opacity: 0.32;
+    pointer-events: none;
+    @include utils.absolute-fill();
+  }
+
+  &--filled-neutral {
+    background-color: tokens.$flexy-sys-color-on-surface;
+    color: tokens.$flexy-sys-color-surface;
+
+    &:focus-visible {
+      outline-color: tokens.$flexy-sys-color-on-surface;
+    }
+  }
+
+  &--filled-primary {
+    background-color: tokens.$flexy-sys-color-primary;
+    color: tokens.$flexy-sys-color-on-primary;
+
+    &:focus-visible {
+      outline-color: tokens.$flexy-sys-color-primary;
+    }
+
+    &[disabled] {
+      background-color: tokens.$flexy-sys-color-on-surface;
+      color: tokens.$flexy-sys-color-surface;
+    }
+  }
+
+  &--filled-error {
+    background-color: tokens.$flexy-sys-color-error;
+    color: tokens.$flexy-sys-color-on-error;
+
+    &:focus-visible {
+      outline-color: tokens.$flexy-sys-color-error;
+    }
+
+    &[disabled] {
+      background-color: tokens.$flexy-sys-color-on-surface;
+      color: tokens.$flexy-sys-color-surface;
+    }
+  }
+
+  &[disabled] {
+    filter: grayscale(1) opacity(0.32);
+    pointer-events: none;
+  }
+}

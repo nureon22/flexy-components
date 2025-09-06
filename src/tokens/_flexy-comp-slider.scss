@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use 'flexy-sys-color' as *;
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-ref' as *;
+@use 'flexy-sys-shape' as *;
+
+$_flexy-comp-slider: (
+  focus-ring-color: $flexy-sys-color-primary,
+  thumb-outline-width: 0px,
+  thumb-outline-color: $flexy-sys-color-primary,
+  thumb-color: $flexy-sys-color-primary,
+  thumb-height: 16px,
+  thumb-shape: 8px,
+  thumb-width: 16px,
+  track-active-color: $flexy-sys-color-primary,
+  track-height: 4px,
+  track-inactive-color: $flexy-sys-palette-grey-20,
+  track-shape: 2px,
+);
+
+$flexy-comp-slider: ();
+
+@each $name, $value in $_flexy-comp-slider {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-slider-#{$name}, #{$value});
+  }
+  $flexy-comp-slider: map.set($flexy-comp-slider, $name, $value);
+}

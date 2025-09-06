@@ -1,0 +1,8 @@
+{{- with resources.Get "main.css" }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" />
+
+  {{- with resources.Get "main.css.map" }}
+    <!--{{ .RelPermalink }}-->
+  {{- end }}
+
+{{- end }}

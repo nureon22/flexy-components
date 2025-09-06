@@ -1,0 +1,290 @@
+{{- define "main" }}
+  <h2>{{ .Title }}</h2>
+  <div>{{ .Content }}</div>
+
+  <div>
+    <h2>Label Button</h2>
+
+    <div class="flex-column">
+      <div class="flex-row">
+        <button class="flexy-button">
+          <span>Text</span>
+        </button>
+        <button class="flexy-button flexy-button--tonal-neutral">
+          <span>Tonal</span>
+        </button>
+        <button class="flexy-button flexy-button--outlined-neutral">
+          <span>Outlined</span>
+        </button>
+        <button class="flexy-button flexy-button--filled-neutral">
+          <span>Filled</span>
+        </button>
+      </div>
+
+      <div class="flex-row">
+        <button class="flexy-button flexy-button--primary">
+          <span>Text</span>
+        </button>
+        <button class="flexy-button flexy-button--tonal-primary">
+          <span>Tonal</span>
+        </button>
+        <button class="flexy-button flexy-button--outlined-primary">
+          <span>Outlined</span>
+        </button>
+        <button class="flexy-button flexy-button--filled-primary">
+          <span>Filled</span>
+        </button>
+      </div>
+
+      <div class="flex-row">
+        <button class="flexy-button flexy-button--error">
+          <span>Text</span>
+        </button>
+        <button class="flexy-button flexy-button--tonal-error">
+          <span>Tonal</span>
+        </button>
+        <button class="flexy-button flexy-button--outlined-error">
+          <span>Outlined</span>
+        </button>
+        <button class="flexy-button flexy-button--filled-error">
+          <span>Filled</span>
+        </button>
+      </div>
+    </div>
+
+    <br />
+
+    <h2>Icon Prefix Button</h2>
+
+    <div class="flex-column">
+      <div class="flex-row">
+        <button class="flexy-button">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+
+        <button class="flexy-button flexy-button--tonal-neutral">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+
+        <button class="flexy-button flexy-button--outlined-neutral">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+
+        <button class="flexy-button flexy-button--filled-neutral">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+      </div>
+
+      <div class="flex-row">
+        <button class="flexy-button flexy-button--primary">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+
+        <button class="flexy-button flexy-button--tonal-primary">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+
+        <button class="flexy-button flexy-button--outlined-primary">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+
+        <button class="flexy-button flexy-button--filled-primary">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+      </div>
+
+      <div class="flex-row">
+        <button class="flexy-button flexy-button--error">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+
+        <button class="flexy-button flexy-button--tonal-error">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+
+        <button class="flexy-button flexy-button--outlined-error">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+
+        <button class="flexy-button flexy-button--filled-error">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "build/rounded/400" }}
+          </span>
+          <span>Build</span>
+        </button>
+      </div>
+    </div>
+
+    <br />
+
+    <h2>Icon Button</h2>
+
+    <div class="flex-column">
+      <div class="flex-row">
+        <button class="flexy-button flexy-button--icon">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+
+        <button
+          class="flexy-button flexy-button--icon flexy-button--tonal-neutral"
+        >
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+
+        <button
+          class="flexy-button flexy-button--icon flexy-button--outlined-neutral"
+        >
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+
+        <button
+          class="flexy-button flexy-button--icon flexy-button--filled-neutral"
+        >
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+      </div>
+
+      <div class="flex-row">
+        <button class="flexy-button flexy-button--icon flexy-button--primary">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+
+        <button
+          class="flexy-button flexy-button--icon flexy-button--tonal-primary"
+        >
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+
+        <button
+          class="flexy-button flexy-button--icon flexy-button--outlined-primary"
+        >
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+
+        <button
+          class="flexy-button flexy-button--icon flexy-button--filled-primary"
+        >
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+      </div>
+
+      <div class="flex-row">
+        <button class="flexy-button flexy-button--icon flexy-button--error">
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+
+        <button
+          class="flexy-button flexy-button--icon flexy-button--tonal-error"
+        >
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+
+        <button
+          class="flexy-button flexy-button--icon flexy-button--outlined-error"
+        >
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+
+        <button
+          class="flexy-button flexy-button--icon flexy-button--filled-error"
+        >
+          <span class="material-symbol">
+            {{- partial "material-symbol.html" "search/rounded/400" }}
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <h3>Buttons Group</h3>
+
+  <div class="flex-row" style="--flexy-comp-button-height: 44px;">
+    <button class="flexy-button flexy-button--circular">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "volume_up/rounded/400" }}
+      </span>
+    </button>
+    <button class="flexy-button flexy-button--circular">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "skip_previous/rounded/400" }}
+      </span>
+    </button>
+    <button class="flexy-button flexy-button--circular">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "fast_rewind/rounded/400" }}
+      </span>
+    </button>
+    <button class="flexy-button flexy-button--circular">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "play_arrow/rounded/400" }}
+      </span>
+    </button>
+    <button class="flexy-button flexy-button--circular">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "fast_forward/rounded/400" }}
+      </span>
+    </button>
+    <button class="flexy-button flexy-button--circular">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "skip_next/rounded/400" }}
+      </span>
+    </button>
+  </div>
+{{- end }}

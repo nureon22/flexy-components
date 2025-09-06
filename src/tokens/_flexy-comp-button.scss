@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use 'flexy-sys-ref' as *;
+@use 'flexy-sys-shape' as *;
+
+$_flexy-comp-button: (
+  height: 40px,
+  shape: map.get($flexy-sys-shape, 'small'),
+  padding: 16px,
+  spacing: 8px,
+);
+
+$flexy-comp-button: ();
+
+@each $name, $value in $_flexy-comp-button {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-button-#{$name}, #{$value});
+  }
+  $flexy-comp-button: map.set($flexy-comp-button, $name, $value);
+}

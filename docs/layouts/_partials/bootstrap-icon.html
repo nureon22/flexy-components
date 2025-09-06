@@ -1,0 +1,11 @@
+{{- $icon := split . "/" }}
+{{- $name := index $icon 0 }}
+{{- $label := default $name (index $icon 1) }}
+{{- $url := printf "https://raw.githubusercontent.com/twbs/icons/refs/heads/main/icons/%s.svg" $name }}
+
+{{- with resources.GetRemote $url }}
+  {{- $svg := .Content }}
+  {{- $svg := $svg | replaceRE ` (width|height)="16"` "" }}
+    {{- $svg := $svg | replaceRE `><path` (printf " role=\"img\" aria-label=\"%s\"><path" $label) }}
+  {{- $svg | safeHTML }}
+{{- end }}

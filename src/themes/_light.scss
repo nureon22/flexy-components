@@ -1,0 +1,15 @@
+@use 'builder' as *;
+
+.light {
+  @include theme-builder(
+    (
+      primary: hsl(220deg, 50%, 40%),
+      on-primary: hsl(200deg, 0%, 95%),
+      error: hsl(0deg, 50%, 40%),
+      on-error: hsl(200deg, 0%, 95%),
+      surface: hsl(200deg, 0%, 95%),
+      on-surface: hsl(200deg, 0%, 15%),
+    ),
+    false
+  );
+}

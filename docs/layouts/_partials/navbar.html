@@ -1,0 +1,75 @@
+<style>
+  body {
+    margin-top: 56px;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--flexy-sys-color-surface);
+    box-shadow: 0px 0px 3px black;
+    padding: 0px 8px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 56px;
+    z-index: 9;
+  }
+  .navbar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: currentcolor;
+    opacity: 0.08;
+  }
+  .navbar > div {
+    display: flex;
+  }
+</style>
+<div class="navbar">
+  <div>
+    <a class="flexy-button flexy-button--icon" href="/">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "home/rounded/400" }}
+      </span>
+    </a>
+    <a class="flexy-button" href="/components/">
+      <span>Components</span>
+    </a>
+  </div>
+  <div>
+    <div class="flexy-switch">
+      <input
+        id="theme-toggle"
+        type="checkbox"
+        class="flexy-switch__input"
+        onchange="
+          const checked = this.checked;
+          document.documentElement.classList.toggle('dark', checked);
+          document.documentElement.classList.toggle('light', !checked);
+          sessionStorage.setItem('theme', checked ? 'dark': 'light');
+        "
+      />
+      <div class="flexy-switch__track"></div>
+      <div class="flexy-switch__thumb">
+        <span class="flexy-switch__unselected-icon material-symbol">
+          {{- partial "material-symbol.html" "dark_mode/rounded/700" }}
+        </span>
+        <span class="flexy-switch__selected-icon material-symbol">
+          {{- partial "material-symbol.html" "light_mode/rounded/700" }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  void (function () {
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.checked = sessionStorage.getItem('theme') == 'dark';
+  })();
+</script>

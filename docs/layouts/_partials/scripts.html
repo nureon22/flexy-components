@@ -1,0 +1,7 @@
+{{- with resources.Get "main.js" }}
+  <script type="module" src="{{ .RelPermalink }}"></script>
+
+  {{- with resources.Get "main.js.map" }}
+    <!--{{ .RelPermalink }}-->
+  {{- end }}
+{{- end }}

@@ -1,0 +1,15 @@
+@use 'builder' as *;
+
+.dark {
+  @include theme-builder(
+    (
+      primary: hsl(220deg, 90%, 75%),
+      on-primary: hsl(200deg, 0%, 5%),
+      error: hsl(0deg, 90%, 75%),
+      on-error: hsl(200deg, 0%, 5%),
+      surface: hsl(200deg, 0%, 10%),
+      on-surface: hsl(200deg, 0%, 90%),
+    ),
+    true
+  );
+}

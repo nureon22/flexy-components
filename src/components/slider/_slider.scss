@@ -1,0 +1,96 @@
+@use 'sass:map';
+@use '../../tokens';
+@use '../../utils';
+
+$_slider: tokens.$flexy-comp-slider;
+$_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+.flexy-slider {
+  display: flex;
+
+  overflow: hidden;
+  position: relative;
+  height: map.get($_slider, 'thumb-height');
+  width: 320px;
+
+  * {
+    user-select: none;
+  }
+
+  & > *:not(&__input) {
+    pointer-events: none;
+  }
+
+  &__input {
+    display: block;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    @include utils.absolute-center();
+    @include utils.size(100%);
+    @include utils.min-size(tokens.$flexy-sys-ref-touch-size);
+  }
+
+  &__track {
+    display: block;
+    border-radius: map.get($_slider, 'track-shape');
+    overflow: hidden;
+    @include utils.absolute-center();
+    width: calc(100% - map.get($_slider, 'thumb-width'));
+    height: map.get($_slider, 'track-height');
+  }
+
+  &__inactive-track,
+  &__active-track {
+    display: block;
+    @include utils.absolute-fill();
+    transition: transform $_transition;
+  }
+
+  &__inactive-track {
+    background-color: map.get($_slider, 'track-inactive-color');
+  }
+
+  &__active-track {
+    background-color: map.get($_slider, 'track-active-color');
+  }
+
+  &__thumb-rail {
+    display: block;
+    @include utils.absolute-center();
+    width: calc(100% - map.get($_slider, 'thumb-width'));
+    height: 100%;
+  }
+
+  &__thumb {
+    display: block;
+    @include utils.absolute-fill();
+    transition: transform $_transition;
+  }
+
+  &__thumb-knob {
+    display: block;
+    background-color: map.get($_slider, 'thumb-color');
+    border: map.get($_slider, 'thumb-outline-width') solid map.get($_slider, 'thumb-outline-color');
+    border-radius: map.get($_slider, 'thumb-shape');
+    box-sizing: border-box;
+    position: absolute;
+    left: calc(100% - map.get($_slider, 'thumb-width') / 2);
+    top: 0;
+    width: map.get($_slider, 'thumb-width');
+    height: map.get($_slider, 'thumb-height');
+  }
+
+  &__input:focus-visible ~ &__thumb-rail &__thumb-knob {
+    outline: 2px solid map.get($_slider, 'focus-ring-color');
+    outline-offset: 2px;
+  }
+
+  &--sliding &__inactive-track,
+  &--sliding &__active-track,
+  &--sliding &__thumb {
+    transition-duration: 0ms;
+    transition-timing-function: linear;
+  }
+}

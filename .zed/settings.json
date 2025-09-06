@@ -1,0 +1,12 @@
+{
+  "languages": {
+    "HTML": {
+      "formatter": "prettier",
+      "prettier": {
+        "allowed": true,
+        "parser": "go-template",
+        "plugins": ["prettier-plugin-go-template"]
+      }
+    }
+  }
+}

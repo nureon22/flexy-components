@@ -1,0 +1,42 @@
+@use 'sass:map';
+@use 'flexy-sys-color' as *;
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-ref' as *;
+@use 'flexy-sys-shape' as *;
+
+$_flexy-comp-switch: (
+  thumb-height: 24px,
+  thumb-shape: 12px,
+  thumb-width: 24px,
+  track-height: 30px,
+  track-shape: 15px,
+  track-width: 52px,
+  icon-size: 20px,
+
+  focus-ring-color: $flexy-sys-color-primary,
+
+  unselected-track-color: $flexy-sys-palette-grey-30,
+  unselected-thumb-color: #ffffff,
+  unselected-icon-color: hsl(0deg 0% 20%),
+
+  selected-track-color: $flexy-sys-color-primary,
+  selected-thumb-color: $flexy-sys-color-on-primary,
+  selected-icon-color: $flexy-sys-color-primary,
+
+  disabled-unselected-track-color: $flexy-sys-palette-grey-15,
+  disabled-unselected-thumb-color: $flexy-sys-palette-grey-30,
+  disabled-unselected-icon-color: $flexy-sys-palette-grey-15,
+
+  disabled-selected-track-color: $flexy-sys-palette-grey-25,
+  disabled-selected-thumb-color: $flexy-sys-palette-grey-10,
+  disabled-selected-icon-color: $flexy-sys-palette-grey-25,
+);
+
+$flexy-comp-switch: ();
+
+@each $name, $value in $_flexy-comp-switch {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-switch-#{$name}, #{$value});
+  }
+  $flexy-comp-switch: map.set($flexy-comp-switch, $name, $value);
+}

@@ -1,0 +1,13 @@
+{{- $icon := split . "/" }}
+{{- $name := index $icon 0 }}
+{{- $family := index $icon 1 }}
+{{- $weight := index $icon 2 }}
+{{- $label := default $name (index $icon 3) }}
+{{- $url := printf "https://raw.githubusercontent.com/marella/material-symbols/refs/heads/main/svg/%s/%s/%s.svg" $weight $family $name }}
+
+{{- with resources.GetRemote $url }}
+  {{- $svg := .Content }}
+  {{- $svg := $svg | replaceRE ` (width|height)="48"` "" }}
+    {{- $svg := $svg | replaceRE `><path` (printf " role=\"img\" aria-label=\"%s\"><path" $label) }}
+  {{- $svg | safeHTML }}
+{{- end }}

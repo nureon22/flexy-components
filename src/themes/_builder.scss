@@ -1,0 +1,19 @@
+@use 'sass:color';
+
+@mixin theme-builder($theme, $isDark) {
+  @each $name, $color in $theme {
+    --flexy-sys-color-#{$name}: #{$color};
+  }
+
+  @if $isDark {
+    @each $i in (0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100)
+    {
+      --flexy-sys-palette-grey-#{$i}: #{hsl(0deg 0% calc($i * 1%))};
+    }
+  } @else {
+    @each $i in (0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100)
+    {
+      --flexy-sys-palette-grey-#{$i}: #{hsl(0deg 0% calc(100% - $i * 1%))};
+    }
+  }
+}

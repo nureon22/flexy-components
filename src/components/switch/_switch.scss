@@ -1,0 +1,163 @@
+@use 'sass:map';
+@use '../../tokens';
+@use '../../utils';
+
+$_switch: tokens.$flexy-comp-switch;
+$_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+.flexy-switch {
+  display: inline-flex;
+  position: relative;
+  height: map.get($_switch, 'track-height');
+  width: map.get($_switch, 'track-width');
+
+  &__input {
+    display: block;
+    border: none;
+    cursor: pointer;
+    margin: 0px;
+    opacity: 0;
+    padding: 0px;
+    @include utils.absolute-center();
+    @include utils.size(100%);
+    @include utils.min-size(tokens.$flexy-sys-ref-touch-size);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  &__track {
+    display: block;
+    background-color: map.get($_switch, 'unselected-track-color');
+    border-radius: map.get($_switch, 'track-shape');
+    overflow: hidden;
+    pointer-events: none;
+    @include utils.absolute-fill();
+    transition: background-color $_transition;
+
+    &::before {
+      content: '';
+      border-radius: inherit;
+      opacity: 0.12;
+      @include utils.absolute-fill();
+      transition:
+        background-color $_transition,
+        filter $_transition;
+    }
+  }
+
+  &__thumb {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    @include utils.size(map.get($_switch, 'track-height'));
+    transition: transform $_transition;
+
+    &::before {
+      content: '';
+      display: block;
+      background-color: map.get($_switch, 'unselected-thumb-color');
+      border-radius: map.get($_switch, 'thumb-shape');
+      box-shadow: 0px 0px 3px -1px black;
+      @include utils.absolute-center();
+      @include utils.size(
+        map.get($_switch, 'thumb-width'),
+        map.get($_switch, 'thumb-height')
+      );
+      transition: background-color $_transition;
+    }
+  }
+
+  &__icon,
+  &__unselected-icon,
+  &__selected-icon {
+    font-size: map.get($_switch, 'icon-size');
+    @include utils.absolute-center();
+  }
+
+  &__icon,
+  &__unselected-icon {
+    color: map.get($_switch, 'unselected-icon-color');
+    opacity: 1;
+  }
+
+  &__selected-icon {
+    color: map.get($_switch, 'selected-icon-color');
+    opacity: 0;
+  }
+
+  &__input:hover ~ &__track::before {
+    background-color: tokens.$flexy-sys-palette-grey-80;
+  }
+
+  &__input:active ~ &__track::before {
+    filter: invert(1);
+  }
+
+  &__input:focus-visible ~ &__track {
+    outline: 2px solid map.get($_switch, 'focus-ring-color');
+    outline-offset: 2px;
+  }
+
+  &__input:checked ~ &__track {
+    background-color: map.get($_switch, 'selected-track-color');
+  }
+
+  &__input:checked ~ &__thumb {
+    transform: translateX(
+      calc(map.get($_switch, 'track-width') - map.get($_switch, 'track-height'))
+    );
+
+    &::before {
+      background-color: map.get($_switch, 'selected-thumb-color');
+    }
+  }
+
+  &__input:checked ~ &__thumb &__icon {
+    color: map.get($_switch, 'selected-icon-color');
+  }
+
+  &__input:checked ~ &__thumb &__unselected-icon {
+    opacity: 0;
+  }
+
+  &__input:checked ~ &__thumb &__selected-icon {
+    opacity: 1;
+  }
+
+  &__input:disabled {
+    pointer-events: none;
+  }
+
+  &__input:disabled ~ &__track {
+    background-color: map.get($_switch, 'disabled-unselected-track-color');
+  }
+
+  &__input:disabled ~ &__thumb {
+    &::before {
+      background-color: map.get($_switch, 'disabled-unselected-thumb-color');
+      box-shadow: none;
+    }
+  }
+
+  &__input:disabled ~ &__thumb &__icon,
+  &__input:disabled ~ &__thumb &__unselected-icon {
+    color: map.get($_switch, 'disabled-unselected-icon-color');
+  }
+
+  &__input:checked:disabled ~ &__track {
+    background-color: map.get($_switch, 'disabled-selected-track-color');
+  }
+
+  &__input:checked:disabled ~ &__thumb {
+    &::before {
+      background-color: map.get($_switch, 'disabled-selected-thumb-color');
+      box-shadow: none;
+    }
+  }
+
+  &__input:checked:disabled ~ &__thumb &__icon,
+  &__input:checked:disabled ~ &__thumb &__selected-icon {
+    color: map.get($_switch, 'disabled-selected-icon-color');
+  }
+}

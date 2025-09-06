@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flexy UI Components on Flexy Components Documentation</title>
+    <link>http://localhost:8000/</link>
+    <description>Recent content in Flexy UI Components on Flexy Components Documentation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Sep 2025 05:04:40 +0630</lastBuildDate>
+    <atom:link href="http://localhost:8000/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Button</title>
+      <link>http://localhost:8000/components/button/</link>
+      <pubDate>Sat, 06 Sep 2025 05:04:40 +0630</pubDate>
+      <guid>http://localhost:8000/components/button/</guid>
+      <description>&lt;p&gt;Buttons are one of the most common and basic user interface elements.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Slider</title>
+      <link>http://localhost:8000/components/slider/</link>
+      <pubDate>Sat, 06 Sep 2025 05:04:40 +0630</pubDate>
+      <guid>http://localhost:8000/components/slider/</guid>
+      <description>&lt;p&gt;A slider allows quickly selecting a value from a range. Common uses include seeking through audio or video, changing a volume level, or setting values in image editors.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Switch</title>
+      <link>http://localhost:8000/components/switch/</link>
+      <pubDate>Sat, 06 Sep 2025 05:04:40 +0630</pubDate>
+      <guid>http://localhost:8000/components/switch/</guid>
+      <description>&lt;p&gt;Switches can be used for controlling features, settings or hardware that have a clear on/off logic.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
