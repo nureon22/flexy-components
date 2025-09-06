@@ -1,3 +1,5 @@
 baseURL = 'https://nureon22.github.io/flexy-components/'
 languageCode = 'en-us'
 title = 'Flexy Components Documentation'
+[params]
+  repository = "https://github.com/nureon22/flexy-components"

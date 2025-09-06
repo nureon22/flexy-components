@@ -28,6 +28,8 @@
   }
   .navbar > div {
     display: flex;
+    align-items: center;
+    gap: 4px;
   }
 </style>
 <div class="navbar">
@@ -41,7 +43,15 @@
       <span>Components</span>
     </a>
   </div>
-  <div>
+  <div style="gap: 12px;">
+    <a
+      href="{{ .Site.Params.repository }}"
+      class="flexy-button flexy-button--icon"
+    >
+      <span class="bootstrap-icon" style="font-size: 24px;">
+        {{- partial "bootstrap-icon.html" "github" }}
+      </span>
+    </a>
     <div class="flexy-switch">
       <input
         id="theme-toggle"
