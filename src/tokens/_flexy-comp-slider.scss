@@ -16,6 +16,13 @@ $_flexy-comp-slider: (
   track-height: 4px,
   track-inactive-color: $flexy-sys-palette-grey-20,
   track-shape: 2px,
+  value-indicator-arrow-size: 6px,
+  value-indicator-height: 24px,
+  value-indicator-width: 32px,
+  value-indicator-shape: map.get($flexy-sys-shape, 'small'),
+  value-indicator-fill-color: $flexy-sys-color-primary,
+  value-indicator-text-color: $flexy-sys-color-on-primary,
+  value-indicator-text-size: 13px,
 );
 
 $flexy-comp-slider: ();

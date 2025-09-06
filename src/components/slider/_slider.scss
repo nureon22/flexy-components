@@ -71,7 +71,8 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
   &__thumb-knob {
     display: block;
     background-color: map.get($_slider, 'thumb-color');
-    border: map.get($_slider, 'thumb-outline-width') solid map.get($_slider, 'thumb-outline-color');
+    border: map.get($_slider, 'thumb-outline-width') solid
+      map.get($_slider, 'thumb-outline-color');
     border-radius: map.get($_slider, 'thumb-shape');
     box-sizing: border-box;
     position: absolute;
@@ -79,6 +80,48 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
     top: 0;
     width: map.get($_slider, 'thumb-width');
     height: map.get($_slider, 'thumb-height');
+  }
+
+  &__value-indicator {
+    $_arrow-size: map.get($_slider, 'value-indicator-arrow-size');
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: map.get($_slider, 'value-indicator-shape');
+    background-color: map.get($_slider, 'value-indicator-fill-color');
+    color: map.get($_slider, 'value-indicator-text-color');
+    font-size: map.get($_slider, 'value-indicator-text-size');
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translate(-50%, -2px) scale(0);
+    transform-origin: center bottom;
+    width: map.get($_slider, 'value-indicator-width');
+    height: map.get($_slider, 'value-indicator-height');
+    transition: transform $_transition;
+
+    &::before {
+      content: '';
+      clip-path: polygon(0% 0%, 50% 50%, 100% 0%);
+      background-color: inherit;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%, -1px);
+      width: calc($_arrow-size * 2 + 1px);
+      height: calc($_arrow-size * 2 + 1px);
+    }
+  }
+
+  &--sliding &__value-indicator,
+  &__input:hover ~ &__thumb-rail &__value-indicator,
+  &__input:focus ~ &__thumb-rail &__value-indicator {
+    transform: translate(
+        -50%,
+        calc(-1 * map.get($_slider, 'value-indicator-arrow-size') - 2px)
+      )
+      scale(1);
   }
 
   &__input:focus-visible ~ &__thumb-rail &__thumb-knob {

@@ -7,14 +7,15 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     activeTrack: this.getChild('active-track'),
     inactiveTrack: this.getChild('inactive-track'),
     thumb: this.getChild('thumb'),
+    valueIndicator: this.getChild('value-indicator'),
   };
 
   constructor(host: HTMLElement) {
     super(host);
 
     if (this.input) {
-      this.input.min ||= "0";
-      this.input.max ||= "100";
+      this.input.min ||= '0';
+      this.input.max ||= '100';
 
       this.update();
 
@@ -46,10 +47,19 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     return this.host.querySelector('.flexy-slider__' + selector);
   }
 
+  /**
+   * Supposed to override to modify how the value is displayed in value indicator
+   * By default, this function convert the value into integer string
+   */
+  valueIndicatorDisplayer(value: number) {
+    return value.toFixed(0);
+  }
+
   update() {
     if (!this.input) return;
 
-    const { inactiveTrack, activeTrack, thumb } = this._children;
+    const { inactiveTrack, activeTrack, thumb, valueIndicator } =
+      this._children;
 
     const min = Number(this.input.min || '0');
     const max = Number(this.input.max || '100');
@@ -64,6 +74,9 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     }
     if (thumb) {
       thumb.style.transform = `translateX(${progress - 100}%)`;
+    }
+    if (valueIndicator) {
+      valueIndicator.textContent = this.valueIndicatorDisplayer(value);
     }
   }
 }
