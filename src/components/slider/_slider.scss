@@ -22,6 +22,9 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
   }
 
   &__input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     display: block;
     border: none;
     cursor: pointer;
@@ -30,6 +33,20 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
     @include utils.absolute-center();
     @include utils.size(100%);
     @include utils.min-size(tokens.$flexy-sys-ref-touch-size);
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: map.get($_slider, 'thumb-width');
+      height: map.get($_slider, 'thumb-height');
+    }
+
+    &::-moz-range-thumb {
+      -moz-appearance: none;
+      appearance: none;
+      width: map.get($_slider, 'thumb-width');
+      height: map.get($_slider, 'thumb-height');
+    }
   }
 
   &__track {
