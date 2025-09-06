@@ -90,6 +90,37 @@
 
   <br />
 
+  <h3>Thumb Icon</h3>
+
+  <div
+    style="
+        --flexy-comp-slider-track-height: 6px;
+        --flexy-comp-slider-track-shape: 3px;
+        --flexy-comp-slider-thumb-height: 24px;
+        --flexy-comp-slider-thumb-width: 24px;
+        --flexy-comp-slider-thumb-shape: 12px;
+      "
+  >
+    <div class="flexy-slider">
+      <input id="volume-slider" type="range" class="flexy-slider__input" />
+      <div class="flexy-slider__track">
+        <div class="flexy-slider__inactive-track"></div>
+        <div class="flexy-slider__active-track"></div>
+      </div>
+      <div class="flexy-slider__thumb-rail">
+        <div class="flexy-slider__thumb">
+          <div class="flexy-slider__thumb-knob">
+            <span class="material-symbol" style="font-size: 20px;">
+              {{- partial "material-symbol.html" "graphic_eq/rounded/700" }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
   <h3>Thumb-less Slider</h3>
 
   <div
