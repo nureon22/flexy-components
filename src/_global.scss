@@ -78,3 +78,16 @@ p {
 .hidden {
   display: none;
 }
+
+code {
+  display: inline-block;
+  background-color: tokens.$flexy-sys-palette-grey-20;
+  border-radius: 2px;
+  color: tokens.$flexy-sys-palette-grey-80;
+  font-size: 14px;
+  padding: 0px 4px;
+}
+
+ul li {
+  margin: 4px 0px;
+}
