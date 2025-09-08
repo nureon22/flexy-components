@@ -27,13 +27,19 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     }
   }
 
+  private isFirstInputEvent = true;
+
   handleInputEvent() {
-    this.host.classList.add('flexy-slider--sliding');
+    if (!this.isFirstInputEvent) {
+      this.host.classList.add('flexy-slider--sliding');
+    }
+    this.isFirstInputEvent = false;
     this.update();
   }
 
   handleChangeEvent() {
     this.host.classList.remove('flexy-slider--sliding');
+    this.isFirstInputEvent = true;
   }
 
   getChild(selector: string): HTMLElement | null {
