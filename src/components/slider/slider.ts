@@ -9,7 +9,8 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     activeTicks: this.getChild('active-ticks'),
     inactiveTicks: this.getChild('inactive-ticks'),
     thumb: this.getChild('thumb'),
-    valueIndicator: this.getChild('value-indicator'),
+    valueIndicator:
+      this.getChild('value-indicator') || this.getChild('value-indicator-m3'),
   };
 
   constructor(host: HTMLElement) {
