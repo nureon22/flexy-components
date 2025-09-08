@@ -6,8 +6,8 @@ export class FlexyButtonComponent extends FlexyBaseComponent {
     super(host);
 
     const ripple = RippleEffect.attachTo(host, {
-      duration: 250,
-      exitdelay: 150,
+      duration: 200,
+      exitdelay: 100,
       hoveredOpacity: 0.12,
       focusedOpacity: 0,
       pressedOpacity: 0.12,
