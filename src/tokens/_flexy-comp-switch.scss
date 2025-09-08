@@ -23,13 +23,13 @@ $_flexy-comp-switch: (
   selected-thumb-color: $flexy-sys-color-on-primary,
   selected-icon-color: $flexy-sys-color-primary,
 
-  disabled-unselected-track-color: $flexy-sys-palette-grey-15,
-  disabled-unselected-thumb-color: $flexy-sys-palette-grey-30,
-  disabled-unselected-icon-color: $flexy-sys-palette-grey-15,
+  disabled-unselected-track-color: $flexy-sys-palette-grey-20,
+  disabled-unselected-thumb-color: $flexy-sys-palette-grey-35,
+  disabled-unselected-icon-color: $flexy-sys-palette-grey-20,
 
-  disabled-selected-track-color: $flexy-sys-palette-grey-25,
-  disabled-selected-thumb-color: $flexy-sys-palette-grey-10,
-  disabled-selected-icon-color: $flexy-sys-palette-grey-25,
+  disabled-selected-track-color: $flexy-sys-palette-grey-30,
+  disabled-selected-thumb-color: $flexy-sys-palette-grey-15,
+  disabled-selected-icon-color: $flexy-sys-palette-grey-30,
 );
 
 $flexy-comp-switch: ();
