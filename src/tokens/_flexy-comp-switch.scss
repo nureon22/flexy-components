@@ -5,13 +5,13 @@
 @use 'flexy-sys-shape' as *;
 
 $_flexy-comp-switch: (
-  thumb-height: 24px,
-  thumb-shape: 12px,
-  thumb-width: 24px,
-  track-height: 30px,
-  track-shape: 15px,
-  track-width: 52px,
-  icon-size: 20px,
+  thumb-height: 22px,
+  thumb-shape: 11px,
+  thumb-width: 22px,
+  track-height: 28px,
+  track-shape: 14px,
+  track-width: 48px,
+  icon-size: 16px,
 
   focus-ring-color: $flexy-sys-color-primary,
 
