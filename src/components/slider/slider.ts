@@ -6,6 +6,8 @@ export class FlexySliderComponent extends FlexyBaseComponent {
   readonly _children = {
     activeTrack: this.getChild('active-track'),
     inactiveTrack: this.getChild('inactive-track'),
+    activeTicks: this.getChild('active-ticks'),
+    inactiveTicks: this.getChild('inactive-ticks'),
     thumb: this.getChild('thumb'),
     valueIndicator: this.getChild('value-indicator'),
   };
@@ -18,29 +20,20 @@ export class FlexySliderComponent extends FlexyBaseComponent {
       this.input.max ||= '100';
 
       this.update();
+      this.updateTicks();
 
       this.input.addEventListener('input', this.handleInputEvent.bind(this));
-      this.input.addEventListener('change', this.handleInputEvent.bind(this));
+      this.input.addEventListener('change', this.handleChangeEvent.bind(this));
     }
   }
 
-  private _inputEventCount = 0;
-
-  handleInputEvent(event: Event) {
-    switch (event.type) {
-      case 'input':
-        if (this._inputEventCount == 1) {
-          this.host.classList.add('flexy-slider--sliding');
-        }
-        this._inputEventCount++;
-        break;
-      case 'change':
-        this.host.classList.remove('flexy-slider--sliding');
-        this._inputEventCount = 0;
-        break;
-    }
-
+  handleInputEvent() {
+    this.host.classList.add('flexy-slider--sliding');
     this.update();
+  }
+
+  handleChangeEvent() {
+    this.host.classList.remove('flexy-slider--sliding');
   }
 
   getChild(selector: string): HTMLElement | null {
@@ -55,11 +48,29 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     return value.toFixed(0);
   }
 
+  get ticksInterval() {
+    const interval = Number(this.host.getAttribute('data-ticks-interval'));
+    return interval > 0 && Number.isSafeInteger(interval) ? interval : 1;
+  }
+
+  set ticksInterval(interval: number) {
+    if (interval > 0 && Number.isSafeInteger(interval)) {
+      this.host.setAttribute('data-ticks-interval', String(interval));
+      this.updateTicks();
+    }
+  }
+
   update() {
     if (!this.input) return;
 
-    const { inactiveTrack, activeTrack, thumb, valueIndicator } =
-      this._children;
+    const {
+      inactiveTrack,
+      inactiveTicks,
+      activeTrack,
+      activeTicks,
+      thumb,
+      valueIndicator,
+    } = this._children;
 
     const min = Number(this.input.min || '0');
     const max = Number(this.input.max || '100');
@@ -69,6 +80,12 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     if (inactiveTrack) {
       inactiveTrack.style.transform = `translateX(${progress}%)`;
     }
+    if (inactiveTicks) {
+      inactiveTicks.style.transform = `translateX(${-1 * progress}%)`;
+    }
+    if (activeTicks) {
+      activeTicks.style.transform = `translateX(${100 - progress}%)`;
+    }
     if (activeTrack) {
       activeTrack.style.transform = `translateX(${progress - 100}%)`;
     }
@@ -77,6 +94,20 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     }
     if (valueIndicator) {
       valueIndicator.textContent = this.valueIndicatorDisplayer(value);
+    }
+  }
+
+  updateTicks() {
+    if (!this.input) return;
+
+    const { activeTicks, inactiveTicks } = this._children;
+    const backgroundSize = this.ticksInterval * Number(this.input.step);
+
+    if (inactiveTicks) {
+      inactiveTicks.style.backgroundSize = `${backgroundSize}% 100%`;
+    }
+    if (activeTicks) {
+      activeTicks.style.backgroundSize = `${backgroundSize}% 100%`;
     }
   }
 }
