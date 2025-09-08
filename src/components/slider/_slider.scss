@@ -167,6 +167,35 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
     }
   }
 
+  &--value-indicator-m3 &__value-indicator {
+    $_arrow-size: map.get($_slider, 'value-indicator-arrow-size');
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: map.get($_slider, 'value-indicator-shape');
+    font-size: map.get($_slider, 'value-indicator-text-size');
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translate(-50%, -2px) scale(0);
+    transform-origin: center bottom;
+    width: map.get($_slider, 'value-indicator-height');
+    height: map.get($_slider, 'value-indicator-height');
+    transition: transform $_transition;
+
+    &::before {
+      content: ''olygon(0% 0%, 50% 50%, 100% 0%);
+      background-color: inherit;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%, -1px);
+      width: calc($_arrow-size * 2 + 1px);
+      height: calc($_arrow-size * 2 + 1px);
+    }
+  }
+
   &--sliding &__value-indicator,
   &__input:hover ~ &__thumb-rail &__value-indicator,
   &__input:focus ~ &__thumb-rail &__value-indicator {
