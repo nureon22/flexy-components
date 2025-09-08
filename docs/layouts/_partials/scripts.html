@@ -1,7 +1,13 @@
 {{- with resources.Get "main.js" }}
-  <script type="module" src="{{ .RelPermalink }}"></script>
+  {{- if hugo.IsProduction }}
+    {{- with . | fingerprint }}
+      <script type="module" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{- end }}
+  {{- else }}
+    <script type="module" src="{{ .RelPermalink }}"></script>
 
-  {{- with resources.Get "main.js.map" }}
-    <!--{{ .RelPermalink }}-->
+    {{- with resources.Get "main.js.map" }}
+      <!--{{ .RelPermalink }}-->
+    {{- end }}
   {{- end }}
 {{- end }}
