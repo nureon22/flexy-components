@@ -1,6 +1,16 @@
 @use 'sass:color';
+@use 'sass:map';
+@use 'sass:math';
 
 @mixin theme-builder($theme, $isDark) {
+  $_surface: map.get($theme, surface);
+  $_on-surface: map.get($theme, on-surface);
+  $_surface-lightness: color.channel($_surface, 'lightness');
+  $_on-surface-lightness: color.channel($_on-surface, 'lightness');
+  $_grey-step: calc(
+    math.abs(calc($_surface-lightness - $_on-surface-lightness)) / 100
+  );
+
   @each $name, $color in $theme {
     --flexy-sys-color-#{$name}: #{$color};
   }
@@ -8,12 +18,18 @@
   @if $isDark {
     @each $i in (0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100)
     {
-      --flexy-sys-palette-grey-#{$i}: #{hsl(0deg 0% calc($i * 1%))};
+      --flexy-sys-palette-grey-#{$i}: #{color.change(
+          $_surface,
+          $lightness: calc($_surface-lightness + $_grey-step * $i)
+        )};
     }
   } @else {
     @each $i in (0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100)
     {
-      --flexy-sys-palette-grey-#{$i}: #{hsl(0deg 0% calc(100% - $i * 1%))};
+      --flexy-sys-palette-grey-#{$i}: #{color.change(
+          $_surface,
+          $lightness: calc($_surface-lightness - $_grey-step * $i)
+        )};
     }
   }
 }
