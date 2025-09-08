@@ -1,0 +1,6 @@
+{{- $name := . }}
+{{- $url := printf "https://raw.githubusercontent.com/simple-icons/simple-icons/refs/heads/develop/icons/%s.svg" $name }}
+
+{{- with resources.GetRemote $url }}
+  {{- .Content | safeHTML }}
+{{- end }}
