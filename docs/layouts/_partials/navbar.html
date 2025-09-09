@@ -43,17 +43,7 @@
       </span>
     </a>
     <div class="flexy-switch">
-      <input
-        id="theme-toggle"
-        type="checkbox"
-        class="flexy-switch__input"
-        onchange="
-          const checked = this.checked;
-          document.documentElement.classList.toggle('dark', checked);
-          document.documentElement.classList.toggle('light', !checked);
-          sessionStorage.setItem('theme', checked ? 'dark': 'light');
-        "
-      />
+      <input id="theme-toggle" type="checkbox" class="flexy-switch__input" />
       <div class="flexy-switch__track"></div>
       <div class="flexy-switch__thumb">
         <span class="flexy-switch__unselected-icon material-symbol">
@@ -69,7 +59,19 @@
 
 <script>
   void (function () {
+    const isDark = sessionStorage.getItem('theme') == 'dark';
     const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.checked = sessionStorage.getItem('theme') == 'dark';
+    themeToggle.checked = isDark;
+    themeToggle.ariaLabel =
+      'switch to ' + (isDark ? 'light' : 'dark') + ' mode';
+
+    themeToggle.addEventListener('change', function () {
+      const isDark = this.checked;
+      document.documentElement.classList.toggle('dark', isDark);
+      document.documentElement.classList.toggle('light', !isDark);
+      sessionStorage.setItem('theme', isDark ? 'dark' : 'light');
+      themeToggle.ariaLabel =
+        'switch to ' + (isDark ? 'light' : 'dark') + ' mode';
+    });
   })();
 </script>
