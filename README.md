@@ -21,4 +21,5 @@ A collection of customzable UI components for web
 - ProgressBar
 - ProgressSpinner
 - Radio
+- Tabs
 - TextField
