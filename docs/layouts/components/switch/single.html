@@ -5,36 +5,40 @@
   <div>
     <h3>Default</h3>
 
-    <div class="flexy-switch">
-      <input type="checkbox" class="flexy-switch__input" />
-      <div class="flexy-switch__track"></div>
-      <div class="flexy-switch__thumb"></div>
+    <div class="flexy-row">
+      <div class="flexy-switch">
+        <input type="checkbox" class="flexy-switch__input" />
+        <div class="flexy-switch__track"></div>
+        <div class="flexy-switch__thumb"></div>
+      </div>
     </div>
   </div>
 
   <div>
     <h3>Thumb Icon</h3>
 
-    <div class="flexy-switch">
-      <input type="checkbox" class="flexy-switch__input" />
-      <div class="flexy-switch__track"></div>
-      <div class="flexy-switch__thumb">
-        <span class="material-symbol flexy-switch__unselected-icon">
-          {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
-        </span>
-        <span class="material-symbol flexy-switch__selected-icon">
-          {{- partial "material-symbol.html" "check/rounded/700" }}
-        </span>
+    <div class="flex-row">
+      <div class="flexy-switch">
+        <input type="checkbox" class="flexy-switch__input" />
+        <div class="flexy-switch__track"></div>
+        <div class="flexy-switch__thumb">
+          <span class="material-symbol flexy-switch__unselected-icon">
+            {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
+          </span>
+          <span class="material-symbol flexy-switch__selected-icon">
+            {{- partial "material-symbol.html" "check/rounded/700" }}
+          </span>
+        </div>
       </div>
-    </div>
 
-    <div class="flexy-switch">
-      <input type="checkbox" class="flexy-switch__input" />
-      <div class="flexy-switch__track"></div>
-      <div class="flexy-switch__thumb">
-        <span class="material-symbol flexy-switch__icon">
-          {{- partial "material-symbol.html" "dark_mode/rounded/700" }}
-        </span>
+      <div class="flexy-switch">
+        <input type="checkbox" class="flexy-switch__input" />
+        <div class="flexy-switch__track"></div>
+        <div class="flexy-switch__thumb">
+          <span class="material-symbol flexy-switch__icon">
+            {{- partial "material-symbol.html" "dark_mode/rounded/700" }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -42,29 +46,31 @@
   <div>
     <h3>Disabled Switches</h3>
 
-    <div class="flexy-switch">
-      <input type="checkbox" class="flexy-switch__input" disabled />
-      <div class="flexy-switch__track"></div>
-      <div class="flexy-switch__thumb">
-        <span class="material-symbol flexy-switch__unselected-icon">
-          {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
-        </span>
-        <span class="material-symbol flexy-switch__selected-icon">
-          {{- partial "material-symbol.html" "check/rounded/700" }}
-        </span>
+    <div class="flex-row">
+      <div class="flexy-switch">
+        <input type="checkbox" class="flexy-switch__input" disabled />
+        <div class="flexy-switch__track"></div>
+        <div class="flexy-switch__thumb">
+          <span class="material-symbol flexy-switch__unselected-icon">
+            {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
+          </span>
+          <span class="material-symbol flexy-switch__selected-icon">
+            {{- partial "material-symbol.html" "check/rounded/700" }}
+          </span>
+        </div>
       </div>
-    </div>
 
-    <div class="flexy-switch">
-      <input type="checkbox" class="flexy-switch__input" checked disabled />
-      <div class="flexy-switch__track"></div>
-      <div class="flexy-switch__thumb">
-        <span class="material-symbol flexy-switch__unselected-icon">
-          {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
-        </span>
-        <span class="material-symbol flexy-switch__selected-icon">
-          {{- partial "material-symbol.html" "check/rounded/700" }}
-        </span>
+      <div class="flexy-switch">
+        <input type="checkbox" class="flexy-switch__input" checked disabled />
+        <div class="flexy-switch__track"></div>
+        <div class="flexy-switch__thumb">
+          <span class="material-symbol flexy-switch__unselected-icon">
+            {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
+          </span>
+          <span class="material-symbol flexy-switch__selected-icon">
+            {{- partial "material-symbol.html" "check/rounded/700" }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -72,13 +78,15 @@
   <div>
     <h3>Custom Switches</h3>
 
-    <div
-      class="flexy-switch"
-      style="--flexy-comp-switch-track-shape: 2px; --flexy-comp-switch-thumb-shape: 2px;"
-    >
-      <input type="checkbox" class="flexy-switch__input" />
-      <div class="flexy-switch__track"></div>
-      <div class="flexy-switch__thumb"></div>
+    <div class="flex-row">
+      <div
+        class="flexy-switch"
+        style="--flexy-comp-switch-track-shape: 2px; --flexy-comp-switch-thumb-shape: 2px;"
+      >
+        <input type="checkbox" class="flexy-switch__input" />
+        <div class="flexy-switch__track"></div>
+        <div class="flexy-switch__thumb"></div>
+      </div>
     </div>
   </div>
 
