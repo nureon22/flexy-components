@@ -13,6 +13,7 @@ A collection of customzable UI components for web
 - Button
 - Slider
 - Switch
+- Tabs
 
 ### Comming Soon
 
@@ -21,5 +22,4 @@ A collection of customzable UI components for web
 - ProgressBar
 - ProgressSpinner
 - Radio
-- Tabs
 - TextField

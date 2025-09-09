@@ -1,3 +1,5 @@
+@use '../tokens/flexy-sys-ref' as *;
+
 @mixin absolute-center() {
   position: absolute;
   left: 50%;
@@ -26,4 +28,11 @@
 @mixin max-size($width, $height: $width) {
   max-width: $width;
   max-height: $height;
+}
+
+@mixin touchable() {
+  content: '';
+  @include absolute-center();
+  @include size(100%);
+  @include min-size($flexy-sys-ref-touch-size);
 }

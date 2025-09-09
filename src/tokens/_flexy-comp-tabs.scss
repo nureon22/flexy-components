@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-ref' as *;
+@use 'flexy-sys-shape' as *;
+
+$_flexy-comp-tabs: (
+  tab-height: 40px,
+  tab-shape: map.get($flexy-sys-shape, 'small'),
+  tab-selected-fill-color: $flexy-sys-palette-grey-10,
+  tab-selected-label-color: $flexy-sys-palette-grey-100,
+  tab-unselected-fill-color: transparent,
+  tab-unselected-label-color: $flexy-sys-palette-grey-100,
+  tablist-divider-color: $flexy-sys-palette-grey-10,
+  tablist-divider-margin: 16px,
+  tablist-fill-color: transparent,
+  tablist-height: 48px,
+  tablist-shape: 0px,
+  tablist-spacing: 4px,
+);
+
+$flexy-comp-tabs: ();
+
+@each $name, $value in $_flexy-comp-tabs {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-tabs-#{$name}, #{$value});
+  }
+  $flexy-comp-tabs: map.set($flexy-comp-tabs, $name, $value);
+}

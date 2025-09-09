@@ -1,0 +1,73 @@
+@use 'sass:map';
+@use '../../tokens';
+@use '../../utils';
+
+$_tabs: tokens.$flexy-comp-tabs;
+
+.flexy-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.flexy-tablist {
+  display: flex;
+  align-items: center;
+  background-color: map.get($_tabs, 'tablist-fill-color');
+  border-bottom: 1px solid map.get($_tabs, 'tablist-divider-color');
+  border-radius: map.get($_tabs, 'tablist-shape');
+  box-sizing: border-box;
+  gap: map.get($_tabs, 'tablist-spacing');
+  height: map.get($_tabs, 'tablist-height');
+  margin-bottom: map.get($_tabs, 'tablist-divider-margin');
+  padding: 0px
+    calc(
+      (map.get($_tabs, 'tablist-height') - map.get($_tabs, 'tab-height')) / 2
+    );
+}
+
+.flexy-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: map.get($_tabs, 'tab-shape');
+  cursor: pointer;
+  height: map.get($_tabs, 'tab-height');
+  position: relative;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+
+  &::after {
+    @include utils.touchable();
+  }
+
+  &[aria-selected='false'] {
+    background-color: map.get($_tabs, 'tab-unselected-fill-color');
+    color: map.get($_tabs, 'tab-unselected-label-color');
+  }
+
+  &[aria-selected='true'] {
+    background-color: map.get($_tabs, 'tab-selected-fill-color');
+    color: map.get($_tabs, 'tab-selected-label-color');
+  }
+
+  &:focus-visible {
+    outline: 2px solid tokens.$flexy-sys-color-primary;
+    outline-offset: 0px;
+  }
+}
+
+.flexy-tab-panels {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.flexy-tab-panel {
+  flex-shrink: 0;
+  width: 100%;
+
+  &[hidden] {
+    display: none !important;
+  }
+}

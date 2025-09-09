@@ -1,6 +1,7 @@
 import { FlexyButtonComponent } from './components/button';
 import { FlexySliderComponent } from './components/slider';
 import { FlexySwitchComponent } from './components/switch';
+import { FlexyTabsComponent } from './components/tabs';
 import { afterPageLoad } from './utils';
 
 afterPageLoad().then(() => {
@@ -12,5 +13,8 @@ afterPageLoad().then(() => {
   });
   document.querySelectorAll('.flexy-slider').forEach((el) => {
     if (el instanceof HTMLElement) new FlexySliderComponent(el);
+  });
+  document.querySelectorAll('.flexy-tabs').forEach((el) => {
+    if (el instanceof HTMLElement) new FlexyTabsComponent(el);
   });
 });
