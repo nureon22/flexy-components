@@ -29,10 +29,7 @@ $_button: tokens.$flexy-comp-button;
   -webkit-tap-highlight-color: transparent;
 
   &::after {
-    content: '';
-    @include utils.absolute-center();
-    @include utils.size(100%);
-    @include utils.min-size(tokens.$flexy-sys-ref-touch-size);
+    @include utils.touchable();
   }
 
   &:focus-visible {
