@@ -5,6 +5,8 @@
 
 $_flexy-comp-tabs: (
   tab-height: 40px,
+  tab-padding: 16px,
+  tab-spacing: 8px,
   tab-shape: map.get($flexy-sys-shape, 'small'),
   tab-selected-fill-color: $flexy-sys-palette-grey-15,
   tab-selected-label-color: $flexy-sys-palette-grey-100,

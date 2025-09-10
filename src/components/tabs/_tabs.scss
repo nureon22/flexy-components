@@ -30,10 +30,12 @@ $_tabs: tokens.$flexy-comp-tabs;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: map.get($_tabs, 'tab-spacing');
   border-radius: map.get($_tabs, 'tab-shape');
   cursor: pointer;
   height: map.get($_tabs, 'tab-height');
   position: relative;
+  padding: 0px map.get($_tabs, 'tab-padding');
   width: 100%;
   -webkit-tap-highlight-color: transparent;
 
