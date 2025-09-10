@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use 'flexy-comp-button' as *;
+@use 'flexy-comp-slider' as *;
+@use 'flexy-comp-switch' as *;
+@use 'flexy-comp-tabs' as *;
+
+@mixin _override($tokens, $default-tokens, $prefix) {
+  @each $name, $value in $tokens {
+    @if (map.has-key($default-tokens, $name)) {
+      --#{$prefix}-#{$name}: #{$value};
+    } @else {
+      @error "#{$name} isn't supported token";
+    }
+  }
+}
+
+@mixin button-overrides($tokens) {
+  @include _override($tokens, $flexy-comp-button, 'flexy-comp-button');
+}
+
+@mixin slider-overrides($tokens) {
+  @include _override($tokens, $flexy-comp-slider, 'flexy-comp-slider');
+}
+
+@mixin switch-overrides($tokens) {
+  @include _override($tokens, $flexy-comp-switch, 'flexy-comp-switch');
+}
+
+@mixin tabs-overrides($tokens) {
+  @include _override($tokens, $flexy-comp-tabs, 'flexy-comp-tabs');
+}
