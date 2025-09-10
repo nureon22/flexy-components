@@ -108,7 +108,7 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     if (!this.input) return;
 
     const { activeTicks, inactiveTicks } = this._children;
-    const backgroundSize = this.ticksInterval * Number(this.input.step);
+    const backgroundSize = this.ticksInterval * Number(this.input.step || '1');
 
     if (inactiveTicks) {
       inactiveTicks.style.backgroundSize = `${backgroundSize}% 100%`;
