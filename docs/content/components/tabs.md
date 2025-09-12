@@ -4,9 +4,9 @@ draft = false
 title = 'Tabs'
 +++
 
-<!--more-->
-
 Tabs allow you to organize multiple views within a single container and display one view at a time.
+
+<!--more-->
 
 ## Examples
 
