@@ -1,3 +1,4 @@
+import RippleEffect from '@nureon22/ripple-effect';
 import { FlexyBaseComponent } from '../base';
 
 export class FlexySliderComponent extends FlexyBaseComponent {
@@ -25,6 +26,22 @@ export class FlexySliderComponent extends FlexyBaseComponent {
 
       this.input.addEventListener('input', this.handleInputEvent.bind(this));
       this.input.addEventListener('change', this.handleChangeEvent.bind(this));
+
+      const thumbRipple = this.getChild('thumb-ripple');
+
+      if (thumbRipple) {
+        RippleEffect.attachTo(thumbRipple, {
+          centered: true,
+          duration: 200,
+          exitdelay: 100,
+          focusedOpacity: 0.12,
+          hoveredOpacity: 0.08,
+          keydown: false,
+          pressedOpacity: 0.2,
+          rounded: true,
+          trigger: this.input,
+        });
+      }
     }
   }
 

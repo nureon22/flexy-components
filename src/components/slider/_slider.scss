@@ -183,6 +183,13 @@ $_slider: tokens.$flexy-comp-slider;
     }
   }
 
+  &__thumb-ripple {
+    display: block;
+    color: map.get($_slider, 'thumb-color');
+    @include utils.absolute-center();
+    @include utils.size(40px);
+  }
+
   &--sliding &__value-indicator,
   &__input:hover ~ &__thumb-rail &__value-indicator,
   &__input:focus ~ &__thumb-rail &__value-indicator {
