@@ -1,38 +1,7 @@
-<style>
-  body {
-    padding-top: 64px;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    scroll-margin-top: 64px;
-  }
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--flexy-sys-palette-grey-15);
-    box-shadow: 0px 0px 3px black;
-    padding: 0px 12px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 64px;
-    z-index: 9;
-  }
-  .navbar > div {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  #menu-button {
-    display: none;
-  }
-</style>
+{{- with resources.Get "styles/navbar.css" }}
+  <style>{{ .Content | safeCSS }}</style>
+{{- end }}
+
 <div class="navbar">
   <div>
     <button class="flexy-button flexy-button--icon" id="menu-button">

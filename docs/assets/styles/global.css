@@ -1,0 +1,148 @@
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0px;
+}
+
+p {
+  max-width: 80ch;
+}
+
+.dark a:not(.flexy-button) {
+  color: dodgerblue;
+}
+
+.light a:not(.flexy-button) {
+  color: royalblue;
+}
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.flex-column {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.simple-icon,
+.bootstrap-icon,
+.material-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+}
+
+.simple-icon svg,
+.bootstrap-icon svg,
+.material-symbol svg {
+  fill: currentcolor;
+  width: 1em;
+  height: 1em;
+}
+
+.simple-icon {
+  font-size: 16px;
+}
+
+.bootstrap-icon {
+  font-size: 16px;
+}
+
+.material-symbol {
+  font-size: 24px;
+}
+
+.icon-16 {
+  font-size: 16px;
+}
+
+.icon-20 {
+  font-size: 20px;
+}
+
+.icon-24 {
+  font-size: 24px;
+}
+
+.icon-32 {
+  font-size: 32px;
+}
+
+.icon-40 {
+  font-size: 40px;
+}
+
+.icon-48 {
+  font-size: 48px;
+}
+
+.icon-64 {
+  font-size: 64px;
+}
+
+.icon-96 {
+  font-size: 96px;
+}
+
+.icon-128 {
+  font-size: 128px;
+}
+
+code {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+ul code {
+  background-color: var(--flexy-sys-palette-grey-15);
+  border-radius: 4px;
+  color: var(--flexy-sys-palette-grey-90);
+  padding: 0px 4px;
+  margin: 2px 0px;
+}
+
+.example {
+  margin-bottom: 32px;
+  max-width: 900px;
+}
+
+.example-code .highlight pre {
+  border-radius: 8px;
+  overflow: auto;
+  padding: 16px 8px;
+  margin: 0px;
+}
+
+.example-preview {
+  padding: 48px 16px;
+  border: 1px solid var(--flexy-sys-palette-grey-25);
+  border-radius: 8px;
+  box-sizing: border-box;
+  overflow: auto;
+}
