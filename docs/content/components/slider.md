@@ -87,8 +87,10 @@ A slider allows quickly selecting a value from a range. Common uses include seek
 
 #### Animation
 
-- `animation-jumping`
-- `animation-sliding`
+- `animation-jumping-duration`
+- `animation-jumping-easing`
+- `animation-sliding-duration`
+- `animation-sliding-easing`
 
 #### Others
 

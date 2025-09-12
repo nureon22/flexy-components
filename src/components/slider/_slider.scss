@@ -63,7 +63,8 @@ $_slider: tokens.$flexy-comp-slider;
     display: block;
     @include utils.absolute-fill();
     overflow: hidden;
-    transition: transform map.get($_slider, 'animation-jumping');
+    transition: transform map.get($_slider, 'animation-jumping-duration')
+      map.get($_slider, 'animation-jumping-easing');
   }
 
   &__inactive-track {
@@ -84,11 +85,12 @@ $_slider: tokens.$flexy-comp-slider;
     background-image: radial-gradient(
       circle at $_ticks-size,
       currentcolor calc($_ticks-size - 0.5px),
-      transparent $_ticks-size,
+      transparent $_ticks-size
     );
     background-size: 10% 100%;
     background-position: calc(-1 * $_ticks-size) center;
-    transition: transform map.get($_slider, 'animation-jumping');
+    transition: transform map.get($_slider, 'animation-jumping-duration')
+      map.get($_slider, 'animation-jumping-easing');
     @include utils.absolute-fill();
   }
 
@@ -113,7 +115,8 @@ $_slider: tokens.$flexy-comp-slider;
     display: block;
     @include utils.absolute-fill();
     transform: translateX(-50%);
-    transition: transform map.get($_slider, 'animation-jumping');
+    transition: transform map.get($_slider, 'animation-jumping-duration')
+      map.get($_slider, 'animation-jumping-easing');
   }
 
   &__thumb-knob {
@@ -216,7 +219,8 @@ $_slider: tokens.$flexy-comp-slider;
   &--sliding &__active-ticks,
   &--sliding &__inactive-ticks,
   &--sliding &__thumb {
-    transition: transform map.get($_slider, 'animation-sliding');
+    transition: transform map.get($_slider, 'animation-sliding-duration')
+      map.get($_slider, 'animation-sliding-easing');
   }
 
   &--noanimation &__active-track,
