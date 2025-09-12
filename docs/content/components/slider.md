@@ -81,6 +81,11 @@ A slider allows quickly selecting a value from a range. Common uses include seek
 - `value-indicator-text-size`
 - `value-indicator-m3-size`
 
+#### Animation
+
+- `animation-jumping`
+- `animation-sliding`
+
 #### Others
 
 - `focus-ring-color`
