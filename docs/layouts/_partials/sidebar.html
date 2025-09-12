@@ -12,14 +12,14 @@
     top: 64px;
     height: 100%;
     width: 200px;
-    padding: 16px 8px;
+    padding: 12px 6px;
     z-index: 8;
     transition: transform 300ms ease;
   }
   .sidebar ul {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
     list-style: none;
     margin: 0px;
     padding: 0px;
@@ -30,7 +30,7 @@
     width: 100%;
   }
   .sidebar .flexy-button::before {
-    opacity: 0.2;
+    opacity: 0.12;
   }
   #menu-button {
     display: none;
@@ -70,7 +70,7 @@
     const anchor = document.querySelector(
       `.sidebar a.flexy-button[href="${location.pathname}"]`,
     );
-    if (anchor) anchor.classList.add('flexy-button--tonal-neutral');
+    if (anchor) anchor.classList.add('flexy-button--tonal-primary');
 
     // inside top navbar
     const menuBtn = document.getElementById('menu-button');
