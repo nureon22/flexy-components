@@ -3,7 +3,6 @@
 @use '../../utils';
 
 $_slider: tokens.$flexy-comp-slider;
-$_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
 
 .flexy-slider {
   display: flex;
@@ -64,7 +63,7 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
     display: block;
     @include utils.absolute-fill();
     overflow: hidden;
-    transition: transform $_transition;
+    transition: transform map.get($_slider, 'animation-jumping');
   }
 
   &__inactive-track {
@@ -89,7 +88,7 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
     );
     background-size: 10% 100%;
     background-position: calc(-1 * $_ticks-size) center;
-    transition: transform $_transition;
+    transition: transform map.get($_slider, 'animation-jumping');
     @include utils.absolute-fill();
   }
 
@@ -114,7 +113,7 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
     display: block;
     @include utils.absolute-fill();
     transform: translateX(-50%);
-    transition: transform $_transition;
+    transition: transform map.get($_slider, 'animation-jumping');
   }
 
   &__thumb-knob {
@@ -146,7 +145,7 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
     bottom: 100%;
     transform: translate(-50%, 0%) scale(0);
     transform-origin: center bottom;
-    transition: transform $_transition;
+    transition: transform 200ms tokens.$flexy-sys-motion-ease-out-cubic;
   }
 
   &__value-indicator {
@@ -205,16 +204,19 @@ $_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
     outline-offset: 2px;
   }
 
-  &--noanimation &__active-track,
-  &--noanimation &__inactive-track,
-  &--noanimation &__active-ticks,
-  &--noanimation &__inactive-ticks,
-  &--noanimation &__thumb,
   &--sliding &__active-track,
   &--sliding &__inactive-track,
   &--sliding &__active-ticks,
   &--sliding &__inactive-ticks,
   &--sliding &__thumb {
+    transition: transform map.get($_slider, 'animation-sliding');
+  }
+
+  &--noanimation &__active-track,
+  &--noanimation &__inactive-track,
+  &--noanimation &__active-ticks,
+  &--noanimation &__inactive-ticks,
+  &--noanimation &__thumb {
     transition-duration: 0ms;
   }
 }
