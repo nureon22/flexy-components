@@ -14,9 +14,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--flexy-sys-palette-grey-10);
+    background-color: var(--flexy-sys-palette-grey-15);
     box-shadow: 0px 0px 3px black;
-    padding: 0px 8px;
+    padding: 0px 12px;
     position: fixed;
     left: 0;
     top: 0;
@@ -27,18 +27,23 @@
   .navbar > div {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+  }
+  #menu-button {
+    display: none;
   }
 </style>
 <div class="navbar">
   <div>
+    <button class="flexy-button flexy-button--icon" id="menu-button">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "menu/rounded/400" }}
+      </span>
+    </button>
     <a class="flexy-button flexy-button--icon" href="{{ relURL "" }}">
       <span class="material-symbol">
         {{- partial "material-symbol.html" "home/rounded/400" }}
       </span>
-    </a>
-    <a class="flexy-button" href="{{ relURL "components/" }}">
-      <span>Components</span>
     </a>
   </div>
   <div style="gap: 12px;">
