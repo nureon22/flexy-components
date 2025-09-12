@@ -58,6 +58,7 @@ Supported variants: neutral, primary and error
 ### Supported Tokens
 
 - `height`
+- `label-size`
 - `padding`
 - `shape`
 - `spacing`
