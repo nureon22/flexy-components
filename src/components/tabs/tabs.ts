@@ -8,12 +8,12 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
   selectedTab = 0;
 
   readonly tabs = Array.from(
-    this.host.querySelectorAll('.flexy-tab'),
-  ) as HTMLElement[];
+    this.host.querySelector('.flexy-tablist')?.children || [],
+  ).filter((tab) => tab.matches('.flexy-tab')) as HTMLElement[];
 
   readonly panels = Array.from(
-    this.host.querySelectorAll('.flexy-tab-panel'),
-  ) as HTMLElement[];
+    this.host.querySelector('.flexy-tab-panels')?.children || [],
+  ).filter((panel) => panel.matches('.flexy-tab-panel')) as HTMLElement[];
 
   constructor(host: HTMLElement) {
     super(host);
