@@ -1,0 +1,22 @@
+{{- $example := (.Get "example") }}
+{{- $partial := (printf "examples/%s.html" $example) }}
+
+
+<div class="flexy-tabs example">
+  <div class="flexy-tablist" role="tablist">
+    <div class="flexy-tab" role="tab" aria-selected="true">
+      <span>Preview</span>
+    </div>
+    <div class="flexy-tab" role="tab" aria-selected="false">
+      <span>Code</span>
+    </div>
+  </div>
+  <div class="flexy-tab-panels">
+    <div class="flexy-tab-panel example-preview" role="tabpanel">
+      {{- partial (printf "%s" $partial) . }}
+    </div>
+    <div class="flexy-tab-panel example-code" role="tabpanel" hidden>
+      {{ transform.Highlight (partial (printf "%s" $partial) .) "html" }}
+    </div>
+  </div>
+</div>

@@ -5,3 +5,52 @@ title = 'Switch'
 +++
 
 Switches can be used for controlling features, settings or hardware that have a clear on/off logic.
+
+<!--more-->
+
+## Examples
+
+### Default
+
+{{< example example=switch-default >}}
+
+### Thumb Icon
+
+{{< example example=switch-thumb-icon >}}
+
+### Disabled
+
+{{< example example=switch-disabled >}}
+
+### Custom
+
+{{< example example=switch-custom >}}
+
+## Customization
+
+### Supported Classes
+
+- `flexy-switch`
+
+### Supported Token
+
+- `thumb-height`
+- `thumb-shape`
+- `thumb-width`
+- `track-height`
+- `track-shape`
+- `track-width`
+- `icon-size`
+- `focus-ring-color`
+- `unselected-track-color`
+- `unselected-thumb-color`
+- `unselected-icon-color`
+- `selected-track-color`
+- `selected-thumb-color`
+- `selected-icon-color`
+- `disabled-unselected-track-color`
+- `disabled-unselected-thumb-color`
+- `disabled-unselected-icon-color`
+- `disabled-selected-track-color`
+- `disabled-selected-thumb-color`
+- `disabled-selected-icon-color`
