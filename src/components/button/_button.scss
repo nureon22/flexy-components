@@ -21,7 +21,7 @@ $_button: tokens.$flexy-comp-button;
   height: map.get($_button, 'height');
 
   font-family: tokens.$flexy-sys-typography-sans-serif;
-  font-size: 16px;
+  font-size: map.get($_button, 'label-size');
   line-height: 1.5;
   text-decoration: none;
   user-select: none;
