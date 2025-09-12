@@ -14,6 +14,10 @@ A slider allows quickly selecting a value from a range. Common uses include seek
 
 {{< example example=slider-default >}}
 
+### Thumb Ripple
+
+{{< example example=slider-ripple >}}
+
 ### Tick Marks
 
 {{< example example=slider-tick-marks >}}
