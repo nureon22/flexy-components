@@ -2,11 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=5.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=5.0"
+    />
     <title>{{ .Site.Title }}</title>
 
     <script>
-      document.documentElement.classList.add(sessionStorage.getItem('theme') || 'light');
+      void (function () {
+        const media = matchMedia('(prefers-color-scheme: dark)');
+        const defaultTheme = media.matches ? 'dark' : 'light';
+        const savedTheme = sessionStorage.getItem('theme') || defaultTheme;
+        document.documentElement.classList.add(savedTheme);
+      })();
     </script>
 
     {{- partial "styles.html" . }}
