@@ -32,6 +32,14 @@ h6 {
   gap: 8px;
 }
 
+.dark #theme-toggle svg:first-child {
+  display: none;
+}
+
+.light #theme-toggle svg:last-child {
+  display: none;
+}
+
 #menu-button {
   display: none;
 }
