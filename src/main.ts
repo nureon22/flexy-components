@@ -1,4 +1,5 @@
 import { FlexyButtonComponent } from './components/button';
+import { FlexyCheckboxComponent } from './components/checkbox';
 import { FlexySliderComponent } from './components/slider';
 import { FlexySwitchComponent } from './components/switch';
 import { FlexyTabsComponent } from './components/tabs';
@@ -7,6 +8,9 @@ import { afterPageLoad } from './utils';
 afterPageLoad().then(() => {
   document.querySelectorAll('.flexy-button').forEach((el) => {
     if (el instanceof HTMLElement) new FlexyButtonComponent(el);
+  });
+  document.querySelectorAll('.flexy-checkbox').forEach((el) => {
+    if (el instanceof HTMLElement) new FlexyCheckboxComponent(el);
   });
   document.querySelectorAll('.flexy-switch').forEach((el) => {
     if (el instanceof HTMLElement) new FlexySwitchComponent(el);

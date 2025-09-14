@@ -11,13 +11,13 @@ A collection of customzable UI components for web
 ### In Progress
 
 - Button
+- Checkbox
 - Slider
 - Switch
 - Tabs
 
 ### Comming Soon
 
-- Checkbox
 - Menu
 - ProgressBar
 - ProgressSpinner

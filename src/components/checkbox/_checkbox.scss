@@ -1,0 +1,85 @@
+@use 'sass:map';
+@use '../../tokens';
+@use '../../utils';
+
+$_checkbox: tokens.$flexy-comp-checkbox;
+
+.flexy-checkbox {
+  display: inline-flex;
+  position: relative;
+  @include utils.size(map.get($_checkbox, 'size'));
+
+  input {
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    @include utils.absolute-center();
+    @include utils.size(100%);
+    @include utils.min-size(tokens.$flexy-sys-ref-touch-size);
+  }
+
+  &__box {
+    background-color: map.get($_checkbox, 'unselected-fill-color');
+    border: map.get($_checkbox, 'outline-width') solid
+      map.get($_checkbox, 'unselected-outline-color');
+    border-radius: map.get($_checkbox, 'outline-width');
+    box-sizing: border-box;
+    @include utils.absolute-fill();
+    transition: {
+      property: background-color, border-color;
+      duration: map.get($_checkbox, 'state-transition-duration');
+      timing-function: map.get($_checkbox, 'state-transition-easing');
+    }
+    z-index: -1;
+
+    svg {
+      @include utils.absolute-fill();
+
+      path {
+        fill: none;
+        stroke: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 118.10818481445312;
+        stroke-dashoffset: 118.10818481445312;
+        stroke-width: 20;
+        transition: {
+          property: d, stroke-dasharray, stroke-dashoffset;
+          duration: map.get($_checkbox, 'state-transition-duration');
+          timing-function: map.get($_checkbox, 'state-transition-easing');
+        }
+      }
+    }
+  }
+
+  input:focus-visible ~ &__box {
+    outline-offset: 2px;
+    outline: 2px solid tokens.$flexy-sys-color-primary;
+  }
+
+  input:indeterminate ~ &__box svg path {
+    stroke-dasharray: 70;
+    stroke-dashoffset: 70;
+  }
+
+  input:indeterminate ~ &__box,
+  input:checked ~ &__box {
+    background-color: map.get($_checkbox, 'selected-fill-color');
+    border-color: map.get($_checkbox, 'selected-outline-color');
+
+    svg path {
+      stroke: map.get($_checkbox, 'mark-color');
+      stroke-dashoffset: 0;
+    }
+  }
+
+  input:disabled {
+    cursor: none;
+    pointer-events: none;
+  }
+
+  input:disabled ~ &__box {
+    filter: grayscale(1) opacity(0.32);
+  }
+}

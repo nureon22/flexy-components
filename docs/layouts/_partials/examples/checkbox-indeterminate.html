@@ -1,0 +1,39 @@
+<style>
+  .checkbox-example-indeterminate .flex-row {
+    gap: 12px;
+    height: 40px;
+  }
+  .checkbox-example-indeterminate ul {
+    list-style: none;
+    margin: 8px 0px;
+  }
+  .checkbox-example-indeterminate label {
+    line-height: 40px;
+  }
+</style>
+<div class="checkbox-example-indeterminate">
+  <div class="flex-row">
+    <div class="flexy-checkbox">
+      <input
+        type="checkbox"
+        id="recv-noti"
+        aria-controls="recv-noti-daily recv-noti-weekly recv-noti-monthly"
+      />
+      <div class="flexy-checkbox__box"></div>
+    </div>
+    <label for="recv-noti">Receive Notification</label>
+  </div>
+  <ul>
+    {{- range (slice "daily" "weekly" "monthly") }}
+      <li>
+        <div class="flex-row">
+          <div class="flexy-checkbox">
+            <input type="checkbox" id="recv-noti-{{ . }}" />
+            <div class="flexy-checkbox__box"></div>
+          </div>
+          <label for="recv-noti-{{ . }}">{{ . | title }}</label>
+        </div>
+      </li>
+    {{- end }}
+  </ul>
+</div>

@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use 'flexy-sys-color' as *;
+@use 'flexy-sys-motion' as *;
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-ref' as *;
+@use 'flexy-sys-shape' as *;
+
+$_flexy-comp-checkbox: (
+  size: 20px,
+  outline-width: 2px,
+  mark-color: $flexy-sys-color-on-primary,
+  unselected-fill-color: transparent,
+  unselected-outline-color: $flexy-sys-palette-grey-70,
+  selected-fill-color: $flexy-sys-color-primary,
+  selected-outline-color: $flexy-sys-color-primary,
+  state-transition-duration: 200ms,
+  state-transition-easing: $flexy-sys-motion-ease-out-quart,
+);
+
+$flexy-comp-checkbox: ();
+
+@each $name, $value in $_flexy-comp-checkbox {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-checkbox-#{$name}, #{$value});
+  }
+  $flexy-comp-checkbox: map.set($flexy-comp-checkbox, $name, $value);
+}
