@@ -5,7 +5,7 @@
 {{- with .Parent }}
   <div class="sidebar">
     <ul>
-      {{- range .Pages }}
+      {{- range .Pages.ByTitle }}
         <li>
           <a href="{{ .RelPermalink }}" class="flexy-button"
             >{{ .LinkTitle }}</a
