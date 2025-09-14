@@ -16,10 +16,10 @@ $_tabs: tokens.$flexy-comp-tabs;
   background-color: map.get($_tabs, 'tablist-fill-color');
   border-bottom: 1px solid map.get($_tabs, 'tablist-divider-color');
   border-radius: map.get($_tabs, 'tablist-shape');
-  box-sizing: border-box;
   gap: map.get($_tabs, 'tablist-spacing');
   height: map.get($_tabs, 'tablist-height');
   margin-bottom: map.get($_tabs, 'tablist-divider-margin');
+  overflow-x: auto;
   padding: 0px
     calc(
       (map.get($_tabs, 'tablist-height') - map.get($_tabs, 'tab-height')) / 2
