@@ -1,7 +1,46 @@
 {{- define "main" }}
-  <h1>Fezzy UI Components</h1>
+  <div class="flex-column" style="align-items: center; margin-top: 32px;">
+    <h1 style="text-align: center;">{{ .Title }}</h1>
+    <p style="color: var(--flexy-sys-palette-grey-80)">
+      Build consistent and performant web interfaces with Flexy UI components
+    </p>
 
-  <a class="flexy-button" href="{{ relURL "components/" }}">
-    <span>Components</span>
-  </a>
+    <br />
+
+    <div style="margin-bottom: 64px;">
+      <a
+        class="flexy-button flexy-button--filled-primary"
+        href="{{ relURL "components/" }}"
+        style="
+          --flexy-comp-button-height: 56px;
+          --flexy-comp-button-padding: 24px;
+          --flexy-comp-button-label-size: 18px;
+          font-weight: 500;
+        "
+      >
+        <span>Preview Components</span>
+      </a>
+    </div>
+
+    <div>{{ .Content }}</div>
+  </div>
+
+  <footer
+    style="display: flex; flex-direction: column; align-items: center; margin: 48px 0px 64px;"
+  >
+    <a
+      class="flexy-button"
+      href="{{ .Site.Params.repository }}"
+      style="
+        --flexy-comp-button-height: 48px;
+        --flexy-comp-button-spacing: 12px;
+        --flexy-comp-button-padding: 20px;
+      "
+    >
+      <span class="simple-icon icon-24">
+        {{- partial "simple-icon.html" "github" }}
+      </span>
+      <span>Github Repository</span>
+    </a>
+  </footer>
 {{- end }}

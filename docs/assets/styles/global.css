@@ -18,6 +18,14 @@ p {
 
 p {
   max-width: 80ch;
+  margin-bottom: 1.5em;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid currentColor;
+  margin: 24px 0px 32px;
+  opacity: 0.25;
 }
 
 .dark a:not(.flexy-button) {
