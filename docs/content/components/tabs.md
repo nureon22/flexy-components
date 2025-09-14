@@ -13,3 +13,11 @@ Tabs allow you to organize multiple views within a single container and display 
 ### Default
 
 {{< example example=tabs-default >}}
+
+### Icon Tab
+
+{{< example example=tabs-icons >}}
+
+### Custom
+
+{{< example example=tabs-custom >}}
