@@ -80,7 +80,7 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
     panel.role = 'tabpanel';
 
     tab.setAttribute('aria-controls', panel.id);
-    panel.setAttribute('aria-labelledby', panel.id);
+    panel.setAttribute('aria-labelledby', tab.id);
 
     tab.addEventListener('click', () => {
       this.selectTab(this.tabs.indexOf(tab));
