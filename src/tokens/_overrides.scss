@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'flexy-comp-button' as *;
+@use 'flexy-comp-checkbox' as *;
 @use 'flexy-comp-slider' as *;
 @use 'flexy-comp-switch' as *;
 @use 'flexy-comp-tabs' as *;
@@ -16,6 +17,10 @@
 
 @mixin button-overrides($tokens) {
   @include _override($tokens, $flexy-comp-button, 'flexy-comp-button');
+}
+
+@mixin checkbox-overrides($tokens) {
+  @include _override($tokens, $flexy-comp-checkbox, 'flexy-comp-checkbox');
 }
 
 @mixin slider-overrides($tokens) {
