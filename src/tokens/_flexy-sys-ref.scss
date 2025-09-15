@@ -1,2 +1,5 @@
-$flexy-sys-ref-touch-size: 48px !default;
+/// Control density of components, supported values: -3, -2, -1, 0, 1, 2, 3
+$flexy-sys-ref-density: 0 !default;
+
+$flexy-sys-ref-touch-size: min(48px, calc(48px + 4px * $flexy-sys-ref-density)) !default;
 $flexy-sys-ref-hardcode-values: false !default;
