@@ -28,7 +28,6 @@ body {
 }
 
 .sidebar .flexy-button {
-  --flexy-comp-button-height: 48px;
   justify-content: start;
   width: 100%;
 }

@@ -9,12 +9,9 @@
 
     <div style="margin-bottom: 64px;">
       <a
-        class="flexy-button flexy-button--filled-primary"
+        class="flexy-button flexy-button--filled-primary flexy-button--xxl"
         href="{{ relURL "components/" }}"
         style="
-          --flexy-comp-button-height: 56px;
-          --flexy-comp-button-padding: 24px;
-          --flexy-comp-button-label-size: 18px;
           font-weight: 500;
         "
       >
@@ -29,13 +26,8 @@
     style="display: flex; flex-direction: column; align-items: center; margin: 48px 0px 64px;"
   >
     <a
-      class="flexy-button"
+      class="flexy-button flexy-button--lg"
       href="{{ .Site.Params.repository }}"
-      style="
-        --flexy-comp-button-height: 48px;
-        --flexy-comp-button-spacing: 12px;
-        --flexy-comp-button-padding: 20px;
-      "
     >
       <span class="simple-icon icon-24">
         {{- partial "simple-icon.html" "github" }}
