@@ -11,6 +11,7 @@ $_flexy-comp-checkbox: (
   mark-color: $flexy-sys-color-on-primary,
   unselected-fill-color: transparent,
   unselected-outline-color: $flexy-sys-palette-grey-70,
+  unselected-hovered-outline-color: $flexy-sys-palette-grey-100,
   selected-fill-color: $flexy-sys-color-primary,
   selected-outline-color: $flexy-sys-color-primary,
   state-transition-duration: 200ms,

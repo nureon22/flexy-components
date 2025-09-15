@@ -48,6 +48,7 @@ The value of `aria-controls` should be a space-separated list of the child check
 - `mark-color`
 - `unselected-fill-color`
 - `unselected-outline-color`
+- `unselected-hovered-outline-color`
 - `selected-fill-color`
 - `selected-outline-color`
 - `state-transition-duration`

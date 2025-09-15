@@ -53,6 +53,10 @@ $_checkbox: tokens.$flexy-comp-checkbox;
     }
   }
 
+  input:hover ~ &__box {
+    border-color: map.get($_checkbox, 'unselected-hovered-outline-color');
+  }
+
   input:focus-visible ~ &__box {
     outline-offset: 2px;
     outline: 2px solid tokens.$flexy-sys-color-primary;
