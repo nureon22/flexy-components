@@ -1,0 +1,70 @@
+@use 'sass:map';
+@use '../../tokens';
+@use '../../utils';
+
+$_radio: tokens.$flexy-comp-radio;
+
+.flexy-radio {
+  display: inline-flex;
+  position: relative;
+  @include utils.size(map.get($_radio, 'size'));
+
+  input {
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    @include utils.absolute-center();
+    @include utils.size(100%);
+    @include utils.min-size(tokens.$flexy-sys-ref-touch-size);
+  }
+
+  &__circle {
+    border-radius: 50%;
+    /* Use box-shadow instead of border to get smooth animation */
+    box-shadow: inset 0px 0px 0px map.get($_radio, 'unselected-outline-width')
+      map.get($_radio, 'unselected-outline-color');
+    transition:
+      box-shadow map.get($_radio, 'state-transition-duration')
+        map.get($_radio, 'state-transition-easing'),
+      border map.get($_radio, 'state-transition-duration')
+        map.get($_radio, 'state-transition-easing');
+    @include utils.absolute-fill();
+    z-index: -1;
+
+    &::before {
+      content: '';
+      background-color: map.get($_radio, 'dot-color');
+      border-radius: 50%;
+      @include utils.absolute-center(
+        $transform: translate(-50%, -50%) scale(0)
+      );
+      transition: transform map.get($_radio, 'state-transition-duration')
+        map.get($_radio, 'state-transition-easing');
+      @include utils.size(map.get($_radio, 'dot-size'));
+    }
+  }
+
+  input:focus-visible ~ &__circle {
+    outline-offset: 2px;
+    outline: 2px solid tokens.$flexy-sys-color-primary;
+  }
+
+  input:checked ~ &__circle {
+    box-shadow: inset 0px 0px 0px map.get($_radio, 'selected-outline-width')
+      map.get($_radio, 'selected-outline-color');
+
+    &::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  input:disabled {
+    cursor: none;
+    pointer-events: none;
+  }
+
+  input:disabled ~ &__circle {
+    filter: grayscale(1) opacity(0.32);
+  }
+}

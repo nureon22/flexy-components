@@ -1,0 +1,35 @@
+<style>
+  #radio-disabled-example .flex-row {
+    gap: 12px;
+    height: 40px;
+    padding: 0px 12px;
+  }
+  #radio-disabled-example label {
+    line-height: 40px;
+  }
+</style>
+<div class="flex-column" id="radio-disabled-example">
+  <p>Which browser are you using?</p>
+
+  <div class="flex-row">
+    <div class="flexy-radio">
+      <input type="radio" id="radio-disabled-example-1" name="browser" disabled />
+      <div class="flexy-radio__circle"></div>
+    </div>
+    <label for="radio-disabled-example-1">Chrome</label>
+  </div>
+  <div class="flex-row">
+    <div class="flexy-radio">
+      <input type="radio" id="radio-disabled-example-2" name="browser" disabled checked />
+      <div class="flexy-radio__circle"></div>
+    </div>
+    <label for="radio-disabled-example-2">Firefox</label>
+  </div>
+  <div class="flex-row">
+    <div class="flexy-radio">
+      <input type="radio" id="radio-disabled-example-3" name="browser" disabled />
+      <div class="flexy-radio__circle"></div>
+    </div>
+    <label for="radio-disabled-example-3">Safari</label>
+  </div>
+</div>

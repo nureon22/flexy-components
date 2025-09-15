@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use 'flexy-sys-color' as *;
+@use 'flexy-sys-motion' as *;
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-ref' as *;
+@use 'flexy-sys-shape' as *;
+
+$_flexy-comp-radio: (
+  size: 20px,
+  dot-size: 10px,
+  dot-color: $flexy-sys-color-primary,
+  unselected-outline-color: $flexy-sys-palette-grey-70,
+  unselected-outline-width: 2px,
+  selected-outline-width: 2px,
+  selected-outline-color: $flexy-sys-color-primary,
+  state-transition-duration: 200ms,
+  state-transition-easing: $flexy-sys-motion-ease-out-quart,
+);
+
+$flexy-comp-radio: ();
+
+@each $name, $value in $_flexy-comp-radio {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-radio-#{$name}, #{$value});
+  }
+  $flexy-comp-radio: map.set($flexy-comp-radio, $name, $value);
+}

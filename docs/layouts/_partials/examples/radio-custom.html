@@ -1,0 +1,39 @@
+<style>
+  #radio-custom-example {
+    --flexy-comp-radio-dot-size: 0px;
+    --flexy-comp-radio-selected-outline-width: 6px;
+  }
+  #radio-custom-example .flex-row {
+    gap: 12px;
+    height: 40px;
+    padding: 0px 12px;
+  }
+  #radio-custom-example label {
+    line-height: 40px;
+  }
+</style>
+<div class="flex-column" id="radio-custom-example">
+  <p>Which operating system are you using?</p>
+
+  <div class="flex-row">
+    <div class="flexy-radio">
+      <input type="radio" id="radio-custom-example-4" name="os" />
+      <div class="flexy-radio__circle"></div>
+    </div>
+    <label for="radio-custom-example-4">Linux</label>
+  </div>
+  <div class="flex-row">
+    <div class="flexy-radio">
+      <input type="radio" id="radio-custom-example-5" name="os" />
+      <div class="flexy-radio__circle"></div>
+    </div>
+    <label for="radio-custom-example-5">MacOS</label>
+  </div>
+  <div class="flex-row">
+    <div class="flexy-radio">
+      <input type="radio" id="radio-custom-example-6" name="os" />
+      <div class="flexy-radio__circle"></div>
+    </div>
+    <label for="radio-custom-example-6">Windows</label>
+  </div>
+</div>

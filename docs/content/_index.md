@@ -39,6 +39,7 @@ Some components even require **no JavaScript at all**, ensuring smooth, performa
 
 - Button
 - Checkbox
+- Radio
 - Slider
 - Switch
 - Tabs
@@ -48,7 +49,6 @@ Some components even require **no JavaScript at all**, ensuring smooth, performa
 - Menu
 - ProgressBar
 - ProgressSpinner
-- Radio
 - TextField
 
 ---
