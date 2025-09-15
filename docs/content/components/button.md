@@ -54,6 +54,12 @@ Supported variants: neutral, primary and error
 - `flexy-button--circular`
 - `flexy-button--rounded`
 - `flexy-button--sharp`
+- `flexy-button--xxs`
+- `flexy-button--xs`
+- `flexy-button--sm`
+- `flexy-button--lg`
+- `flexy-button--xl`
+- `flexy-button--xxl`
 
 ### Supported Tokens
 
