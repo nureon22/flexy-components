@@ -3,6 +3,14 @@
 @use '../../utils';
 
 $_button: tokens.$flexy-comp-button;
+$_sizes: (
+  xxs: -3,
+  xs: -2,
+  sm: -1,
+  lg: 1,
+  xl: 2,
+  xxl: 3,
+);
 
 .flexy-button {
   display: inline-flex;
@@ -125,6 +133,17 @@ $_button: tokens.$flexy-comp-button;
     &[disabled] {
       background-color: tokens.$flexy-sys-color-on-surface;
       color: tokens.$flexy-sys-color-surface;
+    }
+  }
+
+  @each $name, $size in $_sizes {
+    &--#{$name} {
+      height: calc(map.get($_button, 'height') + 4px * $size);
+      padding: 0px calc(map.get($_button, 'padding') + 2px * $size);
+    }
+    &--#{$name}#{&}--icon,
+    &--#{$name}#{&}--circular {
+      width: calc(map.get($_button, 'height') + 4px * $size);
     }
   }
 
