@@ -22,9 +22,15 @@ Supported variants: text, tonal, outlined and filled
 
 ### Colors
 
-Supported variants: neutral, primary and error
+Supported colors: neutral, primary and error
 
 {{< example example=button-colors >}}
+
+### Sizes
+
+Supported Sizes: xxs, xs, sm, lg, xl, xxl
+
+{{< example example=button-sizes >}}
 
 ### Icon Prefix
 
