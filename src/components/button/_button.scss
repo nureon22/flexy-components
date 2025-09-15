@@ -82,7 +82,7 @@ $_sizes: (
     content: '';
     background-color: currentcolor;
     border-radius: inherit;
-    opacity: 0.08;
+    opacity: 0.12;
     pointer-events: none;
     @include utils.absolute-fill();
   }
