@@ -21,7 +21,7 @@ body {
 .sidebar ul {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   list-style: none;
   margin: 0px;
   padding: 0px;
