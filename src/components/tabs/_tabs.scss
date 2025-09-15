@@ -19,7 +19,7 @@ $_tabs: tokens.$flexy-comp-tabs;
   gap: map.get($_tabs, 'tablist-spacing');
   height: map.get($_tabs, 'tablist-height');
   margin-bottom: map.get($_tabs, 'tablist-divider-margin');
-  overflow-x: auto;
+  overflow: auto hidden;
   padding: 0px
     calc(
       (map.get($_tabs, 'tablist-height') - map.get($_tabs, 'tab-height')) / 2
