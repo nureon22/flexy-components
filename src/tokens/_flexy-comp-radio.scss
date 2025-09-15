@@ -11,6 +11,7 @@ $_flexy-comp-radio: (
   dot-color: $flexy-sys-color-primary,
   unselected-outline-color: $flexy-sys-palette-grey-70,
   unselected-outline-width: 2px,
+  unselected-hovered-outline-color: $flexy-sys-palette-grey-100,
   selected-outline-width: 2px,
   selected-outline-color: $flexy-sys-color-primary,
   state-transition-duration: 200ms,

@@ -41,6 +41,7 @@ outline with and dot size to get classic appearance
 - `dot-color`
 - `unselected-outline-color`
 - `unselected-outline-width`
+- `unselected-hovered-outline-color`
 - `selected-outline-width`
 - `selected-outline-color`
 - `state-transition-duration`

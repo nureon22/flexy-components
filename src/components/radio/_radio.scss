@@ -45,6 +45,11 @@ $_radio: tokens.$flexy-comp-radio;
     }
   }
 
+  input:hover ~ &__circle {
+    box-shadow: inset 0px 0px 0px map.get($_radio, 'unselected-outline-width')
+      map.get($_radio, 'unselected-hovered-outline-color');
+  }
+
   input:focus-visible ~ &__circle {
     outline-offset: 2px;
     outline: 2px solid tokens.$flexy-sys-color-primary;
