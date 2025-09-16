@@ -1,27 +1,43 @@
-<div class="flex-row">
-  <div class="flexy-switch">
-    <input type="checkbox" class="flexy-switch__input" disabled />
-    <div class="flexy-switch__track"></div>
-    <div class="flexy-switch__thumb">
-      <span class="material-symbol flexy-switch__unselected-icon">
-        {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
-      </span>
-      <span class="material-symbol flexy-switch__selected-icon">
-        {{- partial "material-symbol.html" "check/rounded/700" }}
-      </span>
+<div class="flex-column switch-rich-example">
+  <label class="flex-row" for="switch-6" style="pointer-events: none;">
+    <span>Proxy</span>
+    <div class="flexy-switch">
+      <input
+        type="checkbox"
+        class="flexy-switch__input"
+        id="switch-6"
+        disabled
+      />
+      <div class="flexy-switch__track"></div>
+      <div class="flexy-switch__thumb">
+        <span class="material-symbol flexy-switch__unselected-icon">
+          {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
+        </span>
+        <span class="material-symbol flexy-switch__selected-icon">
+          {{- partial "material-symbol.html" "check/rounded/700" }}
+        </span>
+      </div>
     </div>
-  </div>
-
-  <div class="flexy-switch">
-    <input type="checkbox" class="flexy-switch__input" checked disabled />
-    <div class="flexy-switch__track"></div>
-    <div class="flexy-switch__thumb">
-      <span class="material-symbol flexy-switch__unselected-icon">
-        {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
-      </span>
-      <span class="material-symbol flexy-switch__selected-icon">
-        {{- partial "material-symbol.html" "check/rounded/700" }}
-      </span>
+  </label>
+  <label class="flex-row" for="switch-7" style="pointer-events: none;">
+    <span>VPN</span>
+    <div class="flexy-switch">
+      <input
+        type="checkbox"
+        class="flexy-switch__input"
+        id="switch-7"
+        checked
+        disabled
+      />
+      <div class="flexy-switch__track"></div>
+      <div class="flexy-switch__thumb">
+        <span class="material-symbol flexy-switch__unselected-icon">
+          {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
+        </span>
+        <span class="material-symbol flexy-switch__selected-icon">
+          {{- partial "material-symbol.html" "check/rounded/700" }}
+        </span>
+      </div>
     </div>
-  </div>
+  </label>
 </div>

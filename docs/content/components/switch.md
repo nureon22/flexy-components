@@ -16,13 +16,20 @@ Switches can be used for controlling features, settings or hardware that have a 
 
 ### Thumb Icon
 
+In this example, horizontal line and checkmark icons are used, but you can use
+whatever icon you want.
+
 {{< example example=switch-thumb-icon >}}
 
 ### Disabled
 
+To render a checkbox as selected by default, add the checked attribute to the <input> element.
+
 {{< example example=switch-disabled >}}
 
 ### Custom
+
+Custom switch that has sharp corners
 
 {{< example example=switch-custom >}}
 

@@ -1,8 +1,23 @@
 <div
-  class="flexy-switch"
-  style="--flexy-comp-switch-track-shape: 2px; --flexy-comp-switch-thumb-shape: 2px;"
+  class="flex-column switch-rich-example"
+  style="
+    --flexy-comp-switch-track-shape: 2px;
+    --flexy-comp-switch-thumb-shape: 2px;
+  "
 >
-  <input type="checkbox" class="flexy-switch__input" />
-  <div class="flexy-switch__track"></div>
-  <div class="flexy-switch__thumb"></div>
+  <label class="flex-row" for="switch-8">
+    <span>Do Not Disturb</span>
+    <div class="flexy-switch">
+      <input type="checkbox" class="flexy-switch__input" id="switch-8" />
+      <div class="flexy-switch__track"></div>
+      <div class="flexy-switch__thumb">
+        <span class="material-symbol flexy-switch__unselected-icon">
+          {{- partial "material-symbol.html" "horizontal_rule/rounded/700" }}
+        </span>
+        <span class="material-symbol flexy-switch__selected-icon">
+          {{- partial "material-symbol.html" "check/rounded/700" }}
+        </span>
+      </div>
+    </div>
+  </label>
 </div>

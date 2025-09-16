@@ -154,3 +154,31 @@ ul code {
   box-sizing: border-box;
   overflow: auto;
 }
+
+.switch-rich-example {
+  gap: 2px;
+}
+
+.switch-rich-example .flex-row {
+  background-color: var(--flexy-sys-palette-grey-10);
+  cursor: pointer;
+  justify-content: space-between;
+  gap: 0px;
+  height: 56px;
+  max-width: 400px;
+  padding: 0px 16px;
+}
+
+.switch-rich-example .flex-row:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.switch-rich-example .flex-row:last-child {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.switch-rich-example .flex-row:hover {
+  background-color: var(--flexy-sys-palette-grey-15);
+}
