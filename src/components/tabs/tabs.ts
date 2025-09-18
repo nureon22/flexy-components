@@ -1,8 +1,6 @@
 import RippleEffect from '@nureon22/ripple-effect';
 import { FlexyBaseComponent } from '../base';
-
-let tabsCount = 0;
-let panelsCount = 0;
+import { uniqueId } from '../../utils';
 
 export class FlexyTabsComponent extends FlexyBaseComponent {
   selectedTab = 0;
@@ -73,8 +71,8 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
   }
 
   addTab(tab: HTMLElement, panel: HTMLElement) {
-    tab.id ||= 'flexy-tab-' + (tabsCount++);
-    panel.id ||= 'flexy-panel-' + (panelsCount++);
+    tab.id ||= uniqueId('flexy-tab-');
+    panel.id ||= uniqueId('flexy-tab-');
 
     tab.role = 'tab';
     panel.role = 'tabpanel';

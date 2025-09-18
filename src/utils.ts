@@ -7,3 +7,10 @@ export function afterPageLoad() {
     }
   });
 }
+
+/** Generate unique identifiers in very performant way */
+export function uniqueId(prefix: string = '') {
+  return prefix + Math.floor(uniqueId._counter++).toString(36);
+}
+
+uniqueId._counter = 0;
