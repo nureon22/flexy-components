@@ -4,21 +4,18 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "esbuild:start": "esbuild src/main.ts --outfile=docs/assets/main.js --bundle --sourcemap --sources-content --watch",
-    "esbuild:build": "esbuild src/main.ts --outfile=docs/assets/main.js --bundle --sourcemap --sources-content --minify",
-    "sass:start": "sass src/main.scss:docs/assets/main.css --source-map --embed-sources --watch",
-    "sass:build": "sass src/main.scss:docs/assets/main.css --source-map --embed-sources --style=compressed",
-    "hugo:start": "cd docs && hugo server --gc --disableFastRender --bind 0.0.0.0 --port 8000 --noHTTPCache",
-    "hugo:build": "cd docs && rm -fr public/* && hugo --gc",
-    "start": "concurrently npm:esbuild:start npm:sass:start",
-    "build": "npm run esbuild:build && npm run sass:build && npm run hugo:build"
+    "esbuild:start": "ENV=development node esbuild.js",
+    "esbuild:build": "ENV=production node esbuild.js",
+    "hugo:start": "hugo server -s docs --gc --disableFastRender --bind 0.0.0.0 --port 8000 --noHTTPCache --baseURL 'http://localhost:8000/'",
+    "hugo:build": "rm -fr public/* && hugo -s docs --gc",
+    "build": "npm run esbuild:build && npm run hugo:build"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^9.2.1",
     "esbuild": "^0.25.9",
+    "esbuild-sass-plugin": "^3.3.1",
     "prettier": "^3.6.2",
     "prettier-plugin-go-template": "^0.0.15",
     "sass": "^1.92.0",
