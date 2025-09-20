@@ -1,13 +1,30 @@
 {{- with resources.Get "main.js" }}
   {{- if hugo.IsProduction }}
     {{- with . | fingerprint }}
-      <script type="module" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+      <script
+        type="module"
+        src="{{ .RelPermalink }}"
+        integrity="{{ .Data.Integrity }}"
+      ></script>
     {{- end }}
   {{- else }}
     <script type="module" src="{{ .RelPermalink }}"></script>
 
     {{- with resources.Get "main.js.map" }}
       <!--{{ .RelPermalink }}-->
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+{{- if hugo.IsProduction }}
+  {{- with resources.GetRemote "https://gc.zgo.at/count.js" }}
+    {{- with resources.Copy "goatcounter.js" . | fingerprint }}
+      <script
+        data-goatcounter="{{ site.Params.goatcounter }}"
+        defer
+        src="{{ .RelPermalink }}"
+        integrity="{{ .Data.Integrity }}"
+      ></script>
     {{- end }}
   {{- end }}
 {{- end }}

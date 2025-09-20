@@ -7,3 +7,4 @@ title = 'Flexy Components Documentation'
     tabwidth = 2
 [params]
   repository = "https://github.com/nureon22/flexy-components"
+  goatcounter = "https://nureon22.goatcounter.com/count"
