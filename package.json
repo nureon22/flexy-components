@@ -7,7 +7,7 @@
     "esbuild:start": "ENV=development node esbuild.js",
     "esbuild:build": "ENV=production node esbuild.js",
     "hugo:start": "hugo server -s docs --gc --disableFastRender --bind 0.0.0.0 --port 8000 --noHTTPCache --baseURL 'http://localhost:8000/'",
-    "hugo:build": "rm -fr public/* && hugo -s docs --gc",
+    "hugo:build": "rm -fr docs/public/* && hugo -s docs --gc",
     "build": "npm run esbuild:build && npm run hugo:build"
   },
   "keywords": [],
