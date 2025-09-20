@@ -45,6 +45,8 @@ jobs:
         run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
       - name: Build Components
         run: 'npm run esbuild:build'
+      - name: Copy built components to hugo
+        run: 'cp dist/* docs/assets/'
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
