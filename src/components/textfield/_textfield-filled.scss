@@ -1,0 +1,73 @@
+@use '../../tokens';
+@use '../../utils';
+
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-textfield, $token);
+}
+
+.flexy-textfield {
+  &__filled {
+    border-radius: _token('container-shape');
+    background-color: _token('enabled-fill-color');
+    pointer-events: none;
+    @include utils.absolute-fill();
+    z-index: -1;
+  }
+
+  &__filled &__floating-label {
+    font-size: 0.75em;
+    position: absolute;
+    left: _token('container-padding');
+    top: 0%;
+    transform: translateY(calc(-50% + (_token('container-height') / 2)))
+      scale(calc(1 / 0.75));
+  }
+
+  &--with-leading-icon &__filled &__floating-label {
+    left: calc(
+      _token('icon-leading-margin') + _token('icon-size') +
+        _token('icon-leading-spacing')
+    );
+  }
+
+  &--with-floating-label#{&}--filled input {
+    padding-bottom: calc((_token('container-height') - 24px) * 0.25);
+    padding-top: calc((_token('container-height') - 24px) * 0.75);
+  }
+
+  &--with-floating-label#{&}--filled &__prefix-text,
+  &--with-floating-label#{&}--filled &__suffix-text {
+    align-self: end;
+    margin-bottom: calc((_token('container-height') - 24px) * 0.25);
+  }
+
+  &:hover &__filled {
+    background-color: _token('hovered-fill-color');
+  }
+
+  & input:focus ~ &__filled {
+    background-color: _token('focused-fill-color');
+    outline-offset: calc(-1 * _token('focused-outline-width'));
+    outline-width: _token('focused-outline-width');
+    outline-style: solid;
+    outline-color: _token('focused-outline-color');
+  }
+
+  & input:invalid ~ &__filled {
+    outline-offset: calc(-1 * _token('enabled-outline-width'));
+    outline-width: _token('enabled-outline-width');
+    outline-style: solid;
+    outline-color: _token('invalid-outline-color');
+  }
+
+  & input:invalid:focus ~ &__filled {
+    outline-offset: calc(-1 * _token('focused-outline-width'));
+    outline-width: _token('focused-outline-width');
+  }
+
+  & input:focus ~ &__filled &__floating-label,
+  & input:not(:placeholder-shown) ~ &__filled &__floating-label {
+    transform: translateY(_token('label-floating-top-margin'));
+  }
+}

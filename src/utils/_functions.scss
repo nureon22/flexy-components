@@ -1,0 +1,9 @@
+@use 'sass:map';
+
+@function map-get($map, $key) {
+  @if (map.has-key($map, $key)) {
+    @return map.get($map, $key);
+  } @else {
+    @error "#{$key} doesn't exist";
+  }
+}

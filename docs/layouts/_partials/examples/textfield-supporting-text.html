@@ -1,0 +1,69 @@
+<div class="flex-column" style="gap: 12px">
+  <div
+    class="flexy-textfield flexy-textfield--filled flexy-textfield--with-floating-label flexy-textfield--with-supporting-text flexy-textfield--with-leading-icon flexy-textfield--with-trailing-icon"
+  >
+    <span class="flexy-textfield__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "password/rounded/400" }}
+    </span>
+    <input type="password" id="textfield-15" minlength="8" placeholder=" " />
+    <span class="flexy-textfield__trailing-icon material-symbol">
+      {{- partial "material-symbol.html" "visibility/rounded/400" }}
+    </span>
+    <div class="flexy-textfield__filled">
+      <label for="textfield-15" class="flexy-textfield__floating-label">
+        <span>Password</span>
+      </label>
+    </div>
+    <div class="flexy-textfield__supporting-text">Enter a secure password</div>
+  </div>
+</div>
+
+<script type="module">
+  const input = document.querySelector('input#textfield-15');
+  const supportingText = document.querySelector(
+    '#textfield-15 ~ .flexy-textfield__supporting-text',
+  );
+  const trailingIcon = document.querySelector(
+    '#textfield-15 ~ .flexy-textfield__trailing-icon',
+  );
+
+  trailingIcon.addEventListener('click', () => {
+    input.type = input.type == 'password' ? 'text' : 'password';
+  });
+
+  /**
+   * @param {string} password
+   * @param {number} minLength
+   * @return {string}
+   */
+  function checkPassword(password, minLength) {
+    if (password.length < minLength) {
+      return 'Password must contain at least 8 characters';
+    } else if (!/[a-zA-Z]/.test(password)) {
+      return 'Password must contain at least one letter';
+    } else if (!/[0-9]/.test(password)) {
+      return 'Password must contain at least one digit';
+    } else if (password.includes(' ')) {
+      return 'Password cannot contains spaces';
+    } else {
+      return '';
+    }
+  }
+
+  input.addEventListener('input', () => {
+    if (input.value) {
+      const error = checkPassword(input.value, input.minLength);
+
+      if (error) {
+        supportingText.textContent = error;
+        input.setCustomValidity(error);
+      } else {
+        supportingText.textContent = 'Your password look great';
+        input.setCustomValidity('');
+      }
+    } else {
+      supportingText.textContent = 'Enter a secure password';
+      input.setCustomValidity('');
+    }
+  });
+</script>

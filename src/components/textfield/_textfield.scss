@@ -1,0 +1,205 @@
+@use '../../tokens';
+@use '../../utils';
+
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-textfield, $token);
+}
+
+.flexy-textfield {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: _token('container-height');
+  max-width: 100%;
+  padding: 0px _token('container-padding');
+  position: relative;
+  width: 400px;
+
+  & > *:not(input) {
+    flex-shrink: 0;
+  }
+
+  input {
+    border: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    color: currentcolor;
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.5;
+    height: 100%;
+    margin: 0px;
+    outline-style: none;
+    padding: 0px;
+    width: 100%;
+
+    &::placeholder {
+      color: _token('placeholder-color');
+    }
+  }
+
+  &__leading-icon,
+  &__trailing-icon {
+    color: _token('icon-color');
+    font-size: _token('icon-size');
+
+    &:hover {
+      color: _token('icon-hovered-color');
+    }
+
+    &:focus {
+      color: _token('icon-focused-color');
+    }
+  }
+
+  &__leading-icon {
+    pointer-events: none;
+    margin-left: calc(
+      _token('icon-leading-margin') - _token('container-padding')
+    );
+    margin-right: _token('icon-trailing-spacing');
+  }
+
+  &__trailing-icon {
+    cursor: pointer;
+    margin-right: calc(
+      _token('icon-trailing-margin') - _token('container-padding')
+    );
+    margin-left: _token('icon-trailing-spacing');
+    position: relative;
+
+    &::after {
+      content: '';
+      @include utils.touchable();
+    }
+  }
+
+  &__floating-label {
+    color: _token('enabled-label-color');
+    line-height: 1;
+    height: 1em;
+    transform-origin: left center;
+    transition:
+      color _token('label-floating-transition-duration')
+        _token('label-floating-transition-easing'),
+      transform _token('label-floating-transition-duration')
+        _token('label-floating-transition-easing');
+    white-space: nowrap;
+  }
+
+  input:required ~ &__filled &__floating-label::after,
+  input:required ~ &__outlined &__floating-label::after {
+    content: '*';
+  }
+
+  &__prefix-text,
+  &__suffix-text {
+    display: inline;
+    line-height: 1.5;
+    pointer-events: none;
+  }
+
+  &__prefix-text {
+    color: _token('prefix-text-color');
+    margin-right: _token('prefix-text-margin');
+  }
+
+  &__suffix-text {
+    color: _token('suffix-text-color');
+    margin-left: _token('suffix-text-margin');
+  }
+
+  /*
+    if floating label is in used, hide the placeholder until input get focused.
+  */
+  &--with-floating-label input:not(:focus)::placeholder {
+    opacity: 0;
+  }
+
+  /*
+      if floating label is used, hide the prefix and sufix text,
+      until label get floated
+    */
+  &--with-floating-label &__prefix-text,
+  &--with-floating-label &__suffix-text {
+    opacity: 0;
+  }
+
+  /*
+    if floating label is used, hide the prefix and sufix text,
+    until label get floated
+  */
+  &--with-floating-label input:focus ~ &__prefix-text,
+  &--with-floating-label input:focus ~ &__suffix-text,
+  &--with-floating-label input:not(:placeholder-shown) ~ &__prefix-text,
+  &--with-floating-label input:not(:placeholder-shown) ~ &__suffix-text {
+    opacity: 1;
+  }
+
+  &--with-supporting-text {
+    margin-bottom: calc(
+      _token('supporting-text-top-margin') + _token('supporting-text-size') *
+        1.25
+    );
+  }
+
+  &__supporting-text {
+    color: _token('supporting-help-text-color');
+    font-size: _token('supporting-text-size');
+    height: 1.25em;
+    line-height: 1.25em;
+    margin-left: _token('supporting-text-left-margin');
+    margin-top: _token('supporting-text-top-margin');
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    left: 0%;
+  }
+
+  input:invalid &__supporting-text {
+    color: _token('supporting-error-text-color');
+  }
+
+  &:hover &__filled &__floating-label,
+  &:hover &__outlined &__floating-label {
+    color: _token('hovered-label-color');
+  }
+
+  & input:focus ~ &__filled &__floating-label,
+  & input:focus ~ &__outlined &__floating-label {
+    color: _token('focused-label-color');
+  }
+
+  & input:invalid ~ &__filled &__floating-label,
+  & input:invalid ~ &__outlined &__floating-label {
+    color: _token('invalid-label-color');
+    animation: flexy-textfield-label-shaking 120ms ease 0ms 3;
+  }
+
+  /* order children */
+  &__leading-icon {
+    order: 1;
+  }
+  &__prefix-text {
+    order: 2;
+  }
+  input {
+    order: 3;
+  }
+  &__suffix-text {
+    order: 5;
+  }
+  &__trailing-icon {
+    order: 5;
+  }
+}
+
+@keyframes flexy-textfield-label-shaking {
+  25% {
+    margin-left: 1px;
+  }
+  75% {
+    margin-left: -1px;
+  }
+}

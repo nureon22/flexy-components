@@ -1,0 +1,39 @@
+<div class="flex-column" style="gap: 16px;">
+  <div
+    class="flexy-textfield flexy-textfield--filled flexy-textfield--with-floating-label"
+  >
+    <input type="text" placeholder="example.com" id="textfield-11" />
+    <span class="flexy-textfield__prefix-text">https://</span>
+    <div class="flexy-textfield__filled">
+      <label for="textfield-11" class="flexy-textfield__floating-label"
+        >Enter Domain</label
+      >
+    </div>
+  </div>
+
+  <div
+    class="flexy-textfield flexy-textfield--outlined flexy-textfield--with-floating-label"
+  >
+    <input type="text" placeholder="example.com" id="textfield-12" />
+    <span class="flexy-textfield__prefix-text">https://</span>
+    <div class="flexy-textfield__outlined">
+      <div class="flexy-textfield__outlined-notch">
+        <label for="textfield-12" class="flexy-textfield__floating-label"
+          >Enter Domain</label
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('#textfield-11,#textfield-12').forEach((input) => {
+    input.addEventListener('input', () => {
+      if (!input.value || /^([a-z0-9-]+\.)+[a-z]+.$/.test(input.value)) {
+        input.setCustomValidity('');
+      } else {
+        input.setCustomValidity('Enter valid domain');
+      }
+    });
+  });
+</script>

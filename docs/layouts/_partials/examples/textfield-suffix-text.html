@@ -1,0 +1,49 @@
+<div class="flex-column" style="gap: 16px;">
+  <div
+    class="flexy-textfield flexy-textfield--filled flexy-textfield--with-floating-label"
+  >
+    <input
+      type="text"
+      placeholder=" "
+      id="textfield-13"
+      style="text-align: right;"
+    />
+    <span class="flexy-textfield__suffix-text">@mail.com</span>
+    <div class="flexy-textfield__filled">
+      <label for="textfield-13" class="flexy-textfield__floating-label"
+        >Email</label
+      >
+    </div>
+  </div>
+
+  <div
+    class="flexy-textfield flexy-textfield--outlined flexy-textfield--with-floating-label"
+  >
+    <input
+      type="text"
+      placeholder=" "
+      id="textfield-14"
+      style="text-align: right;"
+    />
+    <span class="flexy-textfield__suffix-text">@mail.com</span>
+    <div class="flexy-textfield__outlined">
+      <div class="flexy-textfield__outlined-notch">
+        <label for="textfield-14" class="flexy-textfield__floating-label"
+          >Email</label
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('#textfield-13,#textfield-14').forEach((input) => {
+    input.addEventListener('input', () => {
+      if (!input.value || /^[a-zA-Z0-9-_=\+]+$/.test(input.value)) {
+        input.setCustomValidity('');
+      } else {
+        input.setCustomValidity('Enter valid email address');
+      }
+    });
+  });
+</script>

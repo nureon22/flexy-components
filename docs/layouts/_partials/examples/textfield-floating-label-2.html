@@ -1,0 +1,35 @@
+<div class="flex-column" style="gap: 16px;">
+  <div
+    class="flexy-textfield flexy-textfield--filled flexy-textfield--with-floating-label flexy-textfield--with-leading-icon"
+  >
+    <input type="text" placeholder="Enter a unique username" id="textfield-9" />
+    <span class="flexy-textfield__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "person/rounded/400" }}
+    </span>
+    <div class="flexy-textfield__filled">
+      <label for="textfield-9" class="flexy-textfield__floating-label"
+        >Username</label
+      >
+    </div>
+  </div>
+
+  <div
+    class="flexy-textfield flexy-textfield--outlined flexy-textfield--with-floating-label flexy-textfield--with-leading-icon"
+  >
+    <input
+      type="text"
+      placeholder="Enter a unique username"
+      id="textfield-10"
+    />
+    <span class="flexy-textfield__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "person/rounded/400" }}
+    </span>
+    <div class="flexy-textfield__outlined">
+      <div class="flexy-textfield__outlined-notch">
+        <label for="textfield-10" class="flexy-textfield__floating-label"
+          >Username</label
+        >
+      </div>
+    </div>
+  </div>
+</div>

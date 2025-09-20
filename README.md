@@ -43,10 +43,10 @@ Some components even require **no JavaScript at all**, ensuring smooth, performa
 - Slider
 - Switch
 - Tabs
+- TextField
 
 ### Comming Soon
 
 - Menu
 - ProgressBar
 - ProgressSpinner
-- TextField

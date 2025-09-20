@@ -4,6 +4,7 @@ import { FlexyRadioComponent } from './components/radio';
 import { FlexySliderComponent } from './components/slider';
 import { FlexySwitchComponent } from './components/switch';
 import { FlexyTabsComponent } from './components/tabs';
+import { FlexyTextfieldComponent } from './components/textfield';
 import { afterPageLoad } from './utils';
 
 afterPageLoad().then(() => {
@@ -24,5 +25,8 @@ afterPageLoad().then(() => {
   });
   document.querySelectorAll('.flexy-tabs').forEach((el) => {
     if (el instanceof HTMLElement) new FlexyTabsComponent(el);
+  });
+  document.querySelectorAll('.flexy-textfield').forEach((el) => {
+    if (el instanceof HTMLElement) new FlexyTextfieldComponent(el);
   });
 });

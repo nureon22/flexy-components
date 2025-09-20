@@ -1,0 +1,66 @@
+@use 'sass:map';
+@use 'flexy-sys-color' as *;
+@use 'flexy-sys-motion' as *;
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-ref' as *;
+@use 'flexy-sys-shape' as *;
+
+$_flexy-comp-textfield: (
+  container-height: 48px,
+  container-padding: 16px,
+  container-shape: map.get($flexy-sys-shape, 'small'),
+  placeholder-color: $flexy-sys-palette-grey-50,
+
+  icon-leading-spacing: 16px,
+  icon-trailing-spacing: 16px,
+  icon-leading-margin: 12px,
+  icon-trailing-margin: 12px,
+  icon-color: $flexy-sys-palette-grey-70,
+  icon-hovered-color: $flexy-sys-palette-grey-100,
+  icon-focused-color: $flexy-sys-color-primary,
+  icon-size: 24px,
+
+  label-floating-size: 0.75em,
+  label-floating-top-margin: 6px,
+  label-floating-transition-duration: 200ms,
+  label-floating-transition-easing: $flexy-sys-motion-ease-out-cubic,
+
+  prefix-text-margin: 2px,
+  prefix-text-color: $flexy-sys-palette-grey-90,
+  suffix-text-margin: 2px,
+  suffix-text-color: $flexy-sys-palette-grey-70,
+
+  supporting-text-size: 12px,
+  supporting-text-top-margin: 4px,
+  supporting-text-left-margin: 16px,
+
+  supporting-help-text-color: $flexy-sys-palette-grey-70,
+  supporting-error-text-color: $flexy-sys-color-error,
+
+  enabled-fill-color: $flexy-sys-palette-grey-10,
+  enabled-outline-color: $flexy-sys-palette-grey-60,
+  enabled-outline-width: 1px,
+  enabled-label-color: currentcolor,
+
+  hovered-fill-color: $flexy-sys-palette-grey-20,
+  hovered-outline-color: $flexy-sys-palette-grey-100,
+  hovered-label-color: currentcolor,
+
+  focused-fill-color: $flexy-sys-palette-grey-10,
+  focused-outline-color: $flexy-sys-color-primary,
+  focused-outline-width: 2px,
+  focused-label-color: $flexy-sys-color-primary,
+
+  invalid-outline-width: 1px,
+  invalid-outline-color: $flexy-sys-color-error,
+  invalid-label-color: $flexy-sys-color-error,
+);
+
+$flexy-comp-textfield: ();
+
+@each $name, $value in $_flexy-comp-textfield {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-textfield-#{$name}, #{$value});
+  }
+  $flexy-comp-textfield: map.set($flexy-comp-textfield, $name, $value);
+}
