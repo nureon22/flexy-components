@@ -157,7 +157,7 @@
     left: 0%;
   }
 
-  input:invalid &__supporting-text {
+  input:invalid ~ &__supporting-text {
     color: _token('supporting-error-text-color');
   }
 
