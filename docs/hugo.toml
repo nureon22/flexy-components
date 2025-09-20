@@ -5,6 +5,5 @@ title = 'Flexy Components Documentation'
   [markup.highlight]
     style = "onedark"
     tabwidth = 2
-    lineNos = true
 [params]
   repository = "https://github.com/nureon22/flexy-components"
