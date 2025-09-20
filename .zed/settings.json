@@ -7,6 +7,9 @@
         "parser": "go-template",
         "plugins": ["prettier-plugin-go-template"]
       }
+    },
+    "Markdown": {
+      "soft_wrap": "preferred_line_length"
     }
   }
 }
