@@ -3,7 +3,7 @@
 @use '../../utils';
 
 $_switch: tokens.$flexy-comp-switch;
-$_transition: 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+$_transition: 200ms tokens.$flexy-sys-motion-ease-out-quart;
 
 .flexy-switch {
   display: inline-flex;
