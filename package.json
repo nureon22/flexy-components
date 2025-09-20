@@ -1,6 +1,6 @@
 {
   "name": "flexy-components",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "type": "module",
   "scripts": {
@@ -8,7 +8,7 @@
     "esbuild:build": "ENV=production node esbuild.js",
     "hugo:start": "hugo server -s docs --gc --disableFastRender --bind 0.0.0.0 --port 8000 --noHTTPCache --baseURL 'http://localhost:8000/'",
     "hugo:build": "rm -fr docs/public/* && hugo -s docs --gc",
-    "build": "npm run esbuild:build && npm run hugo:build"
+    "build": "npm run esbuild:build && cp dist/* docs/assets/ && npm run hugo:build"
   },
   "keywords": [],
   "author": "",

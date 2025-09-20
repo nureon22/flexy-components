@@ -7,7 +7,7 @@ const isProduction = process.env['ENV'] == 'production';
 /** @type {import('esbuild').BuildOptions} */
 const options = {
   entryPoints: ['src/main.ts', 'src/main.scss'],
-  outdir: 'docs/assets',
+  outdir: isProduction ? 'dist' : 'docs/assets',
   bundle: true,
   logLevel: 'info',
   minify: isProduction,
