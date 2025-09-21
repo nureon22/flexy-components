@@ -17,7 +17,6 @@
     outline-style: none !important;
     pointer-events: none;
     @include utils.absolute-fill();
-    z-index: -1;
 
     &::before,
     &::after,

@@ -12,7 +12,6 @@
     background-color: _token('enabled-fill-color');
     pointer-events: none;
     @include utils.absolute-fill();
-    z-index: -1;
   }
 
   &__filled &__floating-label {
