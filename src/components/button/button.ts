@@ -14,8 +14,5 @@ export class FlexyButtonComponent extends FlexyBaseComponent {
       keydown: true,
     });
     this.addDestroyTasks(() => ripple.destroy());
-
-    this.host.addEventListener('keydown', e => console.log(e.type));
-    this.host.addEventListener('keyup', e => console.log(e.type));
   }
 }
