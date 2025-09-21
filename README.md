@@ -81,7 +81,7 @@ Include the stylesheet and script directly in your HTML:
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/flexy-components/dist/iife/main.js"
+  href="https://cdn.jsdelivr.net/npm/flexy-components/dist/iife/main.css"
 />
 <script
   defer
