@@ -20,6 +20,7 @@
     @include utils.absolute-center();
     @include utils.size(100%);
     @include utils.min-size(tokens.$flexy-sys-ref-touch-size);
+    z-index: 1;
   }
 
   &__box {
@@ -27,13 +28,13 @@
     border: _token('outline-width') solid _token('unselected-outline-color');
     border-radius: _token('outline-width');
     box-sizing: border-box;
+    pointer-events: none;
     @include utils.absolute-fill();
     transition: {
       property: background-color, border-color;
       duration: _token('state-transition-duration');
       timing-function: _token('state-transition-easing');
     }
-    z-index: -1;
 
     svg {
       @include utils.absolute-fill();
