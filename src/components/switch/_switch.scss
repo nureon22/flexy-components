@@ -2,14 +2,18 @@
 @use '../../tokens';
 @use '../../utils';
 
-$_switch: tokens.$flexy-comp-switch;
 $_transition: 200ms tokens.$flexy-sys-motion-ease-out-quart;
+
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-switch, $token);
+}
 
 .flexy-switch {
   display: inline-flex;
   position: relative;
-  height: map.get($_switch, 'track-height');
-  width: map.get($_switch, 'track-width');
+  height: _token('track-height');
+  width: _token('track-width');
 
   &__input {
     display: block;
@@ -26,8 +30,8 @@ $_transition: 200ms tokens.$flexy-sys-motion-ease-out-quart;
 
   &__track {
     display: block;
-    background-color: map.get($_switch, 'unselected-track-color');
-    border-radius: map.get($_switch, 'track-shape');
+    background-color: _token('unselected-track-color');
+    border-radius: _token('track-shape');
     overflow: hidden;
     pointer-events: none;
     @include utils.absolute-fill();
@@ -50,20 +54,17 @@ $_transition: 200ms tokens.$flexy-sys-motion-ease-out-quart;
     position: absolute;
     left: 0px;
     top: 0px;
-    @include utils.size(map.get($_switch, 'track-height'));
+    @include utils.size(_token('track-height'));
     transition: transform $_transition;
 
     &::before {
       content: '';
       display: block;
-      background-color: map.get($_switch, 'unselected-thumb-color');
-      border-radius: map.get($_switch, 'thumb-shape');
-      box-shadow: map.get($_switch, 'thumb-shadow');
+      background-color: _token('unselected-thumb-color');
+      border-radius: _token('thumb-shape');
+      box-shadow: _token('thumb-shadow');
       @include utils.absolute-center();
-      @include utils.size(
-        map.get($_switch, 'thumb-width'),
-        map.get($_switch, 'thumb-height')
-      );
+      @include utils.size(_token('thumb-width'), _token('thumb-height'));
       transition: background-color $_transition;
     }
   }
@@ -71,18 +72,18 @@ $_transition: 200ms tokens.$flexy-sys-motion-ease-out-quart;
   &__icon,
   &__unselected-icon,
   &__selected-icon {
-    font-size: map.get($_switch, 'icon-size');
+    font-size: _token('icon-size');
     @include utils.absolute-center();
   }
 
   &__icon,
   &__unselected-icon {
-    color: map.get($_switch, 'unselected-icon-color');
+    color: _token('unselected-icon-color');
     opacity: 1;
   }
 
   &__selected-icon {
-    color: map.get($_switch, 'selected-icon-color');
+    color: _token('selected-icon-color');
     opacity: 0;
   }
 
@@ -95,26 +96,24 @@ $_transition: 200ms tokens.$flexy-sys-motion-ease-out-quart;
   }
 
   &__input:focus-visible ~ &__track {
-    outline: 2px solid map.get($_switch, 'focus-ring-color');
+    outline: 2px solid _token('focus-ring-color');
     outline-offset: 2px;
   }
 
   &__input:checked ~ &__track {
-    background-color: map.get($_switch, 'selected-track-color');
+    background-color: _token('selected-track-color');
   }
 
   &__input:checked ~ &__thumb {
-    transform: translateX(
-      calc(map.get($_switch, 'track-width') - map.get($_switch, 'track-height'))
-    );
+    transform: translateX(calc(_token('track-width') - _token('track-height')));
 
     &::before {
-      background-color: map.get($_switch, 'selected-thumb-color');
+      background-color: _token('selected-thumb-color');
     }
   }
 
   &__input:checked ~ &__thumb &__icon {
-    color: map.get($_switch, 'selected-icon-color');
+    color: _token('selected-icon-color');
   }
 
   &__input:checked ~ &__thumb &__unselected-icon {
@@ -130,34 +129,34 @@ $_transition: 200ms tokens.$flexy-sys-motion-ease-out-quart;
   }
 
   &__input:disabled ~ &__track {
-    background-color: map.get($_switch, 'disabled-unselected-track-color');
+    background-color: _token('disabled-unselected-track-color');
   }
 
   &__input:disabled ~ &__thumb {
     &::before {
-      background-color: map.get($_switch, 'disabled-unselected-thumb-color');
+      background-color: _token('disabled-unselected-thumb-color');
       box-shadow: none;
     }
   }
 
   &__input:disabled ~ &__thumb &__icon,
   &__input:disabled ~ &__thumb &__unselected-icon {
-    color: map.get($_switch, 'disabled-unselected-icon-color');
+    color: _token('disabled-unselected-icon-color');
   }
 
   &__input:checked:disabled ~ &__track {
-    background-color: map.get($_switch, 'disabled-selected-track-color');
+    background-color: _token('disabled-selected-track-color');
   }
 
   &__input:checked:disabled ~ &__thumb {
     &::before {
-      background-color: map.get($_switch, 'disabled-selected-thumb-color');
+      background-color: _token('disabled-selected-thumb-color');
       box-shadow: none;
     }
   }
 
   &__input:checked:disabled ~ &__thumb &__icon,
   &__input:checked:disabled ~ &__thumb &__selected-icon {
-    color: map.get($_switch, 'disabled-selected-icon-color');
+    color: _token('disabled-selected-icon-color');
   }
 }

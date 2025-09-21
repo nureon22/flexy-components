@@ -2,12 +2,15 @@
 @use '../../tokens';
 @use '../../utils';
 
-$_radio: tokens.$flexy-comp-radio;
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-radio, $token);
+}
 
 .flexy-radio {
   display: inline-flex;
   position: relative;
-  @include utils.size(map.get($_radio, 'size'));
+  @include utils.size(_token('size'));
 
   input {
     border: none;
@@ -22,32 +25,32 @@ $_radio: tokens.$flexy-comp-radio;
   &__circle {
     border-radius: 50%;
     /* Use box-shadow instead of border to get smooth animation */
-    box-shadow: inset 0px 0px 0px map.get($_radio, 'unselected-outline-width')
-      map.get($_radio, 'unselected-outline-color');
+    box-shadow: inset 0px 0px 0px _token('unselected-outline-width')
+      _token('unselected-outline-color');
     transition:
-      box-shadow map.get($_radio, 'state-transition-duration')
-        map.get($_radio, 'state-transition-easing'),
-      border map.get($_radio, 'state-transition-duration')
-        map.get($_radio, 'state-transition-easing');
+      box-shadow _token('state-transition-duration')
+        _token('state-transition-easing'),
+      border _token('state-transition-duration')
+        _token('state-transition-easing');
     @include utils.absolute-fill();
     z-index: -1;
 
     &::before {
       content: '';
-      background-color: map.get($_radio, 'dot-color');
+      background-color: _token('dot-color');
       border-radius: 50%;
       @include utils.absolute-center(
         $transform: translate(-50%, -50%) scale(0)
       );
-      transition: transform map.get($_radio, 'state-transition-duration')
-        map.get($_radio, 'state-transition-easing');
-      @include utils.size(map.get($_radio, 'dot-size'));
+      transition: transform _token('state-transition-duration')
+        _token('state-transition-easing');
+      @include utils.size(_token('dot-size'));
     }
   }
 
   input:hover ~ &__circle {
-    box-shadow: inset 0px 0px 0px map.get($_radio, 'unselected-outline-width')
-      map.get($_radio, 'unselected-hovered-outline-color');
+    box-shadow: inset 0px 0px 0px _token('unselected-outline-width')
+      _token('unselected-hovered-outline-color');
   }
 
   input:focus-visible ~ &__circle {
@@ -56,8 +59,8 @@ $_radio: tokens.$flexy-comp-radio;
   }
 
   input:checked ~ &__circle {
-    box-shadow: inset 0px 0px 0px map.get($_radio, 'selected-outline-width')
-      map.get($_radio, 'selected-outline-color');
+    box-shadow: inset 0px 0px 0px _token('selected-outline-width')
+      _token('selected-outline-color');
 
     &::before {
       transform: translate(-50%, -50%) scale(1);

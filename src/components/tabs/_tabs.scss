@@ -2,7 +2,10 @@
 @use '../../tokens';
 @use '../../utils';
 
-$_tabs: tokens.$flexy-comp-tabs;
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-tabs, $token);
+}
 
 .flexy-tabs {
   display: flex;
@@ -13,29 +16,26 @@ $_tabs: tokens.$flexy-comp-tabs;
 .flexy-tablist {
   display: flex;
   align-items: center;
-  background-color: map.get($_tabs, 'tablist-fill-color');
-  border-bottom: 1px solid map.get($_tabs, 'tablist-divider-color');
-  border-radius: map.get($_tabs, 'tablist-shape');
-  gap: map.get($_tabs, 'tablist-spacing');
-  height: map.get($_tabs, 'tablist-height');
-  margin-bottom: map.get($_tabs, 'tablist-divider-margin');
+  background-color: _token('tablist-fill-color');
+  border-bottom: 1px solid _token('tablist-divider-color');
+  border-radius: _token('tablist-shape');
+  gap: _token('tablist-spacing');
+  height: _token('tablist-height');
+  margin-bottom: _token('tablist-divider-margin');
   overflow: auto hidden;
-  padding: 0px
-    calc(
-      (map.get($_tabs, 'tablist-height') - map.get($_tabs, 'tab-height')) / 2
-    );
+  padding: 0px calc((_token('tablist-height') - _token('tab-height')) / 2);
 }
 
 .flexy-tab {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: map.get($_tabs, 'tab-spacing');
-  border-radius: map.get($_tabs, 'tab-shape');
+  gap: _token('tab-spacing');
+  border-radius: _token('tab-shape');
   cursor: pointer;
-  height: map.get($_tabs, 'tab-height');
+  height: _token('tab-height');
   position: relative;
-  padding: 0px map.get($_tabs, 'tab-padding');
+  padding: 0px _token('tab-padding');
   width: 100%;
   -webkit-tap-highlight-color: transparent;
 
@@ -44,13 +44,13 @@ $_tabs: tokens.$flexy-comp-tabs;
   }
 
   &[aria-selected='false'] {
-    background-color: map.get($_tabs, 'tab-unselected-fill-color');
-    color: map.get($_tabs, 'tab-unselected-label-color');
+    background-color: _token('tab-unselected-fill-color');
+    color: _token('tab-unselected-label-color');
   }
 
   &[aria-selected='true'] {
-    background-color: map.get($_tabs, 'tab-selected-fill-color');
-    color: map.get($_tabs, 'tab-selected-label-color');
+    background-color: _token('tab-selected-fill-color');
+    color: _token('tab-selected-label-color');
   }
 
   &:focus-visible {

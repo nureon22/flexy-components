@@ -2,14 +2,17 @@
 @use '../../tokens';
 @use '../../utils';
 
-$_slider: tokens.$flexy-comp-slider;
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-slider, $token);
+}
 
 .flexy-slider {
   display: flex;
 
   position: relative;
-  height: map.get($_slider, 'thumb-height');
-  min-height: map.get($_slider, 'track-height');
+  height: _token('thumb-height');
+  min-height: _token('track-height');
   width: 240px;
   max-width: 100%;
 
@@ -37,25 +40,25 @@ $_slider: tokens.$flexy-comp-slider;
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: map.get($_slider, 'thumb-width');
-      height: map.get($_slider, 'thumb-height');
+      width: _token('thumb-width');
+      height: _token('thumb-height');
     }
 
     &::-moz-range-thumb {
       -moz-appearance: none;
       appearance: none;
-      width: map.get($_slider, 'thumb-width');
-      height: map.get($_slider, 'thumb-height');
+      width: _token('thumb-width');
+      height: _token('thumb-height');
     }
   }
 
   &__track {
     display: block;
-    border-radius: map.get($_slider, 'track-shape');
+    border-radius: _token('track-shape');
     overflow: hidden;
     @include utils.absolute-center();
-    width: calc(100% - map.get($_slider, 'thumb-width'));
-    height: map.get($_slider, 'track-height');
+    width: calc(100% - _token('thumb-width'));
+    height: _token('track-height');
   }
 
   &__inactive-track,
@@ -63,23 +66,23 @@ $_slider: tokens.$flexy-comp-slider;
     display: block;
     @include utils.absolute-fill();
     overflow: hidden;
-    transition: transform map.get($_slider, 'animation-jumping-duration')
-      map.get($_slider, 'animation-jumping-easing');
+    transition: transform _token('animation-jumping-duration')
+      _token('animation-jumping-easing');
   }
 
   &__inactive-track {
-    background-color: map.get($_slider, 'track-inactive-color');
+    background-color: _token('track-inactive-color');
     transform: translateX(50%);
   }
 
   &__active-track {
-    background-color: map.get($_slider, 'track-active-color');
+    background-color: _token('track-active-color');
     transform: translateX(-50%);
   }
 
   &__inactive-ticks,
   &__active-ticks {
-    $_ticks-size: calc(map.get($_slider, 'ticks-size') / 2);
+    $_ticks-size: calc(_token('ticks-size') / 2);
 
     display: block;
     background-image: radial-gradient(
@@ -89,25 +92,25 @@ $_slider: tokens.$flexy-comp-slider;
     );
     background-size: 10% 100%;
     background-position: calc(-1 * $_ticks-size) center;
-    transition: transform map.get($_slider, 'animation-jumping-duration')
-      map.get($_slider, 'animation-jumping-easing');
+    transition: transform _token('animation-jumping-duration')
+      _token('animation-jumping-easing');
     @include utils.absolute-fill();
   }
 
   &__inactive-ticks {
-    color: map.get($_slider, 'ticks-inactive-color');
+    color: _token('ticks-inactive-color');
     transform: translateX(-50%);
   }
 
   &__active-ticks {
-    color: map.get($_slider, 'ticks-active-color');
+    color: _token('ticks-active-color');
     transform: translateX(50%);
   }
 
   &__thumb-rail {
     display: block;
     @include utils.absolute-center();
-    width: calc(100% - map.get($_slider, 'thumb-width'));
+    width: calc(100% - _token('thumb-width'));
     height: 100%;
   }
 
@@ -115,25 +118,24 @@ $_slider: tokens.$flexy-comp-slider;
     display: block;
     @include utils.absolute-fill();
     transform: translateX(-50%);
-    transition: transform map.get($_slider, 'animation-jumping-duration')
-      map.get($_slider, 'animation-jumping-easing');
+    transition: transform _token('animation-jumping-duration')
+      _token('animation-jumping-easing');
   }
 
   &__thumb-knob {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: map.get($_slider, 'thumb-color');
-    border: map.get($_slider, 'thumb-outline-width') solid
-      map.get($_slider, 'thumb-outline-color');
-    border-radius: map.get($_slider, 'thumb-shape');
+    background-color: _token('thumb-color');
+    border: _token('thumb-outline-width') solid _token('thumb-outline-color');
+    border-radius: _token('thumb-shape');
     box-sizing: border-box;
-    color: map.get($_slider, 'thumb-icon-color');
+    color: _token('thumb-icon-color');
     position: absolute;
-    left: calc(100% - map.get($_slider, 'thumb-width') / 2);
+    left: calc(100% - _token('thumb-width') / 2);
     top: 0;
-    width: map.get($_slider, 'thumb-width');
-    height: map.get($_slider, 'thumb-height');
+    width: _token('thumb-width');
+    height: _token('thumb-height');
   }
 
   &__value-indicator,
@@ -141,8 +143,8 @@ $_slider: tokens.$flexy-comp-slider;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: map.get($_slider, 'value-indicator-text-color');
-    font-size: map.get($_slider, 'value-indicator-text-size');
+    color: _token('value-indicator-text-color');
+    font-size: _token('value-indicator-text-size');
     position: absolute;
     left: 50%;
     bottom: 100%;
@@ -152,12 +154,12 @@ $_slider: tokens.$flexy-comp-slider;
   }
 
   &__value-indicator {
-    $_arrow-size: map.get($_slider, 'value-indicator-arrow-size');
+    $_arrow-size: _token('value-indicator-arrow-size');
 
-    border-radius: map.get($_slider, 'value-indicator-shape');
-    background-color: map.get($_slider, 'value-indicator-fill-color');
-    width: map.get($_slider, 'value-indicator-width');
-    height: map.get($_slider, 'value-indicator-height');
+    border-radius: _token('value-indicator-shape');
+    background-color: _token('value-indicator-fill-color');
+    width: _token('value-indicator-width');
+    height: _token('value-indicator-height');
 
     &::before {
       content: '';
@@ -173,12 +175,12 @@ $_slider: tokens.$flexy-comp-slider;
   }
 
   &__value-indicator-m3 {
-    width: map.get($_slider, 'value-indicator-m3-size');
-    height: map.get($_slider, 'value-indicator-m3-size');
+    width: _token('value-indicator-m3-size');
+    height: _token('value-indicator-m3-size');
 
     &::before {
       content: '';
-      background-color: map.get($_slider, 'value-indicator-fill-color');
+      background-color: _token('value-indicator-fill-color');
       border-radius: 50% 50% 0% 50%;
       transform: rotateZ(45deg);
       z-index: -1;
@@ -188,7 +190,7 @@ $_slider: tokens.$flexy-comp-slider;
 
   &__thumb-ripple {
     display: block;
-    color: map.get($_slider, 'thumb-color');
+    color: _token('thumb-color');
     @include utils.absolute-center();
     @include utils.size(40px);
   }
@@ -198,7 +200,7 @@ $_slider: tokens.$flexy-comp-slider;
   &__input:focus ~ &__thumb-rail &__value-indicator {
     transform: translate(
         -50%,
-        calc(-1 * map.get($_slider, 'value-indicator-arrow-size') - 2px)
+        calc(-1 * _token('value-indicator-arrow-size') - 2px)
       )
       scale(1);
   }
@@ -210,7 +212,7 @@ $_slider: tokens.$flexy-comp-slider;
   }
 
   &__input:focus-visible ~ &__thumb-rail &__thumb-knob {
-    outline: 2px solid map.get($_slider, 'focus-ring-color');
+    outline: 2px solid _token('focus-ring-color');
     outline-offset: 2px;
   }
 
@@ -219,8 +221,8 @@ $_slider: tokens.$flexy-comp-slider;
   &--sliding &__active-ticks,
   &--sliding &__inactive-ticks,
   &--sliding &__thumb {
-    transition: transform map.get($_slider, 'animation-sliding-duration')
-      map.get($_slider, 'animation-sliding-easing');
+    transition: transform _token('animation-sliding-duration')
+      _token('animation-sliding-easing');
   }
 
   &--noanimation &__active-track,

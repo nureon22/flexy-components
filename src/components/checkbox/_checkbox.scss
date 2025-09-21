@@ -2,12 +2,15 @@
 @use '../../tokens';
 @use '../../utils';
 
-$_checkbox: tokens.$flexy-comp-checkbox;
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-checkbox, $token);
+}
 
 .flexy-checkbox {
   display: inline-flex;
   position: relative;
-  @include utils.size(map.get($_checkbox, 'size'));
+  @include utils.size(_token('size'));
 
   input {
     border: none;
@@ -20,16 +23,15 @@ $_checkbox: tokens.$flexy-comp-checkbox;
   }
 
   &__box {
-    background-color: map.get($_checkbox, 'unselected-fill-color');
-    border: map.get($_checkbox, 'outline-width') solid
-      map.get($_checkbox, 'unselected-outline-color');
-    border-radius: map.get($_checkbox, 'outline-width');
+    background-color: _token('unselected-fill-color');
+    border: _token('outline-width') solid _token('unselected-outline-color');
+    border-radius: _token('outline-width');
     box-sizing: border-box;
     @include utils.absolute-fill();
     transition: {
       property: background-color, border-color;
-      duration: map.get($_checkbox, 'state-transition-duration');
-      timing-function: map.get($_checkbox, 'state-transition-easing');
+      duration: _token('state-transition-duration');
+      timing-function: _token('state-transition-easing');
     }
     z-index: -1;
 
@@ -46,15 +48,15 @@ $_checkbox: tokens.$flexy-comp-checkbox;
         stroke-width: 20;
         transition: {
           property: d, stroke-dasharray, stroke-dashoffset;
-          duration: map.get($_checkbox, 'state-transition-duration');
-          timing-function: map.get($_checkbox, 'state-transition-easing');
+          duration: _token('state-transition-duration');
+          timing-function: _token('state-transition-easing');
         }
       }
     }
   }
 
   input:hover ~ &__box {
-    border-color: map.get($_checkbox, 'unselected-hovered-outline-color');
+    border-color: _token('unselected-hovered-outline-color');
   }
 
   input:focus-visible ~ &__box {
@@ -69,11 +71,11 @@ $_checkbox: tokens.$flexy-comp-checkbox;
 
   input:indeterminate ~ &__box,
   input:checked ~ &__box {
-    background-color: map.get($_checkbox, 'selected-fill-color');
-    border-color: map.get($_checkbox, 'selected-outline-color');
+    background-color: _token('selected-fill-color');
+    border-color: _token('selected-outline-color');
 
     svg path {
-      stroke: map.get($_checkbox, 'mark-color');
+      stroke: _token('mark-color');
       stroke-dashoffset: 0;
     }
   }

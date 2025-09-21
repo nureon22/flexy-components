@@ -2,7 +2,6 @@
 @use '../../tokens';
 @use '../../utils';
 
-$_button: tokens.$flexy-comp-button;
 $_sizes: (
   xxs: -3,
   xs: -2,
@@ -12,24 +11,29 @@ $_sizes: (
   xxl: 3,
 );
 
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-button, $token);
+}
+
 .flexy-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: map.get($_button, 'spacing');
+  gap: _token('spacing');
 
   background-color: transparent;
   border: none;
-  border-radius: map.get($_button, 'shape');
+  border-radius: _token('shape');
   box-sizing: border-box;
   color: currentcolor;
   cursor: pointer;
   position: relative;
-  padding: 0px map.get($_button, 'padding');
-  height: map.get($_button, 'height');
+  padding: 0px _token('padding');
+  height: _token('height');
 
   font-family: tokens.$flexy-sys-typography-sans-serif;
-  font-size: map.get($_button, 'label-size');
+  font-size: _token('label-size');
   line-height: 1.5;
   text-decoration: none;
   user-select: none;
@@ -55,13 +59,13 @@ $_sizes: (
 
   &--icon {
     padding: 0px;
-    width: map.get($_button, 'height');
+    width: _token('height');
   }
 
   &--circular {
     border-radius: 50%;
     padding: 0px;
-    width: map.get($_button, 'height');
+    width: _token('height');
   }
 
   &--primary,
@@ -138,12 +142,12 @@ $_sizes: (
 
   @each $name, $size in $_sizes {
     &--#{$name} {
-      height: calc(map.get($_button, 'height') + 4px * $size);
-      padding: 0px calc(map.get($_button, 'padding') + 2px * $size);
+      height: calc(_token('height') + 4px * $size);
+      padding: 0px calc(_token('padding') + 2px * $size);
     }
     &--#{$name}#{&}--icon,
     &--#{$name}#{&}--circular {
-      width: calc(map.get($_button, 'height') + 4px * $size);
+      width: calc(_token('height') + 4px * $size);
     }
   }
 
