@@ -42,6 +42,7 @@ Custom switch that has sharp corners
 ### Supported Token
 
 - `thumb-height`
+- `thumb-shadow`
 - `thumb-shape`
 - `thumb-width`
 - `track-height`
