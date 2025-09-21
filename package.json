@@ -5,6 +5,10 @@
   "type": "module",
   "main": "dist/esm/main.js",
   "types": "dist/types/main.d.ts",
+  "exports": {
+    ".": "./dist/esm/main.js",
+    "./styles": "./dist/esm/main.css"
+  },
   "scripts": {
     "esbuild:start": "ENV=development node esbuild.js",
     "esbuild:build": "ENV=production node esbuild.js",
