@@ -21,3 +21,30 @@ Tabs allow you to organize multiple views within a single container and display 
 ### Custom
 
 {{< example example=tabs-custom >}}
+
+## Customization
+
+### Supported Classes
+
+- `flexy-tabs`
+- `flexy-tablist`
+- `flexy-tab`
+- `flexy-tab-panels`
+- `flexy-tab-panel`
+
+### Supported Tokens
+
+- `tab-height`
+- `tab-padding`
+- `tab-selected-fill-color`
+- `tab-selected-label-color`
+- `tab-shape`
+- `tab-spacing`
+- `tab-unselected-fill-color`
+- `tab-unselected-label-color`
+- `tablist-divider-color`
+- `tablist-divider-margin`
+- `tablist-fill-color`
+- `tablist-height`
+- `tablist-shape`
+- `tablist-spacing`

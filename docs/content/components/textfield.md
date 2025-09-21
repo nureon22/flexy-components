@@ -61,3 +61,56 @@ messages to users. In this example, simple password validation is used to
 display an error message in the supporting text.
 
 {{< example example=textfield-supporting-text >}}
+
+## Customization
+
+### Supported Classes
+
+- `flexy-textfield`
+- `flexy-textfield--filled`
+- `flexy-textfield--outlined`
+- `flexy-textfield--with-floating-label`
+- `flexy-textfield--with-leading-icon`
+- `flexy-textfield--with-trailing-icon`
+
+### Supported Tokens
+
+- `container-height`
+- `container-padding`
+- `container-shape`
+- `placeholder-color`
+- `icon-leading-spacing`
+- `icon-trailing-spacing`
+- `icon-leading-margin`
+- `icon-trailing-margin`
+- `icon-color`
+- `icon-hovered-color`
+- `icon-focused-color`
+- `icon-size`
+- `label-floating-size`
+- `label-floating-top-margin`
+- `label-floating-transition-duration`
+- `label-floating-transition-easing`
+- `prefix-text-margin`
+- `prefix-text-color`
+- `suffix-text-margin`
+- `suffix-text-color`
+- `supporting-text-size`
+- `supporting-text-top-margin`
+- `supporting-text-left-margin`
+- `supporting-help-text-color`
+- `supporting-error-text-color`
+- `enabled-fill-color`
+- `enabled-outline-color`
+- `enabled-outline-width`
+- `enabled-label-color`
+- `hovered-fill-color`
+- `hovered-outline-color`
+- `hovered-label-color`
+- `focused-fill-color`
+- `focused-outline-color`
+- `focused-outline-width`
+- `focused-label-color`
+- `invalid-outline-width`
+- `invalid-outline-color`
+- `invalid-label-color`
