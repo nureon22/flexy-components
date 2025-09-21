@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "description": "",
   "type": "module",
+  "main": "dist/cjs/main.js",
+  "module": "dist/esm/main.js",
+  "types": "dist/types/main.d.ts",
   "scripts": {
     "esbuild:start": "ENV=development node esbuild.js",
     "esbuild:build": "ENV=production node esbuild.js",
     "hugo:start": "hugo server -s docs --gc --disableFastRender --bind 0.0.0.0 --port 8000 --noHTTPCache --baseURL 'http://localhost:8000/'",
-    "hugo:build": "rm -fr docs/public/* && hugo -s docs --gc",
-    "build": "npm run esbuild:build && cp dist/* docs/assets/ && npm run hugo:build"
+    "hugo:build": "rm -fr docs/public/* && hugo -s docs --gc --minify",
+    "build:types": "npx tsc --outDir dist/types",
+    "build": "npm run esbuild:build && npm run build:types"
   },
   "keywords": [],
   "author": "",

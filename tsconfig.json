@@ -17,9 +17,8 @@
     // and npm install -D @types/node
 
     // Other Outputs
-    "sourceMap": true,
     "declaration": true,
-    "declarationMap": true,
+    "emitDeclarationOnly": true,
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
@@ -42,5 +41,5 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
   },
-  "include": ["src"]
+  "include": ["src"],
 }
