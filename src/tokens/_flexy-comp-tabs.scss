@@ -8,7 +8,7 @@ $_flexy-comp-tabs: (
   tab-padding: calc(16px + 2px * $flexy-sys-ref-density),
   tab-spacing: 8px,
   tab-shape: map.get($flexy-sys-shape, 'small'),
-  tab-selected-fill-color: $flexy-sys-palette-grey-15,
+  tab-selected-fill-color: $flexy-sys-palette-grey-20,
   tab-selected-label-color: $flexy-sys-palette-grey-100,
   tab-unselected-fill-color: transparent,
   tab-unselected-label-color: $flexy-sys-palette-grey-100,
