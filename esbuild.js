@@ -4,6 +4,7 @@ import { sassPlugin } from 'esbuild-sass-plugin';
 import { format } from 'path/win32';
 
 const isProduction = process.env['ENV'] == 'production';
+const dest = process.env["DEST"] || 'dist';
 
 /** @type {import('esbuild').Format} */
 const formats = ['esm', 'iife'];
@@ -16,7 +17,7 @@ const formats = ['esm', 'iife'];
 function getBuildOptions(format) {
   return {
     entryPoints: ['src/main.ts', 'src/main.scss'],
-    outdir: `dist/${format}`,
+    outdir: `${dest}/${format}`,
     format,
     bundle: true,
     logLevel: 'info',
