@@ -30,3 +30,13 @@ afterPageLoad().then(() => {
     if (el instanceof HTMLElement) new FlexyTextfieldComponent(el);
   });
 });
+
+export {
+  FlexyButtonComponent,
+  FlexyCheckboxComponent,
+  FlexyRadioComponent,
+  FlexySliderComponent,
+  FlexySwitchComponent,
+  FlexyTabsComponent,
+  FlexyTextfieldComponent,
+};
