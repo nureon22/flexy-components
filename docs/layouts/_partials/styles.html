@@ -2,7 +2,7 @@
   <style>{{ .Content | safeCSS }}</style>
 {{- end }}
 
-{{- with resources.Get "main.css" }}
+{{- with resources.Get "dist/iife/main.css" }}
   {{- if hugo.IsProduction }}
     {{- with . | fingerprint }}
       <link
@@ -14,7 +14,7 @@
   {{- else }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" />
 
-    {{- with resources.Get "main.css.map" }}
+    {{- with resources.Get "dist/iife/main.css.map" }}
       <!--{{ .RelPermalink }}-->
     {{- end }}
   {{- end }}

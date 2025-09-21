@@ -48,17 +48,12 @@ jobs:
         run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
       - name: Build Components
         run: 'npm run esbuild:build'
-      - name: Copy built components to hugo
-        run: 'cp dist/* docs/assets/'
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
         run: |
-          hugo \
-            --source docs \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+          npm run hugo:build -- --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
