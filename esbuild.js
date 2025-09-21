@@ -20,7 +20,7 @@ function getBuildOptions(format) {
     format,
     bundle: true,
     logLevel: 'info',
-    minify: false,
+    minify: isProduction,
     sourcemap: !isProduction,
     sourcesContent: !isProduction,
     plugins: [
