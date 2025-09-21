@@ -50,3 +50,41 @@ Some components even require **no JavaScript at all**, ensuring smooth, performa
 - Menu
 - ProgressBar
 - ProgressSpinner
+
+## Usage
+
+Flexy Components can be used either via **NPM** or **CDN**, depending on your project setup.
+
+### Using NPM
+
+For **static websites** where all components templates are already present in the HTML from the start:
+
+```js
+import 'flexy-components/styles';
+import 'flexy-components';
+```
+
+If you need to add components dynamically after the page has loaded, you can import and initialize them individually:
+
+```js
+import 'flexy-components/styles';
+import { FlexyCheckboxComponent } from 'flexy-components';
+
+const checkbox = document.querySelector('#your-checkbox.flexy-checkbox');
+new FlexyCheckboxComponent(checkbox);
+```
+
+### Via CDN
+
+Include the stylesheet and script directly in your HTML:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/flexy-components/dist/iife/main.js"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/flexy-components/dist/iife/main.js"
+></script>
+```
