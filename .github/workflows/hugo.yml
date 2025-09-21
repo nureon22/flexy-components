@@ -47,7 +47,8 @@ jobs:
       - name: Install Node.js dependencies
         run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
       - name: Build Components
-        run: 'npm run esbuild:build'
+        run: |
+          DEST="docs/assets" npm run esbuild:build
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
