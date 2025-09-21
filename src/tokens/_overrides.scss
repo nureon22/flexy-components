@@ -5,6 +5,7 @@
 @use 'flexy-comp-slider' as *;
 @use 'flexy-comp-switch' as *;
 @use 'flexy-comp-tabs' as *;
+@use 'flexy-comp-textfield' as *;
 
 @mixin _override($tokens, $default-tokens, $prefix) {
   @each $name, $value in $tokens {
@@ -38,4 +39,8 @@
 
 @mixin tabs-overrides($tokens) {
   @include _override($tokens, $flexy-comp-tabs, 'flexy-comp-tabs');
+}
+
+@mixin textfield-overrides($tokens) {
+  @include _override($tokens, $flexy-comp-textfield, 'flexy-comp-textfield');
 }
