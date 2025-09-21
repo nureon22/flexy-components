@@ -89,6 +89,13 @@
     white-space: nowrap;
   }
 
+  &__leading-icon,
+  &__prefix-text,
+  &__suffix-text,
+  &__trailing-icon {
+    z-index: 1;
+  }
+
   input:required ~ &__filled &__floating-label::after,
   input:required ~ &__outlined &__floating-label::after {
     content: '*';
