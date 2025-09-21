@@ -6,7 +6,7 @@ import { format } from 'path/win32';
 const isProduction = process.env['ENV'] == 'production';
 
 /** @type {import('esbuild').Format} */
-const formats = ['esm', 'iife', 'cjs'];
+const formats = ['esm', 'iife'];
 
 /**
  *
