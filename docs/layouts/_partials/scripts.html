@@ -1,4 +1,4 @@
-{{- with resources.Get "dist/iife/main.js" }}
+{{- with resources.Get "iife/main.js" }}
   {{- if hugo.IsProduction }}
     {{- with . | fingerprint }}
       <script
@@ -10,7 +10,7 @@
   {{- else }}
     <script type="module" src="{{ .RelPermalink }}"></script>
 
-    {{- with resources.Get "dist/iife/main.js.map" }}
+    {{- with resources.Get "iife/main.js.map" }}
       <!--{{ .RelPermalink }}-->
     {{- end }}
   {{- end }}
