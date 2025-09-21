@@ -140,10 +140,14 @@ ul code {
   max-width: 900px;
 }
 
-.example-code .highlight pre {
+.highlight pre {
   border-radius: 8px;
-  overflow: auto;
   padding: 16px 8px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.example-code .highlight pre {
   margin: 0px;
 }
 
