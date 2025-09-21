@@ -58,7 +58,7 @@ $_transition: 200ms tokens.$flexy-sys-motion-ease-out-quart;
       display: block;
       background-color: map.get($_switch, 'unselected-thumb-color');
       border-radius: map.get($_switch, 'thumb-shape');
-      box-shadow: 0px 0px 3px -1px black;
+      box-shadow: map.get($_switch, 'thumb-shadow');
       @include utils.absolute-center();
       @include utils.size(
         map.get($_switch, 'thumb-width'),
