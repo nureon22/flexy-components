@@ -2,6 +2,7 @@
   <style>{{ .Content | safeCSS }}</style>
 {{- end }}
 
+
 <div class="navbar">
   <div>
     <button class="flexy-button flexy-button--icon" id="menu-button">
@@ -9,13 +10,26 @@
         {{- partial "material-symbol.html" "menu/rounded/400" }}
       </span>
     </button>
+    <span class="flexy-tooltip">
+      <div class="flexy-tooltip__content">Toggle Menu</div>
+    </span>
     <a class="flexy-button flexy-button--icon" href="{{ relURL "" }}">
       <span class="material-symbol">
         {{- partial "material-symbol.html" "home/rounded/400" }}
       </span>
     </a>
+    <span class="flexy-tooltip">
+      <div class="flexy-tooltip__content">Go back to Home</div>
+    </span>
   </div>
   <div style="gap: 12px;">
+    <button class="flexy-button flexy-button--icon" id="theme-toggle">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "dark_mode/rounded/400" }}
+        {{- partial "material-symbol.html" "light_mode/rounded/400" }}
+      </span>
+    </button>
+    <span class="flexy-tooltip"></span>
     <a
       href="{{ .Site.Params.repository }}"
       class="flexy-button flexy-button--icon"
@@ -24,12 +38,9 @@
         {{- partial "simple-icon.html" "github" }}
       </span>
     </a>
-    <button class="flexy-button flexy-button--icon" id="theme-toggle">
-      <span class="material-symbol">
-        {{- partial "material-symbol.html" "dark_mode/rounded/400" }}
-        {{- partial "material-symbol.html" "light_mode/rounded/400" }}
-      </span>
-    </button>
+    <span class="flexy-tooltip">
+      <span class="flexy-tooltip__content">Source code</span>
+    </span>
   </div>
 </div>
 
@@ -37,16 +48,18 @@
   void (function () {
     const isDark = sessionStorage.getItem('theme') == 'dark';
     const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.ariaLabel = themeToggle.title =
-      'switch to ' + (isDark ? 'light' : 'dark') + ' mode';
+    themeToggle.ariaLabel =
+      'Switch to ' + (isDark ? 'light' : 'dark') + ' mode';
+    themeToggle.nextElementSibling.innerHTML = `<span class="flexy-tooltip__content">${themeToggle.ariaLabel}</span>`;
 
     themeToggle.addEventListener('click', function () {
       const isDark = !document.documentElement.classList.contains('dark');
       document.documentElement.classList.toggle('dark', isDark);
       document.documentElement.classList.toggle('light', !isDark);
       sessionStorage.setItem('theme', isDark ? 'dark' : 'light');
-      themeToggle.ariaLabel = themeToggle.title =
-        'switch to ' + (isDark ? 'light' : 'dark') + ' mode';
+      themeToggle.ariaLabel =
+        'Switch to ' + (isDark ? 'light' : 'dark') + ' mode';
+      themeToggle.nextElementSibling.innerHTML = `<span class="flexy-tooltip__content">${themeToggle.ariaLabel}</span>`;
     });
   })();
 </script>
