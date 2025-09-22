@@ -72,7 +72,7 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
 
   addTab(tab: HTMLElement, panel: HTMLElement) {
     tab.id ||= uniqueId('flexy-tab-');
-    panel.id ||= uniqueId('flexy-tab-');
+    panel.id ||= uniqueId('flexy-tab-panel-');
 
     tab.role = 'tab';
     panel.role = 'tabpanel';
