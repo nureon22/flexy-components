@@ -1,6 +1,6 @@
 node_modules/
 dist/
 docs/public/
-docs/assets/main.css*
-docs/assets/main.js*
+docs/assets/iife
+docs/assets/esm
 docs/resources/
