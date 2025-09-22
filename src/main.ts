@@ -5,6 +5,7 @@ import { FlexySliderComponent } from './components/slider';
 import { FlexySwitchComponent } from './components/switch';
 import { FlexyTabsComponent } from './components/tabs';
 import { FlexyTextfieldComponent } from './components/textfield';
+import { FlexyTooltipComponent } from './components/tooltip';
 import { afterPageLoad } from './utils';
 
 afterPageLoad().then(() => {
@@ -28,6 +29,9 @@ afterPageLoad().then(() => {
   });
   document.querySelectorAll('.flexy-textfield').forEach((el) => {
     if (el instanceof HTMLElement) new FlexyTextfieldComponent(el);
+  });
+  document.querySelectorAll('.flexy-tooltip').forEach((el) => {
+    if (el instanceof HTMLElement) new FlexyTooltipComponent(el);
   });
 });
 

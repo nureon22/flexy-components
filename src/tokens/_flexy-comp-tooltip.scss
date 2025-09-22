@@ -1,0 +1,29 @@
+@use 'sass:map';
+@use 'flexy-sys-color' as *;
+@use 'flexy-sys-ref' as *;
+@use 'flexy-sys-motion' as *;
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-shape' as *;
+
+$_flexy-comp-tooltip: (
+  animation-duration: 250ms,
+  animation-easing: $flexy-sys-motion-ease-out-cubic,
+  fill-color: $flexy-sys-palette-grey-90,
+  max-width: 240px,
+  padding: 4px 8px,
+  shadow: none,
+  shape: map.get($flexy-sys-shape, 'extra-small'),
+  spacing: 8px,
+  text-color: $flexy-sys-palette-grey-10,
+  text-height: 20px,
+  text-size: 14px,
+);
+
+$flexy-comp-tooltip: ();
+
+@each $name, $value in $_flexy-comp-tooltip {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-tooltip-#{$name}, #{$value});
+  }
+  $flexy-comp-tooltip: map.set($flexy-comp-tooltip, $name, $value);
+}

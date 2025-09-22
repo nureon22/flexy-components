@@ -44,6 +44,7 @@ Some components even require **no JavaScript at all**, ensuring smooth, performa
 - Switch
 - Tabs
 - TextField
+- Tooltip
 
 ### Comming Soon
 

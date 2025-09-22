@@ -1,0 +1,67 @@
+@use '../../tokens';
+@use '../../utils';
+
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-tooltip, $token);
+}
+
+.flexy-tooltip {
+  padding: _token('spacing');
+  position: fixed;
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 9999;
+  transition: visibility 0ms ease _token('animation-duration');
+
+  &__content {
+    display: block;
+    text-align: center;
+    box-shadow: _token('shadow');
+    color: _token('text-color');
+    font-size: _token('text-size');
+    line-height: _token('text-height');
+    max-width: _token('max-width');
+    opacity: 0;
+    transform: scale(0);
+    padding: _token('padding');
+    background-color: _token('fill-color');
+    border-radius: _token('shape');
+    text-align: center;
+    width: max-content;
+    transition:
+      opacity _token('animation-duration') _token('animation-easing'),
+      transform _token('animation-duration') _token('animation-easing');
+  }
+
+  &--above &__content {
+    transform-origin: center bottom;
+  }
+
+  &--below &__content {
+    transform-origin: center top;
+  }
+
+  &--left &__content {
+    transform-origin: right center;
+  }
+
+  &--right &__content {
+    transform-origin: left center;
+  }
+
+  &--shown {
+    pointer-events: auto;
+    transition-delay: 0ms;
+    visibility: visible;
+  }
+
+  &--shown &__content {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  &--nointeractive {
+    pointer-events: none !important;
+  }
+}
