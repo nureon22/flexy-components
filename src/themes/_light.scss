@@ -3,12 +3,12 @@
 .light {
   @include theme-builder(
     (
-      primary: hsl(220deg, 50%, 40%),
+      primary: hsl(215deg, 60%, 40%),
       on-primary: hsl(0deg, 0%, 95%),
-      error: hsl(0deg, 50%, 40%),
+      error: hsl(0deg, 60%, 45%),
       on-error: hsl(0deg, 0%, 95%),
-      surface: hsl(220deg, 10%, 95%),
-      on-surface: hsl(220deg, 20%, 15%),
+      surface: hsl(215deg, 10%, 95%),
+      on-surface: hsl(215deg, 20%, 15%),
     ),
     false
   );

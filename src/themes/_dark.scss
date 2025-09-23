@@ -3,12 +3,12 @@
 .dark {
   @include theme-builder(
     (
-      primary: hsl(220deg, 90%, 75%),
+      primary: hsl(215deg, 100%, 75%),
       on-primary: hsl(0deg, 0%, 5%),
-      error: hsl(0deg, 90%, 75%),
+      error: hsl(0deg, 100%, 75%),
       on-error: hsl(0deg, 0%, 5%),
-      surface: hsl(220deg, 10%, 10%),
-      on-surface: hsl(220deg, 20%, 90%),
+      surface: hsl(215deg, 10%, 10%),
+      on-surface: hsl(215deg, 20%, 90%),
     ),
     true
   );
