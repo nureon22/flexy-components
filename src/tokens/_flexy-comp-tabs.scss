@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'flexy-sys-color' as *;
 @use 'flexy-sys-palette' as *;
 @use 'flexy-sys-ref' as *;
 @use 'flexy-sys-shape' as *;
@@ -8,8 +9,8 @@ $_flexy-comp-tabs: (
   tab-padding: calc(16px + 2px * $flexy-sys-ref-density),
   tab-spacing: 8px,
   tab-shape: map.get($flexy-sys-shape, 'small'),
-  tab-selected-fill-color: $flexy-sys-palette-grey-20,
-  tab-selected-label-color: $flexy-sys-palette-grey-100,
+  tab-selected-fill-color: $flexy-sys-palette-tint-20,
+  tab-selected-label-color: $flexy-sys-color-primary,
   tab-unselected-fill-color: transparent,
   tab-unselected-label-color: $flexy-sys-palette-grey-100,
   tablist-divider-color: $flexy-sys-palette-grey-10,
