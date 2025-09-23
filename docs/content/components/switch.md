@@ -29,7 +29,7 @@ To render a checkbox as selected by default, add the checked attribute to the <i
 
 ### Custom
 
-Custom switch that has sharp corners
+You can use design tokens to customize the appearance of the switch to your preferences. In this example, the switch is customized to look like a Material Design 2 switch.
 
 {{< example example=switch-custom >}}
 
