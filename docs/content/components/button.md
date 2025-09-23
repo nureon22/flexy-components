@@ -4,7 +4,7 @@ draft = false
 title = 'Button'
 +++
 
-Buttons are one of the most common and basic user interface elements.
+Buttons are one of the most common and basic user interface elements. Buttons supports four appearances: text, outlined, tonal, and filled; and three colors: primary, error, and neutral. Combining appearances and colors gives you 12 different variants. By default, a button has no color. To add colors, you can use CSS classes like `flexy-button--primary` or `flexy-button--tonal-primary`.
 
 <!--more-->
 
@@ -14,15 +14,7 @@ Buttons are one of the most common and basic user interface elements.
 
 {{< example example=button-default >}}
 
-### Variants
-
-Supported variants: text, tonal, outlined and filled
-
-{{< example example=button-variants >}}
-
 ### Colors
-
-Supported colors: neutral, primary and error
 
 {{< example example=button-colors >}}
 
