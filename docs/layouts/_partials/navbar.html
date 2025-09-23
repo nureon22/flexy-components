@@ -5,14 +5,6 @@
 
 <div class="navbar">
   <div>
-    <button class="flexy-button flexy-button--icon" id="menu-button">
-      <span class="material-symbol">
-        {{- partial "material-symbol.html" "menu/rounded/400" }}
-      </span>
-    </button>
-    <span class="flexy-tooltip">
-      <div class="flexy-tooltip__content">Toggle Menu</div>
-    </span>
     <a class="flexy-button flexy-button--icon" href="{{ relURL "" }}">
       <span class="material-symbol">
         {{- partial "material-symbol.html" "home/rounded/400" }}
@@ -20,6 +12,12 @@
     </a>
     <span class="flexy-tooltip">
       <div class="flexy-tooltip__content">Go back to Home</div>
+    </span>
+    <button class="flexy-button" id="menu-button">
+      <span>Components</span>
+    </button>
+    <span class="flexy-tooltip">
+      <div class="flexy-tooltip__content">See components list</div>
     </span>
   </div>
   <div style="gap: 12px;">
