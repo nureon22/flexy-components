@@ -87,7 +87,7 @@
     display: block;
     background-image: radial-gradient(
       circle at $_ticks-size,
-      currentcolor calc($_ticks-size - 0.5px),
+      currentcolor $_ticks-size,
       transparent $_ticks-size
     );
     background-size: 10% 100%;
