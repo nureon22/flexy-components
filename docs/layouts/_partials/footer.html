@@ -1,0 +1,43 @@
+<style>
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 64px;
+    padding: 40px 0px;
+    border-top: 1px solid var(--flexy-sys-palette-grey-10);
+  }
+  footer p {
+    color: var(--flexy-sys-palette-grey-80);
+  }
+  footer p a {
+    color: currentColor !important;
+  }
+</style>
+
+<footer>
+  <p class="author">
+    <span>Author: {{ site.Params.author.name }}</span>
+    &CenterDot;
+    <a href="{{ site.Params.author.url }}" target="_blank">GitHub</a>
+    &CenterDot;
+    <a href="mailto:{{ site.Params.author.email }}" target="_blank">Contact</a>
+    <br />
+    Flexy Components licensed under
+    <a href="{{ site.Params.repository }}/blob/main/LICENSE" target="_blank"
+      >{{ site.Params.project.license }}</a
+    >
+    License
+  </p>
+  <a
+    class="flexy-button flexy-button--lg"
+    href="{{ .Site.Params.repository }}"
+    target="_blank"
+  >
+    <span class="simple-icon icon-24">
+      {{- partial "simple-icon.html" "github" }}
+    </span>
+    <span>Github Repository</span>
+  </a>
+</footer>
