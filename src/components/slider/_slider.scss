@@ -52,7 +52,8 @@
     }
   }
 
-  &__track {
+  &__track,
+  &__ticks {
     display: block;
     border-radius: _token('track-shape');
     overflow: hidden;
@@ -72,12 +73,14 @@
 
   &__inactive-track {
     background-color: _token('track-inactive-color');
-    transform: translateX(50%);
+    transform: scaleX(0.5);
+    transform-origin: right center;
   }
 
   &__active-track {
     background-color: _token('track-active-color');
-    transform: translateX(-50%);
+    transform: scaleX(0.5);
+    transform-origin: left center;
   }
 
   &__inactive-ticks,
@@ -92,19 +95,19 @@
     );
     background-size: 10% 100%;
     background-position: calc(-1 * $_ticks-size) center;
-    transition: transform _token('animation-jumping-duration')
+    transition: clip-path _token('animation-jumping-duration')
       _token('animation-jumping-easing');
     @include utils.absolute-fill();
   }
 
   &__inactive-ticks {
     color: _token('ticks-inactive-color');
-    transform: translateX(-50%);
+    clip-path: inset(0% 0% 0% 50%);
   }
 
   &__active-ticks {
     color: _token('ticks-active-color');
-    transform: translateX(50%);
+    clip-path: inset(0% 50% 0% 0%);
   }
 
   &__thumb-rail {

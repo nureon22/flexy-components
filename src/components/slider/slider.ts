@@ -99,22 +99,22 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     const min = Number(this.input.min || '0');
     const max = Number(this.input.max || '100');
     const value = Number(this.input.value || '0');
-    const progress = ((value - min) / (max - min)) * 100;
+    const progress = (value - min) / (max - min);
 
     if (inactiveTrack) {
-      inactiveTrack.style.transform = `translateX(${progress}%)`;
+      inactiveTrack.style.transform = `scaleX(${1 - progress})`;
     }
     if (inactiveTicks) {
-      inactiveTicks.style.transform = `translateX(${-1 * progress}%)`;
+      inactiveTicks.style.clipPath = `inset(0% 0% 0% ${progress * 100}%)`;
     }
     if (activeTicks) {
-      activeTicks.style.transform = `translateX(${100 - progress}%)`;
+      activeTicks.style.clipPath = `inset(0% ${100 - progress * 100}% 0% 0%)`;
     }
     if (activeTrack) {
-      activeTrack.style.transform = `translateX(${progress - 100}%)`;
+      activeTrack.style.transform = `scaleX(${progress})`;
     }
     if (thumb) {
-      thumb.style.transform = `translateX(${progress - 100}%)`;
+      thumb.style.transform = `translateX(${progress * 100 - 100}%)`;
     }
     if (valueIndicator) {
       valueIndicator.textContent = this.valueIndicatorDisplayer(value);
