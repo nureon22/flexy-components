@@ -60,6 +60,7 @@ A slider allows quickly selecting a value from a range. Common uses include seek
 - `thumb-shape`
 - `thumb-width`
 - `thumb-icon-color`
+- `ripple-size`
 
 #### Track
 
