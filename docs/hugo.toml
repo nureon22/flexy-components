@@ -7,7 +7,7 @@ title = 'Flexy Components Documentation'
     noClasses = false
 [params]
   repository = "https://github.com/nureon22/flexy-components"
-  goatcounter = "https://nureon22.goatcounter.com/count"
+  umami_id = "0cff7e01-0025-4eb7-823b-bd7ef61ca158"
   google_site_verification = "CtHwtf8ha6XoGf3CgvjlCz9gSec5qHVj0X1C_ImnGl0"
 
   [params.author]

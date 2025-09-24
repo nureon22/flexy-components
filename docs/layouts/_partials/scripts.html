@@ -20,10 +20,9 @@
   <script type="module">
     window.addEventListener('load', () => {
       const script = document.createElement('script');
-      script.setAttribute('src', 'https://gc.zgo.at/count.v5.js');
+      script.setAttribute('src', 'https://cloud.umami.is/script.js');
       script.setAttribute('crossorigin', 'anonymous');
-      script.setAttribute('data-goatcounter', '{{ site.Params.goatcounter }}');
-      script.setAttribute('integrity', 'sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ');
+      script.setAttribute('data-website-id', '{{ site.Params.umami_id }}')
       document.head.appendChild(script);
     });
   </script>
