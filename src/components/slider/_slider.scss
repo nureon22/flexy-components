@@ -73,12 +73,14 @@
 
   &__inactive-track {
     background-color: _token('track-inactive-color');
+    background-image: _token('track-inactive-gradient');
     transform: scaleX(0.5);
     transform-origin: right center;
   }
 
   &__active-track {
     background-color: _token('track-active-color');
+    background-image: _token('track-active-gradient');
     transform: scaleX(0.5);
     transform-origin: left center;
   }

@@ -65,8 +65,10 @@ A slider allows quickly selecting a value from a range. Common uses include seek
 #### Track
 
 - `track-active-color`
+- `track-active-gradient`
 - `track-height`
 - `track-inactive-color`
+- `track-inactive-gradient`
 - `track-shape`
 
 #### Ticks
