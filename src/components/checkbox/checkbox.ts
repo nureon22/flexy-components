@@ -7,8 +7,6 @@ export class FlexyCheckboxComponent extends FlexyBaseComponent {
     'input[type="checkbox"]',
   ) as HTMLInputElement;
 
-  private _markIconPath: SVGPathElement | undefined;
-
   constructor(host: HTMLElement) {
     super(host);
 
@@ -16,11 +14,11 @@ export class FlexyCheckboxComponent extends FlexyBaseComponent {
     initedCheckboxes.set(this.input, this);
 
     this.addMarkIcon();
-    this.update();
+    this.updateAria();
     this.syncParentState();
 
     this.input.addEventListener('change', () => {
-      this.update();
+      this.updateAria();
       this.syncParentState();
       this.syncChildrenState();
     });
@@ -33,7 +31,7 @@ export class FlexyCheckboxComponent extends FlexyBaseComponent {
   set checked(value) {
     if (this.input.checked !== value) {
       this.input.checked = value;
-      this.update();
+      this.updateAria();
     }
   }
 
@@ -44,7 +42,7 @@ export class FlexyCheckboxComponent extends FlexyBaseComponent {
   set indeterminate(value) {
     if (this.input.indeterminate !== value) {
       this.input.indeterminate = value;
-      this.update();
+      this.updateAria();
     }
   }
 
@@ -86,37 +84,22 @@ export class FlexyCheckboxComponent extends FlexyBaseComponent {
     return this.getParent()?.getChildren() || [];
   }
 
-  /** same as calling both updateAria() and updateMark() methods */
-  update() {
-    this.updateAria();
-    this.updateMark();
-  }
-
   /** update aria attributes to match current checkbox state */
   updateAria() {
     this.input.ariaChecked = this.indeterminate ? 'mixed' : null;
   }
 
-  /** update mark icon to match current checkbox state */
-  updateMark() {
-    if (!this._markIconPath) return;
-
-    const mark = this.indeterminate ? 'indeterminate' : 'checked';
-    this._markIconPath.setAttribute('d', FlexyCheckboxComponent.marks[mark]);
-  }
-
-  /** add svg mark icon, do not call this function more than once */
+  /** add svg mark icons, do not call this function more than once */
   addMarkIcon() {
     const box = this.host.querySelector('.flexy-checkbox__box');
 
     if (box) {
-      box.innerHTML = `<svg viewBox="0 0 100 100" aria-hidden="true"><path></path></svg>`;
-      this._markIconPath = box.querySelector('path') || undefined;
+      box.innerHTML += [
+        '<svg viewBox="0 0 100 100" aria-hidden="true" class="flexy-checkbox__mark-icon">',
+        '<path class="flexy-checkbox__check-mark" d="M15,55 40,85 85,20"></path>',
+        '<path class="flexy-checkbox__indeterminate-mark" d="M15,50 50,50 85,50"></path>',
+        '</svg>',
+      ].join('');
     }
   }
-
-  protected static readonly marks = {
-    checked: 'M15,55 40,85 85,20',
-    indeterminate: 'M15,50 50,50 85,50',
-  };
 }

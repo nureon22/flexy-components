@@ -35,25 +35,34 @@
       duration: _token('state-transition-duration');
       timing-function: _token('state-transition-easing');
     }
+  }
 
-    svg {
-      @include utils.absolute-fill();
+  &__mark-icon {
+    @include utils.absolute-fill();
 
-      path {
-        fill: none;
-        stroke: none;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-dasharray: 118.10818481445312;
-        stroke-dashoffset: 118.10818481445312;
-        stroke-width: 20;
-        transition: {
-          property: d, stroke-dasharray, stroke-dashoffset;
-          duration: _token('state-transition-duration');
-          timing-function: _token('state-transition-easing');
-        }
+    path {
+      fill: none;
+      stroke: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 20;
+      stroke: transparent;
+      transition: {
+        property: stroke-dashoffset;
+        duration: _token('state-transition-duration');
+        timing-function: _token('state-transition-easing');
       }
     }
+  }
+
+  &__check-mark {
+    stroke-dasharray: 118.10818481445312;
+    stroke-dashoffset: 118.10818481445312;
+  }
+
+  &__indeterminate-mark {
+    stroke-dasharray: 70;
+    stroke-dashoffset: 70;
   }
 
   input:hover ~ &__box {
@@ -65,20 +74,20 @@
     outline: 2px solid tokens.$flexy-sys-color-primary;
   }
 
-  input:indeterminate ~ &__box svg path {
-    stroke-dasharray: 70;
-    stroke-dashoffset: 70;
+  input:checked ~ &__box &__check-mark {
+    stroke-dashoffset: 0;
+    stroke: _token('mark-color');
+  }
+
+  input:indeterminate ~ &__box &__indeterminate-mark {
+    stroke: _token('mark-color');
+    stroke-dashoffset: 0;
   }
 
   input:indeterminate ~ &__box,
   input:checked ~ &__box {
     background-color: _token('selected-fill-color');
     border-color: _token('selected-outline-color');
-
-    svg path {
-      stroke: _token('mark-color');
-      stroke-dashoffset: 0;
-    }
   }
 
   input:disabled {
