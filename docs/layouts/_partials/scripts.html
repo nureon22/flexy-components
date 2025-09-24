@@ -17,14 +17,14 @@
 {{- end }}
 
 {{- if hugo.IsProduction }}
-  {{- with resources.GetRemote "https://gc.zgo.at/count.js" }}
-    {{- with resources.Copy "goatcounter.js" . | fingerprint }}
-      <script
-        data-goatcounter="{{ site.Params.goatcounter }}"
-        defer
-        src="{{ .RelPermalink }}"
-        integrity="{{ .Data.Integrity }}"
-      ></script>
-    {{- end }}
-  {{- end }}
+  <script type="module">
+    window.addEventListener('load', () => {
+      const script = document.createElement('script');
+      script.setAttribute('src', 'https://gc.zgo.at/count.v5.js');
+      script.setAttribute('crossorigin', 'anonymous');
+      script.setAttribute('data-goatcounter', '{{ site.Params.goatcounter }}');
+      script.setAttribute('integrity', 'sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ');
+      document.head.appendChild(script);
+    });
+  </script>
 {{- end }}
