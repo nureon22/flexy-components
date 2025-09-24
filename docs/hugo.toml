@@ -3,8 +3,8 @@ languageCode = 'en-us'
 title = 'Flexy Components Documentation'
 [markup]
   [markup.highlight]
-    style = "github-dark"
     tabwidth = 2
+    noClasses = false
 [params]
   repository = "https://github.com/nureon22/flexy-components"
   goatcounter = "https://nureon22.goatcounter.com/count"

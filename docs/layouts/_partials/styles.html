@@ -25,3 +25,30 @@
 {{- with resources.GetRemote $fontUrl (dict "Headers" (dict "User-Agent" $userAgent)) }}
   <style>{{ .Content | safeCSS }}</style>
 {{- end }}
+
+{{- range (slice "syntax/github-light.css" "syntax/github-dark.css" ) }}
+  {{- with resources.Get . }}
+    {{- if hugo.IsProduction }}
+      {{- with . | fingerprint }}
+        <link
+          rel="stylesheet"
+          data-href="{{ .RelPermalink }}"
+          integrity="{{ .Data.Integrity }}"
+        />
+      {{- end }}
+    {{- else }}
+      <link rel="stylesheet" data-href="{{ .RelPermalink }}" />
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+
+<script defer>
+  void (function () {
+    window.addEventListener('load', () => {
+      document.querySelectorAll('link[data-href]').forEach((link) => {
+        link.setAttribute('href', link.getAttribute('data-href'));
+      });
+    });
+  })();
+</script>
