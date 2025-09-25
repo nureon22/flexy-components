@@ -8,6 +8,6 @@
 {{- with resources.GetRemote $url }}
   {{- $svg := .Content }}
   {{- $svg := $svg | replaceRE ` (width|height)="48"` "" }}
-    {{- $svg := $svg | replaceRE `><path` (printf " role=\"img\" aria-label=\"%s\"><path" $label) }}
+  {{- $svg := $svg | replaceRE `><path` (printf " role=\"img\" aria-label=\"%s\"><path" $label) }}
   {{- $svg | safeHTML }}
 {{- end }}

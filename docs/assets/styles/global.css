@@ -56,7 +56,6 @@ hr {
 }
 
 .simple-icon,
-.bootstrap-icon,
 .material-symbol {
   display: inline-flex;
   align-items: center;
@@ -66,7 +65,6 @@ hr {
 }
 
 .simple-icon svg,
-.bootstrap-icon svg,
 .material-symbol svg {
   fill: currentcolor;
   width: 1em;
@@ -74,10 +72,6 @@ hr {
 }
 
 .simple-icon {
-  font-size: 16px;
-}
-
-.bootstrap-icon {
   font-size: 16px;
 }
 
