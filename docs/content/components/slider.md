@@ -34,6 +34,18 @@ A slider allows quickly selecting a value from a range. Common uses include seek
 
 {{< example example=slider-icon-prefix >}}
 
+### Gradient Track
+
+In this example, the slider is styled as a YouTube video player progress bar
+using the `track-active-gradient` token, which applies a linear gradient to the
+active track. You can also apply a gradient to the inactive track using the
+`track-inactive-gradient` token.
+
+To see the result more clearly, use the dark mode by clicking the theme toggle
+button on the top navigation bar.
+
+{{< example example=slider-gradient >}}
+
 ### Thumb Icon
 
 {{< example example=slider-thumb-icon >}}

@@ -1,0 +1,23 @@
+<style>
+  #gradient-slider {
+    --flexy-comp-slider-thumb-color: #f03;
+    --flexy-comp-slider-track-inactive-color: #80808040;
+    --flexy-comp-slider-track-active-gradient: linear-gradient(
+      to right,
+      #f03 0%,
+      #f38 100%
+    );
+  }
+</style>
+<div class="flexy-slider" id="gradient-slider">
+  <input type="range" class="flexy-slider__input" />
+  <div class="flexy-slider__track">
+    <div class="flexy-slider__inactive-track"></div>
+    <div class="flexy-slider__active-track"></div>
+  </div>
+  <div class="flexy-slider__thumb-rail">
+    <div class="flexy-slider__thumb">
+      <div class="flexy-slider__thumb-knob"></div>
+    </div>
+  </div>
+</div>
