@@ -32,6 +32,6 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@nureon22/ripple-effect": "^1.7.0"
+    "@nureon22/ripple-effect": "^1.7.2"
   }
 }
