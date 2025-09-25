@@ -205,7 +205,12 @@
   &__input:focus ~ &__thumb-rail &__value-indicator {
     transform: translate(
         -50%,
-        calc(-1 * _token('value-indicator-arrow-size') - 2px)
+        calc(
+          -1 *
+            _token('value-indicator-arrow-size') - _token(
+              'value-indicator-bottom-spacing'
+            )
+        )
       )
       scale(1);
   }
@@ -213,7 +218,11 @@
   &--sliding &__value-indicator-m3,
   &__input:hover ~ &__thumb-rail &__value-indicator-m3,
   &__input:focus ~ &__thumb-rail &__value-indicator-m3 {
-    transform: translate(-50%, calc(-20.70833333333333% - 2px)) scale(1);
+    transform: translate(
+        -50%,
+        calc(-20.70833333333333% - _token('value-indicator-bottom-spacing'))
+      )
+      scale(1);
   }
 
   &__input:focus-visible ~ &__thumb-rail &__thumb-knob {

@@ -80,6 +80,7 @@ A slider allows quickly selecting a value from a range. Common uses include seek
 #### Value Indicator
 
 - `value-indicator-arrow-size`
+- `value-indicator-bottom-spacing`
 - `value-indicator-height`
 - `value-indicator-width`
 - `value-indicator-shape`
