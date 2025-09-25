@@ -167,29 +167,20 @@ ul code {
 }
 
 .switch-rich-example {
-  gap: 2px;
+  gap: 0px;
 }
 
 .switch-rich-example .flex-row {
-  background-color: var(--flexy-sys-palette-grey-10);
+  border-bottom: 1px solid var(--flexy-sys-palette-grey-20);
+  box-sizing: border-box;
   cursor: pointer;
   justify-content: space-between;
   gap: 0px;
   height: 56px;
-  max-width: 400px;
+  max-width: 320px;
   padding: 0px 16px;
 }
 
-.switch-rich-example .flex-row:first-child {
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-
-.switch-rich-example .flex-row:last-child {
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-}
-
 .switch-rich-example .flex-row:hover {
-  background-color: var(--flexy-sys-palette-grey-15);
+  background-color: var(--flexy-sys-palette-grey-10);
 }
