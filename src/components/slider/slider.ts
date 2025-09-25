@@ -105,10 +105,10 @@ export class FlexySliderComponent extends FlexyBaseComponent {
       inactiveTrack.style.transform = `scaleX(${1 - progress})`;
     }
     if (inactiveTicks) {
-      inactiveTicks.style.clipPath = `inset(0% 0% 0% ${progress * 100}%)`;
+      inactiveTicks.style.clipPath = `inset(0% 1% 0% ${Math.max(1, progress * 100)}%)`;
     }
     if (activeTicks) {
-      activeTicks.style.clipPath = `inset(0% ${100 - progress * 100}% 0% 0%)`;
+      activeTicks.style.clipPath = `inset(0% ${Math.max(1, 100 - progress * 100)}% 0% 1%)`;
     }
     if (activeTrack) {
       activeTrack.style.transform = `scaleX(${progress})`;

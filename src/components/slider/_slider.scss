@@ -104,12 +104,12 @@
 
   &__inactive-ticks {
     color: _token('ticks-inactive-color');
-    clip-path: inset(0% 0% 0% 50%);
+    clip-path: inset(0% 1% 0% 50%);
   }
 
   &__active-ticks {
     color: _token('ticks-active-color');
-    clip-path: inset(0% 50% 0% 0%);
+    clip-path: inset(0% 50% 0% 1%);
   }
 
   &__thumb-rail {
