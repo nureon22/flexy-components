@@ -246,4 +246,15 @@
   &--noanimation &__thumb {
     transition-duration: 0ms;
   }
+
+  /* For right-to-left locales, flip the slider in horizontal axis */
+  [dir='rtl'] &__track,
+  [dir='rtl'] &__ticks,
+  [dir='rtl'] &__thumb-rail {
+    transform: translate(-50%, -50%) scaleX(-1);
+  }
+
+  [dir='rtl'] &__thumb-knob {
+    transform: scaleX(-1);
+  }
 }
