@@ -1,0 +1,38 @@
+<style>
+  #slider-m3-latest {
+    --flexy-comp-slider-track-height: 16px;
+    --flexy-comp-slider-thumb-width: 16px;
+    --flexy-comp-slider-thumb-height: 48px;
+    --flexy-comp-slider-thumb-outline-width: 6px;
+    --flexy-comp-slider-thumb-outline-color: var(--flexy-sys-color-surface);
+    --flexy-comp-slider-ticks-size: 4px;
+    --flexy-comp-slider-value-indicator-arrow-size: 0px;
+    --flexy-comp-slider-value-indicator-text-size: 14px;
+    --flexy-comp-slider-value-indicator-shape: 20px;
+    --flexy-comp-slider-value-indicator-height: 40px;
+    --flexy-comp-slider-value-indicator-fill-color: var(--flexy-sys-palette-grey-80);
+    --flexy-comp-slider-value-indicator-text-color: var(--flexy-sys-color-surface);
+    --flexy-comp-slider-animation-sliding-duration: 80ms;
+  }
+  #slider-m3-latest .flexy-slider__value-indicator {
+    padding: 0px 8px;
+  }
+</style>
+<div class="flexy-slider" data-ticks-interval="10" id="slider-m3-latest">
+  <input type="range" class="flexy-slider__input" step="1" />
+  <div class="flexy-slider__track">
+    <div class="flexy-slider__inactive-track"></div>
+    <div class="flexy-slider__active-track"></div>
+  </div>
+  <div class="flexy-slider__ticks">
+    <div class="flexy-slider__inactive-ticks"></div>
+    <div class="flexy-slider__active-ticks"></div>
+  </div>
+  <div class="flexy-slider__thumb-rail">
+    <div class="flexy-slider__thumb">
+      <div class="flexy-slider__thumb-knob">
+        <div class="flexy-slider__value-indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>

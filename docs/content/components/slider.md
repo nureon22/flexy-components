@@ -30,6 +30,17 @@ A slider allows quickly selecting a value from a range. Common uses include seek
 
 {{< example example=slider-value-indicator-m3 >}}
 
+### Material 3 Latest Design
+
+Normally, the slider doesn’t support the latest Material 3 design, but you can
+use its design tokens and a few tricks to style it as close as possible to the
+Material 3 slider.
+
+See [Material 3 Slider](https://m3.material.io/components/sliders/overview) for
+Latest Material 3 Design slider.
+
+{{< example example=slider-m3-latest >}}
+
 ### Icon Button Prefix
 
 {{< example example=slider-icon-prefix >}}
