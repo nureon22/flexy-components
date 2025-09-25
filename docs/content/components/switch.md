@@ -23,7 +23,7 @@ whatever icon you want.
 
 ### Disabled
 
-To render a switch as selected by default, add the checked attribute to the <input> element.
+To render a switch as selected by default, add the checked attribute to the &lt;input&gt; element.
 
 {{< example example=switch-disabled >}}
 

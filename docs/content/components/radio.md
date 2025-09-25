@@ -17,7 +17,7 @@ option from a set of options.
 
 ### Disabled
 
-To render a radio as non-interactive, add the disabled attribute to the <input> element
+To render a radio as non-interactive, add the disabled attribute to the &lt;input&gt; element
 
 {{< example example=radio-disabled >}}
 

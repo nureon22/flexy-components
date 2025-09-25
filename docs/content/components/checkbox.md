@@ -18,13 +18,13 @@ when multiple selections or partial states are involved.
 
 ### Checked
 
-To render a checkbox as selected by default, add the `checked` attribute to the `<input>` element.
+To render a checkbox as selected by default, add the `checked` attribute to the &lt;input&gt; element.
 
 {{< example example=checkbox-checked >}}
 
 ### Disabled
 
-To render a checkbox as non-interactive, add the `disabled` attribute to the `<input>` element.
+To render a checkbox as non-interactive, add the `disabled` attribute to the &lt;input&gt; element.
 
 {{< example example=checkbox-disabled >}}
 
