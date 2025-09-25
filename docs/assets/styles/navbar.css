@@ -15,8 +15,8 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--flexy-sys-palette-tint-30);
-  box-shadow: 0px 0px 3px #000000c0;
+  background-color: var(--flexy-sys-color-surface);
+  border-bottom: 1px solid var(--flexy-sys-palette-grey-20);
   padding: 0px 12px;
   position: fixed;
   left: 0;

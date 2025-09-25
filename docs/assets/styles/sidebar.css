@@ -5,8 +5,8 @@ body {
 }
 
 .sidebar {
-  background-color: var(--flexy-sys-palette-grey-5);
-  border-right: 1px solid var(--flexy-sys-palette-grey-20);
+  background-color: var(--flexy-sys-color-surface);
+  border-right: 1px solid var(--flexy-sys-palette-grey-10);
   box-sizing: border-box;
   position: fixed;
   left: 0;
