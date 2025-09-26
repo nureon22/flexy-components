@@ -46,5 +46,6 @@ Tabs allow you to organize multiple views within a single container and display 
 - `tablist-divider-margin`
 - `tablist-fill-color`
 - `tablist-height`
+- `tablist-padding`
 - `tablist-shape`
 - `tablist-spacing`
