@@ -24,7 +24,7 @@
   height: _token('tablist-height');
   margin-bottom: _token('tablist-divider-margin');
   overflow: auto hidden;
-  padding: 0px calc((_token('tablist-height') - _token('tab-height')) / 2);
+  padding: 0px _token('tablist-padding');
 }
 
 .flexy-tab {

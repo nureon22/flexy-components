@@ -19,6 +19,7 @@ $_flexy-comp-tabs: (
   tablist-height: calc(48px + 4px * $flexy-sys-ref-density),
   tablist-shape: 0px,
   tablist-spacing: 4px,
+  tablist-padding: 0px,
 );
 
 $flexy-comp-tabs: ();
