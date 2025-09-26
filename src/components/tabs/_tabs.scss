@@ -19,6 +19,7 @@
   background-color: _token('tablist-fill-color');
   border-bottom: 1px solid _token('tablist-divider-color');
   border-radius: _token('tablist-shape');
+  box-sizing: border-box;
   gap: _token('tablist-spacing');
   height: _token('tablist-height');
   margin-bottom: _token('tablist-divider-margin');
