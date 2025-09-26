@@ -17,7 +17,7 @@ $_flexy-comp-slider: (
   track-active-color: $flexy-sys-color-primary,
   track-active-gradient: none,
   track-height: 4px,
-  track-inactive-color: $flexy-sys-palette-tint-20,
+  track-inactive-color: $flexy-sys-palette-grey-20,
   track-inactive-gradient: none,
   track-shape: map.get($flexy-sys-shape, 'full'),
   ticks-active-color: $flexy-sys-color-on-primary,
