@@ -1,2 +1,18 @@
-$flexy-sys-typography-sans-serif: 'Inter', sans-serif;
-$flexy-sys-typography-monospace: monospace;
+$flexy-sys-typography-sans-serif:
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  Roboto,
+  'Helvetica Neue',
+  'Noto Sans',
+  'Liberation Sans',
+  Arial,
+  sans-serif,
+  'Apple Color Emoji',
+  'Segoe UI Emoji',
+  'Segoe UI Symbol',
+  'Noto Color Emoji';
+
+$flexy-sys-typography-monospace:
+  SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+  monospace;
