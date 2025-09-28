@@ -11,31 +11,31 @@ import { afterPageLoad } from './utils';
 
 afterPageLoad().then(() => {
   document.querySelectorAll('.flexy-button').forEach((el) => {
-    if (el instanceof HTMLElement) new FlexyButtonComponent(el);
+    if (el instanceof HTMLElement) FlexyButtonComponent.attach(el);
   });
   document.querySelectorAll('.flexy-checkbox').forEach((el) => {
-    if (el instanceof HTMLElement) new FlexyCheckboxComponent(el);
+    if (el instanceof HTMLElement) FlexyCheckboxComponent.attach(el);
   });
   document.querySelectorAll('.flexy-progressbar').forEach((el) => {
-    if (el instanceof HTMLElement) new FlexyProgressbarComponent(el);
+    if (el instanceof HTMLElement) FlexyProgressbarComponent.attach(el);
   });
   document.querySelectorAll('.flexy-radio').forEach((el) => {
-    if (el instanceof HTMLElement) new FlexyRadioComponent(el);
+    if (el instanceof HTMLElement) FlexyRadioComponent.attach(el);
   });
   document.querySelectorAll('.flexy-switch').forEach((el) => {
-    if (el instanceof HTMLElement) new FlexySwitchComponent(el);
+    if (el instanceof HTMLElement) FlexySwitchComponent.attach(el);
   });
   document.querySelectorAll('.flexy-slider').forEach((el) => {
-    if (el instanceof HTMLElement) new FlexySliderComponent(el);
+    if (el instanceof HTMLElement) FlexySliderComponent.attach(el);
   });
   document.querySelectorAll('.flexy-tabs').forEach((el) => {
-    if (el instanceof HTMLElement) new FlexyTabsComponent(el);
+    if (el instanceof HTMLElement) FlexyTabsComponent.attach(el);
   });
   document.querySelectorAll('.flexy-textfield').forEach((el) => {
-    if (el instanceof HTMLElement) new FlexyTextfieldComponent(el);
+    if (el instanceof HTMLElement) FlexyTextfieldComponent.attach(el);
   });
   document.querySelectorAll('.flexy-tooltip').forEach((el) => {
-    if (el instanceof HTMLElement) new FlexyTooltipComponent(el);
+    if (el instanceof HTMLElement) FlexyTooltipComponent.attach(el);
   });
 });
 
