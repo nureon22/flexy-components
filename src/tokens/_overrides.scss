@@ -1,11 +1,13 @@
 @use 'sass:map';
 @use 'flexy-comp-button' as *;
 @use 'flexy-comp-checkbox' as *;
+@use 'flexy-comp-progressbar' as *;
 @use 'flexy-comp-radio' as *;
 @use 'flexy-comp-slider' as *;
 @use 'flexy-comp-switch' as *;
 @use 'flexy-comp-tabs' as *;
 @use 'flexy-comp-textfield' as *;
+@use 'flexy-comp-tooltip' as *;
 
 @mixin _override($tokens, $default-tokens, $prefix) {
   @each $name, $value in $tokens {
@@ -23,6 +25,10 @@
 
 @mixin checkbox-overrides($tokens) {
   @include _override($tokens, $flexy-comp-checkbox, 'flexy-comp-checkbox');
+}
+
+@mixin progressbar-overrides($tokens) {
+  @include _override($tokens, $flexy-comp-progressbar, 'flexy-comp-progressbar');
 }
 
 @mixin radio-overrides($tokens) {
@@ -43,4 +49,8 @@
 
 @mixin textfield-overrides($tokens) {
   @include _override($tokens, $flexy-comp-textfield, 'flexy-comp-textfield');
+}
+
+@mixin tooltip-overrides($tokens) {
+  @include _override($tokens, $flexy-comp-tooltip, 'flexy-comp-tooltip');
 }
