@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use 'flexy-sys-color' as *;
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-shape' as *;
+@use 'flexy-sys-ref' as *;
+
+$_flexy-comp-progressbar: (
+  track-height: 4px,
+  track-shape: map.get($flexy-sys-shape, 'full'),
+  track-inactive-color: $flexy-sys-color-primary,
+  track-inactive-opacity: 0.2,
+  track-active-color: $flexy-sys-color-primary,
+  jump-animation-duration: 200ms,
+  indeterminate-animation-duration: 1500ms,
+);
+
+$flexy-comp-progressbar: ();
+
+@each $name, $value in $_flexy-comp-progressbar {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-progressbar-#{$name}, #{$value});
+  }
+  $flexy-comp-progressbar: map.set($flexy-comp-progressbar, $name, $value);
+}

@@ -1,5 +1,6 @@
 import { FlexyButtonComponent } from './components/button';
 import { FlexyCheckboxComponent } from './components/checkbox';
+import { FlexyProgressbarComponent } from './components/progressbar';
 import { FlexyRadioComponent } from './components/radio';
 import { FlexySliderComponent } from './components/slider';
 import { FlexySwitchComponent } from './components/switch';
@@ -14,6 +15,9 @@ afterPageLoad().then(() => {
   });
   document.querySelectorAll('.flexy-checkbox').forEach((el) => {
     if (el instanceof HTMLElement) new FlexyCheckboxComponent(el);
+  });
+  document.querySelectorAll('.flexy-progressbar').forEach((el) => {
+    if (el instanceof HTMLElement) new FlexyProgressbarComponent(el);
   });
   document.querySelectorAll('.flexy-radio').forEach((el) => {
     if (el instanceof HTMLElement) new FlexyRadioComponent(el);

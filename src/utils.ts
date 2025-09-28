@@ -47,3 +47,8 @@ export function uniqueId(prefix: string = '') {
 }
 
 uniqueId._counter = 0;
+
+
+export function clamp(min: number, now: number, max: number): number {
+  return Math.min(Math.max(min, now), max);
+}

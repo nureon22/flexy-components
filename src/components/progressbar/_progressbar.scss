@@ -1,0 +1,51 @@
+@use '../../tokens';
+@use '../../utils';
+
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-progressbar, $token);
+}
+
+.flexy-progressbar {
+  display: block;
+  border-radius: _token('track-shape');
+  height: _token('track-height');
+  overflow: hidden;
+  position: relative;
+
+  &__inactive-track,
+  &__active-track {
+    border-radius: inherit;
+    @include utils.absolute-fill();
+    transition: transform _token('jump-animation-duration') linear 0ms;
+  }
+
+  &__inactive-track {
+    background-color: _token('track-inactive-color');
+    opacity: _token('track-inactive-opacity');
+    order: 2;
+  }
+
+  &__active-track {
+    background-color: _token('track-active-color');
+    transform: translateX(-100%);
+    order: 1;
+  }
+
+  &:not([aria-valuenow]) &__active-track {
+    animation: flexy-indeterminate-progressbar-1
+      _token('indeterminate-animation-duration') linear 0s infinite;
+    transform-origin: left center;
+  }
+}
+
+@keyframes flexy-indeterminate-progressbar-1 {
+  0% {
+    transform: translateX(-25%) scaleX(0);
+  }
+  50% {
+    transform: translateX(-25%) scaleX(0.8);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0.1);
+  }
+}
