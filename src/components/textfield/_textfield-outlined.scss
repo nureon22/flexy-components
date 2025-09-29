@@ -32,8 +32,7 @@
       border-top-left-radius: inherit;
       border-bottom-left-radius: inherit;
       border-style: solid none solid solid;
-      flex-shrink: 0;
-      width: calc(_token('container-padding') - 4px / 0.75);
+      width: 100%;
     }
 
     &::after {
@@ -79,6 +78,11 @@
     padding-right: 4px;
     transform: translateY(calc(-50% + (_token('container-height') / 2)))
       scale(calc(1 / _token('label-floating-scale')));
+  }
+
+  &--with-floating-label &__outlined::before {
+    flex-shrink: 0;
+    width: calc(_token('container-padding') - 4px / 0.75);
   }
 
   &--with-leading-icon &__outlined::before {
