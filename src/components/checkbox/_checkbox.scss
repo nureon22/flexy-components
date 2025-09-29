@@ -48,7 +48,7 @@
       stroke-width: 20;
       stroke: transparent;
       transition: {
-        property: stroke-dashoffset;
+        property: stroke-dashoffset, transform;
         duration: _token('state-transition-duration');
         timing-function: _token('state-transition-easing');
       }
@@ -61,8 +61,8 @@
   }
 
   &__indeterminate-mark {
-    stroke-dasharray: 70;
-    stroke-dashoffset: 70;
+    transform: scale(0);
+    transform-origin: center;
   }
 
   input:hover ~ &__box {
@@ -81,7 +81,7 @@
 
   input:indeterminate ~ &__box &__indeterminate-mark {
     stroke: _token('mark-color');
-    stroke-dashoffset: 0;
+    transform: scale(1);
   }
 
   input:indeterminate ~ &__box,
