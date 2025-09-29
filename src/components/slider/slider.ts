@@ -6,9 +6,7 @@ export class FlexySliderComponent extends FlexyBaseComponent {
 
   readonly _children = {
     activeTrack: this.getChild('active-track'),
-    inactiveTrack: this.getChild('inactive-track'),
     activeTicks: this.getChild('active-ticks'),
-    inactiveTicks: this.getChild('inactive-ticks'),
     thumb: this.getChild('thumb'),
     valueIndicator:
       this.getChild('value-indicator') || this.getChild('value-indicator-m3'),
@@ -88,8 +86,6 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     if (!this.input) return;
 
     const {
-      inactiveTrack,
-      inactiveTicks,
       activeTrack,
       activeTicks,
       thumb,
@@ -101,12 +97,6 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     const value = Number(this.input.value || '0');
     const progress = (value - min) / (max - min);
 
-    if (inactiveTrack) {
-      inactiveTrack.style.transform = `scaleX(${1 - progress})`;
-    }
-    if (inactiveTicks) {
-      inactiveTicks.style.clipPath = `inset(0% 1% 0% ${Math.max(1, progress * 100)}%)`;
-    }
     if (activeTicks) {
       activeTicks.style.clipPath = `inset(0% ${Math.max(1, 100 - progress * 100)}% 0% 1%)`;
     }

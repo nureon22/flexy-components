@@ -74,8 +74,6 @@
   &__inactive-track {
     background-color: _token('track-inactive-color');
     background-image: _token('track-inactive-gradient');
-    transform: scaleX(0.5);
-    transform-origin: right center;
   }
 
   &__active-track {
@@ -104,7 +102,7 @@
 
   &__inactive-ticks {
     color: _token('ticks-inactive-color');
-    clip-path: inset(0% 1% 0% 50%);
+    clip-path: inset(0% 1% 0% 0%);
   }
 
   &__active-ticks {
