@@ -1,0 +1,26 @@
+<meta charset="UTF-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=5.0"
+/>
+<title>{{ .Title }} - {{ .Site.Title }}</title>
+<meta
+  name="description"
+  content="Build consistent and performant web interfaces with Flexy UI components"
+/>
+<meta
+  name="google-site-verification"
+  content="{{ site.Params.google_site_verification }}"
+/>
+
+<script>
+  void (function () {
+    const media = matchMedia('(prefers-color-scheme: dark)');
+    const defaultTheme = media.matches ? 'dark' : 'light';
+    const savedTheme = sessionStorage.getItem('theme') || defaultTheme;
+    document.documentElement.classList.add(savedTheme);
+  })();
+</script>
+
+{{- partial "styles.html" . }}
+{{- partial "scripts.html" . }}

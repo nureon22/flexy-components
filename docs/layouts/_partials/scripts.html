@@ -2,13 +2,13 @@
   {{- if hugo.IsProduction }}
     {{- with . | fingerprint }}
       <script
-        type="module"
+        defer
         src="{{ .RelPermalink }}"
         integrity="{{ .Data.Integrity }}"
       ></script>
     {{- end }}
   {{- else }}
-    <script type="module" src="{{ .RelPermalink }}"></script>
+    <script defer src="{{ .RelPermalink }}"></script>
 
     {{- with resources.Get "iife/main.js.map" }}
       <!--{{ .RelPermalink }}-->
