@@ -86,29 +86,35 @@
 
   &__inactive-ticks,
   &__active-ticks {
-    $_ticks-size: calc(_token('ticks-size') / 2);
-
-    display: block;
-    background-image: radial-gradient(
-      circle at $_ticks-size,
-      currentcolor $_ticks-size,
-      transparent $_ticks-size
-    );
-    background-size: 10% 100%;
-    background-position: calc(-1 * $_ticks-size) center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    padding: 0px calc(_token('ticks-size') / 2);
     transition: clip-path _token('animation-jumping-duration')
       _token('animation-jumping-easing');
     @include utils.absolute-fill();
+
+    & > span {
+      border-radius: 50%;
+      @include utils.size(_token('ticks-size'));
+    }
   }
 
   &__inactive-ticks {
-    color: _token('ticks-inactive-color');
     clip-path: inset(0% 1% 0% 1%);
+
+    & > span {
+      background-color: _token('ticks-inactive-color');
+    }
   }
 
   &__active-ticks {
-    color: _token('ticks-active-color');
     clip-path: inset(0% 50% 0% 1%);
+
+    & > span {
+      background-color: _token('ticks-active-color');
+    }
   }
 
   &__thumb-rail {

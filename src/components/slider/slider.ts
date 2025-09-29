@@ -100,7 +100,7 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     const progress = (value - min) / (max - min);
 
     if (activeTicks) {
-      activeTicks.style.clipPath = `inset(0% ${Math.max(1, 100 - progress * 100)}% 0% 1%)`;
+      activeTicks.style.clipPath = `inset(0% ${Math.max(0, 100 - progress * 100)}% 0% 0%)`;
     }
     if (activeTrack) {
       activeTrack.style.transform = `scaleX(${progress})`;
@@ -117,13 +117,14 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     if (!this.input) return;
 
     const { activeTicks, inactiveTicks } = this._children;
-    const backgroundSize = this.ticksInterval * Number(this.input.step || '1');
+    const interval = 100 / (this.ticksInterval * Number(this.input.step || '1'));
+    const marks = Array.from({ length: interval - 1 }, () => '<span></span>');
 
     if (inactiveTicks) {
-      inactiveTicks.style.backgroundSize = `${backgroundSize}% 100%`;
+      inactiveTicks.innerHTML = marks.join('');
     }
     if (activeTicks) {
-      activeTicks.style.backgroundSize = `${backgroundSize}% 100%`;
+      activeTicks.innerHTML = marks.join('');
     }
   }
 }
