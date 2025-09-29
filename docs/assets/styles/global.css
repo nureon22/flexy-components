@@ -106,17 +106,21 @@ hr {
 }
 
 code {
+  background-color: var(--flexy-sys-palette-grey-10);
+  border-radius: 4px;
   display: inline-block;
   font-size: 14px;
   line-height: 24px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
-ul code {
-  background-color: var(--flexy-sys-palette-grey-15);
-  border-radius: 4px;
-  color: var(--flexy-sys-palette-grey-90);
-  padding: 0px 4px;
-  margin: 2px 0px;
+.highlight code {
+  background-color: initial;
+}
+
+ul li {
+  margin-bottom: 4px;
 }
 
 .example {
