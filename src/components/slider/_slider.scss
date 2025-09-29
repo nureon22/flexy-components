@@ -74,6 +74,7 @@
   &__inactive-track {
     background-color: _token('track-inactive-color');
     background-image: _token('track-inactive-gradient');
+    opacity: _token('track-inactive-opacity');
   }
 
   &__active-track {

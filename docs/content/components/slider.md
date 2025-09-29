@@ -80,6 +80,7 @@ button on the top navigation bar.
 - `track-height`
 - `track-inactive-color`
 - `track-inactive-gradient`
+- `track-inactive-opacity`
 - `track-shape`
 
 #### Ticks
