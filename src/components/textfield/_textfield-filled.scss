@@ -15,12 +15,12 @@
   }
 
   &__filled &__floating-label {
-    font-size: 0.75em;
+    font-size: calc(1em * _token('label-floating-scale'));
     position: absolute;
     left: _token('container-padding');
     top: 0%;
     transform: translateY(calc(-50% + (_token('container-height') / 2)))
-      scale(calc(1 / 0.75));
+      scale(calc(1 / _token('label-floating-scale')));
   }
 
   &--with-leading-icon &__filled &__floating-label {

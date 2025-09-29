@@ -87,7 +87,7 @@ display an error message in the supporting text.
 - `icon-hovered-color`
 - `icon-focused-color`
 - `icon-size`
-- `label-floating-size`
+- `label-floating-scale`
 - `label-floating-top-margin`
 - `label-floating-transition-duration`
 - `label-floating-transition-easing`

@@ -74,17 +74,17 @@
   }
 
   &__outlined &__floating-label {
-    font-size: 0.75em;
+    font-size: calc(1em * _token('label-floating-scale'));
     padding-left: 4px;
     padding-right: 4px;
     transform: translateY(calc(-50% + (_token('container-height') / 2)))
-      scale(calc(1 / 0.75));
+      scale(calc(1 / _token('label-floating-scale')));
   }
 
   &--with-leading-icon &__outlined::before {
     width: calc(
       _token('icon-leading-margin') + _token('icon-size') +
-        _token('icon-leading-spacing') - 4px / 0.75
+        _token('icon-leading-spacing') - 4px / _token('label-floating-scale')
     );
   }
 
