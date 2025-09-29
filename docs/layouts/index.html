@@ -1,23 +1,39 @@
 {{- define "main" }}
-  <div class="flex-column" style="align-items: center; margin-top: 32px;">
-    <h1 style="text-align: center;">{{ .Title }}</h1>
-    <p style="color: var(--flexy-sys-palette-grey-80)">
-      Build consistent and performant web interfaces with Flexy UI components
-    </p>
+  <style>
+    header {
+      padding-top: 2px;
+      text-align: center;
+      width: 100%;
+    }
+    header p {
+      opacity: 0.75;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    header .flexy-button {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+  </style>
 
-    <br />
+  <div class="flex-column" style="align-items: center;">
+    <header>
+      <h1>{{ .Title }}</h1>
+      <p>
+        Build consistent and performant web interfaces with Flexy UI components
+      </p>
 
-    <div style="margin-bottom: 64px;">
-      <a
-        class="flexy-button flexy-button--filled-primary flexy-button--xxl"
-        href="{{ relURL "components/button/" }}"
-        style="
-          font-weight: 500;
-        "
-      >
-        <span>Preview Components</span>
-      </a>
-    </div>
+      <div style="margin-bottom: 48px;">
+        <a
+          class="flexy-button flexy-button--filled-primary flexy-button--xxl"
+          href="{{ relURL "components/button/" }}"
+        >
+          <span>Preview Components</span>
+        </a>
+      </div>
+    </header>
+
+    <hr style="width: 100%;" />
 
     <div style="max-width: 100%;">{{ .Content }}</div>
   </div>
