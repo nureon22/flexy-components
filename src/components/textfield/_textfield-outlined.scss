@@ -33,7 +33,7 @@
       border-bottom-left-radius: inherit;
       border-style: solid none solid solid;
       flex-shrink: 0;
-      width: calc(_token('container-padding') - 4px);
+      width: calc(_token('container-padding') - 4px / 0.75);
     }
 
     &::after {
@@ -84,7 +84,7 @@
   &--with-leading-icon &__outlined::before {
     width: calc(
       _token('icon-leading-margin') + _token('icon-size') +
-        _token('icon-leading-spacing') - 4px
+        _token('icon-leading-spacing') - 4px / 0.75
     );
   }
 
@@ -111,7 +111,6 @@
 
   & input:focus ~ &__outlined &__floating-label,
   & input:not(:placeholder-shown) ~ &__outlined &__floating-label {
-    font-size: 12px;
     transform: translateY(-20%);
   }
 }
