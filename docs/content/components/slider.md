@@ -41,10 +41,6 @@ Latest Material 3 Design slider.
 
 {{< example example=slider-m3-latest >}}
 
-### Icon Button Prefix
-
-{{< example example=slider-icon-prefix >}}
-
 ### Gradient Track
 
 In this example, the slider is styled as a YouTube video player progress bar
@@ -56,14 +52,6 @@ To see the result more clearly, use the dark mode by clicking the theme toggle
 button on the top navigation bar.
 
 {{< example example=slider-gradient >}}
-
-### Thumb Icon
-
-{{< example example=slider-thumb-icon >}}
-
-### Thumb Less
-
-{{< example example=slider-thumb-less >}}
 
 ## Customization
 

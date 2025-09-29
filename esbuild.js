@@ -22,6 +22,7 @@ function getBuildOptions(format) {
     bundle: true,
     logLevel: 'info',
     minify: isProduction,
+    globalName: 'flexy',
     sourcemap: !isProduction,
     sourcesContent: !isProduction,
     plugins: [
