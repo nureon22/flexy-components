@@ -25,14 +25,9 @@
 
   &__circle {
     border-radius: 50%;
-    /* Use box-shadow instead of border to get smooth animation */
-    box-shadow: inset 0px 0px 0px _token('unselected-outline-width')
+    border: _token('unselected-outline-width') solid
       _token('unselected-outline-color');
-    transition:
-      box-shadow _token('state-transition-duration')
-        _token('state-transition-easing'),
-      border _token('state-transition-duration')
-        _token('state-transition-easing');
+    box-sizing: border-box;
     pointer-events: none;
     @include utils.absolute-fill();
 
@@ -50,8 +45,7 @@
   }
 
   input:hover ~ &__circle {
-    box-shadow: inset 0px 0px 0px _token('unselected-outline-width')
-      _token('unselected-hovered-outline-color');
+    border-color: _token('unselected-hovered-outline-color');
   }
 
   input:focus-visible ~ &__circle {
@@ -60,7 +54,7 @@
   }
 
   input:checked ~ &__circle {
-    box-shadow: inset 0px 0px 0px _token('selected-outline-width')
+    border: _token('selected-outline-width') solid
       _token('selected-outline-color');
 
     &::before {
