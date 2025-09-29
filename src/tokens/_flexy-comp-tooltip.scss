@@ -1,13 +1,12 @@
 @use 'sass:map';
 @use 'flexy-sys-color' as *;
 @use 'flexy-sys-ref' as *;
-@use 'flexy-sys-motion' as *;
 @use 'flexy-sys-palette' as *;
 @use 'flexy-sys-shape' as *;
 
 $_flexy-comp-tooltip: (
-  animation-duration: 250ms,
-  animation-easing: $flexy-sys-motion-ease-out-cubic,
+  animation-duration: 150ms,
+  animation-easing: ease-out,
   fill-color: $flexy-sys-palette-grey-90,
   max-width: 240px,
   padding: 4px 8px,

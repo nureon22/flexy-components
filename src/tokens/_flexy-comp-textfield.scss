@@ -1,6 +1,5 @@
 @use 'sass:map';
 @use 'flexy-sys-color' as *;
-@use 'flexy-sys-motion' as *;
 @use 'flexy-sys-palette' as *;
 @use 'flexy-sys-ref' as *;
 @use 'flexy-sys-shape' as *;
@@ -22,8 +21,8 @@ $_flexy-comp-textfield: (
 
   label-floating-size: 0.75em,
   label-floating-top-margin: 6px,
-  label-floating-transition-duration: 200ms,
-  label-floating-transition-easing: $flexy-sys-motion-ease-out-cubic,
+  label-floating-transition-duration: 150ms,
+  label-floating-transition-easing: ease-out,
 
   prefix-text-margin: 2px,
   prefix-text-color: $flexy-sys-palette-grey-90,

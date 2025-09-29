@@ -1,6 +1,5 @@
 @use 'sass:map';
 @use 'flexy-sys-color' as *;
-@use 'flexy-sys-motion' as *;
 @use 'flexy-sys-palette' as *;
 @use 'flexy-sys-ref' as *;
 @use 'flexy-sys-shape' as *;
@@ -35,7 +34,7 @@ $_flexy-comp-slider: (
   value-indicator-m3-size: 28px,
   value-indicator-bottom-spacing: 4px,
   animation-jumping-duration: 0ms,
-  animation-jumping-easing: $flexy-sys-motion-ease-out-cubic,
+  animation-jumping-easing: ease-out,
   animation-sliding-duration: 0ms,
   animation-sliding-easing: ease,
 );

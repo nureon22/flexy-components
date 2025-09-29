@@ -1,6 +1,5 @@
 @use 'sass:map';
 @use 'flexy-sys-color' as *;
-@use 'flexy-sys-motion' as *;
 @use 'flexy-sys-palette' as *;
 @use 'flexy-sys-ref' as *;
 @use 'flexy-sys-shape' as *;
@@ -14,8 +13,8 @@ $_flexy-comp-checkbox: (
   unselected-hovered-outline-color: $flexy-sys-palette-grey-100,
   selected-fill-color: $flexy-sys-color-primary,
   selected-outline-color: $flexy-sys-color-primary,
-  state-transition-duration: 200ms,
-  state-transition-easing: $flexy-sys-motion-ease-out-quart,
+  state-transition-duration: 150ms,
+  state-transition-easing: ease-out,
 );
 
 $flexy-comp-checkbox: ();

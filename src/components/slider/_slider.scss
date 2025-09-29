@@ -154,7 +154,7 @@
     bottom: 100%;
     transform: translate(-50%, 0%) scale(0);
     transform-origin: center bottom;
-    transition: transform 200ms tokens.$flexy-sys-motion-ease-out-cubic;
+    transition: transform 150ms ease-out;
   }
 
   &__value-indicator {

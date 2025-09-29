@@ -2,7 +2,7 @@
 @use '../../tokens';
 @use '../../utils';
 
-$_transition: 200ms tokens.$flexy-sys-motion-ease-out-quart;
+$_transition: 150ms ease-out;
 
 /// get component token
 @function _token($token) {

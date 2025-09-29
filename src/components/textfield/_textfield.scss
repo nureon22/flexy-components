@@ -182,7 +182,7 @@
   & input:invalid ~ &__filled &__floating-label,
   & input:invalid ~ &__outlined &__floating-label {
     color: _token('invalid-label-color');
-    animation: flexy-textfield-label-shaking 120ms ease 0ms 3;
+    animation: flexy-textfield-label-shaking 100ms ease 0ms 3;
   }
 
   /* order children */
