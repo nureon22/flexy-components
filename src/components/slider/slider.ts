@@ -5,6 +5,8 @@ export class FlexySliderComponent extends FlexyBaseComponent {
   readonly input: HTMLInputElement | null = this.host.querySelector('input');
 
   readonly _children = {
+    inactiveTrack: this.getChild('inactive-track'),
+    inactiveTicks: this.getChild('inactive-ticks'),
     activeTrack: this.getChild('active-track'),
     activeTicks: this.getChild('active-ticks'),
     thumb: this.getChild('thumb'),

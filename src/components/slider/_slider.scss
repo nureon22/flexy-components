@@ -102,7 +102,7 @@
 
   &__inactive-ticks {
     color: _token('ticks-inactive-color');
-    clip-path: inset(0% 1% 0% 0%);
+    clip-path: inset(0% 1% 0% 1%);
   }
 
   &__active-ticks {
