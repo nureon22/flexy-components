@@ -30,11 +30,6 @@
     box-sizing: border-box;
     pointer-events: none;
     @include utils.absolute-fill();
-    transition: {
-      property: background-color, border-color;
-      duration: _token('state-transition-duration');
-      timing-function: _token('state-transition-easing');
-    }
   }
 
   &__mark-icon {
