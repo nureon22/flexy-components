@@ -27,6 +27,16 @@
   overflow: auto hidden;
   padding: 0px _token('tablist-padding');
   position: relative;
+
+  @each $alignment in (start, center, end) {
+    &--align-#{$alignment} {
+      justify-content: $alignment;
+
+      .flexy-tab {
+        width: auto;
+      }
+    }
+  }
 }
 
 .flexy-tab {

@@ -28,6 +28,9 @@ Tabs allow you to organize multiple views within a single container and display 
 
 - `flexy-tabs`
 - `flexy-tablist`
+- `flexy-tablist--align-start`
+- `flexy-tablist--align-center`
+- `flexy-tablist--align-end`
 - `flexy-tab`
 - `flexy-tab-indicator`
 - `flexy-tab-panels`
