@@ -42,9 +42,11 @@ afterPageLoad().then(() => {
 export {
   FlexyButtonComponent,
   FlexyCheckboxComponent,
+  FlexyProgressbarComponent,
   FlexyRadioComponent,
   FlexySliderComponent,
   FlexySwitchComponent,
   FlexyTabsComponent,
   FlexyTextfieldComponent,
+  FlexyTooltipComponent,
 };
