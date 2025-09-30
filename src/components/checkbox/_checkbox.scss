@@ -33,6 +33,8 @@
   }
 
   &__mark-icon {
+    border: _token('outline-width') solid transparent;
+    box-sizing: border-box;
     @include utils.absolute-fill();
 
     path {
@@ -69,12 +71,12 @@
     outline: 2px solid tokens.$flexy-sys-color-primary;
   }
 
-  input:checked ~ &__box &__check-mark {
+  input:checked ~ &__mark-icon &__check-mark {
     stroke-dashoffset: 0;
     stroke: _token('mark-color');
   }
 
-  input:indeterminate ~ &__box &__indeterminate-mark {
+  input:indeterminate ~ &__mark-icon &__indeterminate-mark {
     stroke: _token('mark-color');
     transform: scale(1);
   }

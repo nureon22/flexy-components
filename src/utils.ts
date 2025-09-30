@@ -48,7 +48,55 @@ export function uniqueId(prefix: string = '') {
 
 uniqueId._counter = 0;
 
-
 export function clamp(min: number, now: number, max: number): number {
   return Math.min(Math.max(min, now), max);
+}
+
+export interface ElementCreationConfig {
+  attributes?: Record<string, string>;
+  children?: Array<Node | string>;
+  id?: string;
+}
+
+export function configureElement<T extends Element>(
+  element: T,
+  config?: ElementCreationConfig,
+): T {
+  const { attributes, children, id } = config || {};
+
+  for (const name in attributes) {
+    if (attributes[name]) {
+      element.setAttribute(name, attributes[name]);
+    }
+  }
+
+  if (children) {
+    const safeChildren = children.filter((child) => {
+      return (child && (typeof child == 'string' || child instanceof Node));
+    });
+    element.append(...safeChildren);
+  }
+
+  if (id) {
+    element.id ||= id;
+  }
+
+  return element;
+}
+
+export function createHTMLElement<K extends keyof HTMLElementTagNameMap>(
+  tagName: K,
+  config?: ElementCreationConfig,
+): HTMLElementTagNameMap[K] {
+  return configureElement(document.createElement(tagName), config);
+}
+
+export function createSVGElement<K extends keyof SVGElementTagNameMap>(
+  qualifiedName: K,
+  config?: ElementCreationConfig,
+): SVGElementTagNameMap[K] {
+  return configureElement(
+    document.createElementNS('http://www.w3.org/2000/svg', qualifiedName),
+    config,
+  );
 }

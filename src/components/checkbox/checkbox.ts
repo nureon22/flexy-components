@@ -1,3 +1,4 @@
+import { createSVGElement } from '../../utils';
 import { FlexyBaseComponent } from '../base';
 
 const initedCheckboxes = new Map<Element, FlexyCheckboxComponent>();
@@ -91,15 +92,30 @@ export class FlexyCheckboxComponent extends FlexyBaseComponent {
 
   /** add svg mark icons, do not call this function more than once */
   addMarkIcon() {
-    const box = this.host.querySelector('.flexy-checkbox__box');
-
-    if (box) {
-      box.innerHTML += [
-        '<svg viewBox="0 0 100 100" aria-hidden="true" class="flexy-checkbox__mark-icon">',
-        '<path class="flexy-checkbox__check-mark" d="M15,55 40,85 85,20"></path>',
-        '<path class="flexy-checkbox__indeterminate-mark" d="M15,50 50,50 85,50"></path>',
-        '</svg>',
-      ].join('');
-    }
+    this.host.append(FlexyCheckboxComponent.templates.markIcon.cloneNode(true));
   }
+
+  static templates = {
+    markIcon: createSVGElement('svg', {
+      attributes: {
+        'viewBox': '0 0 100 100',
+        'aria-hidden': 'true',
+        'class': 'flexy-checkbox__mark-icon',
+      },
+      children: [
+        createSVGElement('path', {
+          attributes: {
+            class: 'flexy-checkbox__check-mark',
+            d: 'M15,55 40,85 85,20',
+          },
+        }),
+        createSVGElement('path', {
+          attributes: {
+            class: 'flexy-checkbox__indeterminate-mark',
+            d: 'M15,50 50,50 85,50',
+          },
+        }),
+      ],
+    }),
+  };
 }
