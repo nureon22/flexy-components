@@ -6,31 +6,38 @@
 
 $_flexy-comp-switch: (
   thumb-height: 20px,
-  thumb-shape: 10px,
+  thumb-shape: map.get($flexy-sys-shape, 'full'),
   thumb-width: 20px,
-  thumb-shadow: 0px 0px 3px -1px black,
+  thumb-shadow: 0px 1px 5px -2px #000000c0,
   track-height: 28px,
-  track-shape: 14px,
+  track-shape: map.get($flexy-sys-shape, 'full'),
   track-width: 48px,
   icon-size: 16px,
+  indicator-size: 12px,
 
   focus-ring-color: $flexy-sys-color-primary,
 
+  unselected-indicator-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="20"></circle></svg>'),
+  unselected-indicator-color: $flexy-sys-palette-grey-100,
   unselected-track-color: $flexy-sys-palette-grey-30,
   unselected-thumb-color: #ffffff,
   unselected-icon-color: #404040,
 
+  selected-indicator-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,15 L50,85" stroke="black" stroke-width="30" stroke-linecap="round"></path></svg>'),
+  selected-indicator-color: $flexy-sys-color-on-primary,
   selected-track-color: $flexy-sys-color-primary,
   selected-thumb-color: $flexy-sys-color-on-primary,
   selected-icon-color: $flexy-sys-color-primary,
 
+  disabled-unselected-indicator-color: $flexy-sys-palette-grey-40,
   disabled-unselected-track-color: $flexy-sys-palette-grey-20,
-  disabled-unselected-thumb-color: $flexy-sys-palette-grey-35,
+  disabled-unselected-thumb-color: $flexy-sys-palette-grey-40,
   disabled-unselected-icon-color: $flexy-sys-palette-grey-20,
 
-  disabled-selected-track-color: $flexy-sys-palette-grey-30,
-  disabled-selected-thumb-color: $flexy-sys-palette-grey-15,
-  disabled-selected-icon-color: $flexy-sys-palette-grey-30,
+  disabled-selected-indicator-color: $flexy-sys-palette-grey-20,
+  disabled-selected-track-color: $flexy-sys-palette-grey-40,
+  disabled-selected-thumb-color: $flexy-sys-palette-grey-20,
+  disabled-selected-icon-color: $flexy-sys-palette-grey-40,
 );
 
 $flexy-comp-switch: ();

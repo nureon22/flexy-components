@@ -48,6 +48,31 @@ $_transition: 150ms ease-out;
     }
   }
 
+  &__indicator {
+    &::before,
+    &::after {
+      content: '';
+      mask-size: _token('indicator-size');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      position: absolute;
+      top: 0;
+      @include utils.size(_token('track-height'));
+    }
+
+    &::before {
+      background-color: _token('selected-indicator-color');
+      mask-image: _token('selected-indicator-icon');
+      left: 0;
+    }
+
+    &::after {
+      background-color: _token('unselected-indicator-color');
+      mask-image: _token('unselected-indicator-icon');
+      right: 0;
+    }
+  }
+
   &__thumb {
     display: block;
     pointer-events: none;
@@ -126,6 +151,14 @@ $_transition: 150ms ease-out;
 
   &__input:disabled {
     pointer-events: none;
+  }
+
+  &__input:disabled ~ &__indicator::before {
+    background-color: _token('disabled-selected-indicator-color');
+  }
+
+  &__input:disabled ~ &__indicator::after {
+    background-color: _token('disabled-unselected-indicator-color');
   }
 
   &__input:disabled ~ &__track {
