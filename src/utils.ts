@@ -28,6 +28,16 @@ export function subscribeEvent<
   options?: boolean | AddEventListenerOptions,
 ): () => void;
 
+export function subscribeEvent<
+  T extends Window,
+  K extends keyof WindowEventMap,
+>(
+  target: T,
+  type: K,
+  listener: (this: T, event: WindowEventMap[K]) => void,
+  options?: boolean | AddEventListenerOptions,
+): () => void;
+
 export function subscribeEvent<T extends EventTarget, K extends string>(
   target: T,
   type: K,

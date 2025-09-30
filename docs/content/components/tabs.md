@@ -29,6 +29,7 @@ Tabs allow you to organize multiple views within a single container and display 
 - `flexy-tabs`
 - `flexy-tablist`
 - `flexy-tab`
+- `flexy-tab-indicator`
 - `flexy-tab-panels`
 - `flexy-tab-panel`
 
@@ -36,12 +37,15 @@ Tabs allow you to organize multiple views within a single container and display 
 
 - `tab-height`
 - `tab-padding`
+- `tab-indicator-height`
+- `tab-indicator-color`
 - `tab-selected-fill-color`
 - `tab-selected-label-color`
 - `tab-shape`
 - `tab-spacing`
 - `tab-unselected-fill-color`
 - `tab-unselected-label-color`
+- `tablist-divider-height`
 - `tablist-divider-color`
 - `tablist-divider-margin`
 - `tablist-fill-color`

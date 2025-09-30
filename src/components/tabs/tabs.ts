@@ -1,17 +1,27 @@
 import RippleEffect from '@nureon22/ripple-effect';
+import { subscribeEvent, uniqueId } from '../../utils';
 import { FlexyBaseComponent } from '../base';
-import { uniqueId } from '../../utils';
 
 export class FlexyTabsComponent extends FlexyBaseComponent {
   selectedTab = 0;
 
-  readonly tabs = Array.from(
-    this.host.querySelector('.flexy-tablist')?.children || [],
-  ).filter((tab) => tab.matches('.flexy-tab')) as HTMLElement[];
+  readonly tablist = this.host.querySelector(
+    '.flexy-tablist',
+  ) as HTMLElement | null;
+  readonly tabpanels = this.host.querySelector(
+    '.flexy-tab-panels',
+  ) as HTMLElement | null;
+  readonly tabIndicator = this.tablist?.querySelector(
+    '.flexy-tab-indicator',
+  ) as HTMLElement | null;
 
-  readonly panels = Array.from(
-    this.host.querySelector('.flexy-tab-panels')?.children || [],
-  ).filter((panel) => panel.matches('.flexy-tab-panel')) as HTMLElement[];
+  readonly tabs = Array.from(this.tablist?.children || []).filter((tab) =>
+    tab.matches('.flexy-tab'),
+  ) as HTMLElement[];
+
+  readonly panels = Array.from(this.tabpanels?.children || []).filter((panel) =>
+    panel.matches('.flexy-tab-panel'),
+  ) as HTMLElement[];
 
   constructor(host: HTMLElement) {
     super(host);
@@ -22,6 +32,15 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
 
     for (let index = 0; index < this.tabs.length; index++) {
       this.addTab(this.tabs[index]!, this.panels[index]!);
+    }
+
+    if (this.tablist && this.tabIndicator) {
+      // make sure tab indicator is the last child of the tablist
+      this.tablist.appendChild(this.tabIndicator);
+
+      this.addDestroyTasks(
+        subscribeEvent(window, 'resize', () => this.updateTabIndicator()),
+      );
     }
 
     this.selectTab(this.selectedTab);
@@ -68,6 +87,7 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
     });
 
     this.selectedTab = selectedIndex;
+    this.updateTabIndicator(true);
   }
 
   addTab(tab: HTMLElement, panel: HTMLElement) {
@@ -102,5 +122,17 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
       keydown: false,
     });
     this.addDestroyTasks(() => ripple.destroy());
+  }
+
+  updateTabIndicator(animation: boolean = false) {
+    if (!this.tabIndicator || !this.tablist) {
+      return;
+    }
+
+    const selectedTab = this.tabs[this.selectedTab]!;
+
+    this.tabIndicator.style.transitionDuration = animation ? '' : '0ms';
+    this.tabIndicator.style.left = selectedTab.offsetLeft + 'px';
+    this.tabIndicator.style.width = selectedTab.clientWidth + 'px';
   }
 }

@@ -26,6 +26,7 @@
   margin-bottom: _token('tablist-divider-margin');
   overflow: auto hidden;
   padding: 0px _token('tablist-padding');
+  position: relative;
 }
 
 .flexy-tab {
@@ -59,6 +60,17 @@
     outline: 2px solid tokens.$flexy-sys-color-primary;
     outline-offset: -2px;
   }
+}
+
+.flexy-tab-indicator {
+  display: block;
+  background-color: _token('tab-indicator-color');
+  height: _token('tab-indicator-height');
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  transition-property: left, width;
+  transition-duration: 300ms;
 }
 
 .flexy-tab-panels {
