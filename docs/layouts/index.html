@@ -36,5 +36,7 @@
     <hr style="width: 100%;" />
 
     <div style="max-width: 100%;">{{ .Content }}</div>
+
+    {{- partial "last-modified.html" . }}
   </div>
 {{- end }}

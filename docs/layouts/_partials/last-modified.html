@@ -1,5 +1,5 @@
 {{- with .GitInfo }}
-  <p>
+  <p style="margin-top: 3em;">
     Last modified: {{ .CommitDate | time.Format ":date_full" }}:
     <a href="{{ site.Params.repository }}/commit/{{ .Hash }}" target="_blank"
       >{{ .Subject }} ({{ .AbbreviatedHash }})</a

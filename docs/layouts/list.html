@@ -4,5 +4,7 @@
       <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
       <div>{{ .Summary }}</div>
     </div>
+
+    {{- partial "last-modified.html" . }}
   {{- end }}
 {{- end }}
