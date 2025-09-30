@@ -14,6 +14,12 @@ Tabs let you organize multiple views within a single container and display one v
 
 {{< example example=tabs-default >}}
 
+### Filled
+
+Remove the `.flexy-tab-indicator` element to drop the bottom-line indicator and use fill color instead.
+
+{{< example example=tabs-filled >}}
+
 ### Icon Tab
 
 {{< example example=tabs-icons >}}
