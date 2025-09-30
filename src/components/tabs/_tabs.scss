@@ -17,7 +17,8 @@
   display: flex;
   align-items: center;
   background-color: _token('tablist-fill-color');
-  border-bottom: 1px solid _token('tablist-divider-color');
+  box-shadow: inset 0px calc(-1 * _token('tablist-divider-height')) 0px 0px
+    _token('tablist-divider-color');
   border-radius: _token('tablist-shape');
   box-sizing: border-box;
   gap: _token('tablist-spacing');
