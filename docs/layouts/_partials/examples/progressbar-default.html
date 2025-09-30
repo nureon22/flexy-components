@@ -1,49 +1,39 @@
-<div class="flex-row" style="margin-bottom: 24px;">
-  <button class="flexy-button flexy-button--filled-primary" id="progress-start">
-    <span id="progress-start-content">Start</span>
-  </button>
+<div
+  class="flexy-slider"
+  style="
+    --flexy-comp-slider-animation-sliding-duration: 80ms;
+    --flexy-comp-slider-animation-sliding-easing: linear;
+  "
+>
+  <input type="range" class="flexy-slider__input" id="slider-f2" />
+  <div class="flexy-slider__track">
+    <div class="flexy-slider__inactive-track"></div>
+    <div class="flexy-slider__active-track"></div>
+  </div>
+  <div class="flexy-slider__thumb-rail">
+    <div class="flexy-slider__thumb">
+      <div class="flexy-slider__thumb-knob"></div>
+    </div>
+  </div>
 </div>
+
+<br />
 
 <div
   class="flexy-progressbar"
   role="progressbar"
-  aria-valuenow="0"
-  id="progressbar-1"
+  aria-valuenow="50"
+  id="progressbar-f2"
 >
   <div class="flexy-progressbar__inactive-track"></div>
   <div class="flexy-progressbar__active-track"></div>
 </div>
 
 <script type="module">
-  const button = document.querySelector('#progress-start');
-  const content = document.querySelector('#progress-start-content');
-  const progressbar = document.querySelector('#progressbar-1');
+  const progressbar = document.querySelector('#progressbar-f2');
+  const slider = document.querySelector('#slider-f2');
 
-  let interval = null;
-  let count = 0;
-
-  const complete = () => {
-    content.textContent = 'Restart';
-    count = 0;
-    interval = clearInterval(interval);
-  };
-
-  const stop = () => {
-    content.textContent = 'Start';
-    interval = clearInterval(interval);
-  };
-
-  const start = () => {
-    content.textContent = 'Stop';
-    clearInterval(interval);
-
-    interval = setInterval(() => {
-      if (++count > 100) complete();
-      else progressbar.ariaValueNow = count;
-    }, 100);
-  };
-
-  button.addEventListener('click', () => {
-    interval ? stop() : start();
+  slider.addEventListener('input', () => {
+    progressbar.ariaValueNow = slider.value;
   });
 </script>
