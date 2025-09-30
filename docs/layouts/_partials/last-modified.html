@@ -1,6 +1,6 @@
 {{- with .GitInfo }}
   <p style="margin-top: 3em;">
-    Last modified: {{ .CommitDate | time.Format ":date_full" }}:
+    Last modified: {{ .CommitDate | time.Format ":date_medium" }}:
     <a href="{{ site.Params.repository }}/commit/{{ .Hash }}" target="_blank"
       >{{ .Subject }} ({{ .AbbreviatedHash }})</a
     >
