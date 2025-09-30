@@ -4,7 +4,7 @@ draft = false
 title = 'Tabs'
 +++
 
-Tabs allow you to organize multiple views within a single container and display one view at a time.
+Tabs let you organize multiple views within a single container and display one view at a time. By default, a bottom-line indicator is used to show the selected tab, but a fill color can also be used instead.
 
 <!--more-->
 
