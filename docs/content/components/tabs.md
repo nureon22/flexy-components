@@ -40,6 +40,7 @@ Remove the `.flexy-tab-indicator` element to drop the bottom-line indicator and 
 - `flexy-tablist--align-end`
 - `flexy-tab`
 - `flexy-tab-indicator`
+- `flexy-tab-indicator--outlined`
 - `flexy-tab-panels`
 - `flexy-tab-panel`
 

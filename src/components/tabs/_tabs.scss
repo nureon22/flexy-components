@@ -83,13 +83,23 @@
 
 .flexy-tab-indicator {
   display: block;
-  background-color: _token('tab-indicator-color');
-  height: _token('tab-indicator-height');
+  border-width: _token('tab-indicator-height');
+  border-style: none none solid none;
+  border-color: _token('tab-indicator-color');
+  box-sizing: border-box;
   pointer-events: none;
   position: absolute;
+  top: 0;
   bottom: 0;
   transition-property: left, right;
   transition-duration: 300ms;
+
+  &--outlined {
+    border-radius: _token('tab-shape');
+    border-style: solid;
+    bottom: calc(_token('tablist-height') / 2 - _token('tab-height') / 2);
+    top: calc(_token('tablist-height') / 2 - _token('tab-height') / 2);
+  }
 }
 
 .flexy-tabs--reverse > .flexy-tablist > .flexy-tab-indicator {
