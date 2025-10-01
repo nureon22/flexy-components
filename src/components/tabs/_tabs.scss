@@ -10,7 +10,12 @@
 .flexy-tabs {
   display: flex;
   flex-direction: column;
+  gap: _token('tablist-divider-margin');
   width: 100%;
+
+  &--reverse {
+    flex-direction: column-reverse;
+  }
 }
 
 .flexy-tablist {
@@ -23,7 +28,6 @@
   box-sizing: border-box;
   gap: _token('tablist-spacing');
   height: _token('tablist-height');
-  margin-bottom: _token('tablist-divider-margin');
   overflow: auto hidden;
   padding: 0px _token('tablist-padding');
   position: relative;
@@ -37,6 +41,11 @@
       }
     }
   }
+}
+
+.flexy-tabs--reverse > .flexy-tablist {
+  box-shadow: inset 0px _token('tablist-divider-height') 0px 0px
+    _token('tablist-divider-color');
 }
 
 .flexy-tab {
@@ -81,6 +90,11 @@
   bottom: 0;
   transition-property: left, width;
   transition-duration: 300ms;
+}
+
+.flexy-tabs--reverse > .flexy-tablist > .flexy-tab-indicator {
+  top: 0;
+  bottom: initial;
 }
 
 .flexy-tab-panels {

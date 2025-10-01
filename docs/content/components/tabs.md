@@ -33,6 +33,7 @@ Remove the `.flexy-tab-indicator` element to drop the bottom-line indicator and 
 ### Supported Classes
 
 - `flexy-tabs`
+- `flexy-tabs--reverse`
 - `flexy-tablist`
 - `flexy-tablist--align-start`
 - `flexy-tablist--align-center`
