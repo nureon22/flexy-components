@@ -49,6 +49,8 @@ $_transition: 150ms ease-out;
   }
 
   &__indicator {
+    pointer-events: none;
+
     &::before,
     &::after {
       content: '';
