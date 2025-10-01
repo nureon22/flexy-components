@@ -19,11 +19,11 @@ hr {
 }
 
 .dark a:not(.flexy-button) {
-  color: dodgerblue;
+  color: #51a9ff;
 }
 
 .light a:not(.flexy-button) {
-  color: royalblue;
+  color: #095197;
 }
 
 .hidden,
