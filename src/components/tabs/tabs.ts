@@ -129,10 +129,26 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
       return;
     }
 
-    const selectedTab = this.tabs[this.selectedTab]!;
+    const tab = this.tabs[this.selectedTab]!;
+
+    const position = {
+      prevLeft: parseInt(this.tabIndicator.style.left),
+      prevRight: parseInt(this.tabIndicator.style.right),
+      nextLeft: tab.offsetLeft,
+      nextRight: this.tablist.offsetWidth - (tab.offsetLeft + tab.offsetWidth),
+    };
+
+    const easeIn = 'cubic-bezier(0.47,0,0.75,0.72)';
+    const easeOut = 'cubic-bezier(0.39,0.57,0.56,1)';
+
+    if (position.nextLeft > position.prevLeft) {
+      this.tabIndicator.style.transitionTimingFunction = `${easeIn}, ${easeOut}`;
+    } else {
+      this.tabIndicator.style.transitionTimingFunction = `${easeOut}, ${easeIn}`;
+    }
 
     this.tabIndicator.style.transitionDuration = animation ? '' : '0ms';
-    this.tabIndicator.style.left = selectedTab.offsetLeft + 'px';
-    this.tabIndicator.style.width = selectedTab.clientWidth + 'px';
+    this.tabIndicator.style.left = position.nextLeft + 'px';
+    this.tabIndicator.style.right = position.nextRight + 'px';
   }
 }
