@@ -24,6 +24,10 @@ Remove the `.flexy-tab-indicator` element to drop the bottom-line indicator and 
 
 {{< example example=tabs-icons >}}
 
+### Scrolling Tabs
+
+{{< example example=tabs-scrolling >}}
+
 ### Custom
 
 {{< example example=tabs-custom >}}
