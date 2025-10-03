@@ -82,7 +82,7 @@ export function configureElement<T extends Element>(
 
   if (children) {
     const safeChildren = children.filter((child) => {
-      return (child && (typeof child == 'string' || child instanceof Node));
+      return child && (typeof child == 'string' || child instanceof Node);
     });
     element.append(...safeChildren);
   }
@@ -109,4 +109,41 @@ export function createSVGElement<K extends keyof SVGElementTagNameMap>(
     document.createElementNS('http://www.w3.org/2000/svg', qualifiedName),
     config,
   );
+}
+
+export function animateNumber(options: {
+  start: number;
+  stop: number;
+  duration: number;
+  callback: (value: {
+    start: number;
+    stop: number;
+    previousValue: number;
+    currentValue: number;
+  }) => void;
+}) {
+  const { start, stop, duration, callback } = options;
+
+  const change = stop - start;
+  const startedTimestamp = performance.now();
+
+  let previousValue = start;
+  let currentValue = start;
+
+  function step(currentTimestamp: number) {
+    const elapsed = currentTimestamp - startedTimestamp;
+    const progress = Math.min(elapsed / duration, 1);
+
+    currentValue = start + change * progress;
+
+    callback({ start, stop, previousValue, currentValue });
+
+    previousValue = currentValue;
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
 }

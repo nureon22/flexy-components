@@ -41,6 +41,10 @@
       }
     }
   }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .flexy-tabs--reverse > .flexy-tablist {
@@ -59,6 +63,7 @@
   position: relative;
   padding: 0px _token('tab-padding');
   width: 100%;
+  min-width: max-content;
   -webkit-tap-highlight-color: transparent;
 
   &::after {
