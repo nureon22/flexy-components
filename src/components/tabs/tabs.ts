@@ -82,8 +82,14 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
     });
 
     this.panels.forEach((panel) => {
-      const selected = panel == selectedTab.ariaControlsElements?.[0];
-      panel.hidden = !selected;
+      const controls = selectedTab.getAttribute('aria-controls');
+
+      if (controls) {
+        const controlElement = document.getElementById(controls.split(',')[0]!);
+        panel.hidden = panel != controlElement;
+      } else {
+        panel.hidden = true;
+      }
     });
 
     this.selectedTab = selectedIndex;
