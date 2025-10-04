@@ -10,7 +10,7 @@ $_flexy-comp-tabs: (
   tab-spacing: 8px,
   tab-shape: map.get($flexy-sys-shape, 'small'),
   tab-indicator-height: 2px,
-  tab-indicator-color: $flexy-sys-color-on-surface,
+  tab-indicator-color: $flexy-sys-color-primary,
   tab-selected-fill-color: transparent,
   tab-selected-label-color: $flexy-sys-color-on-surface,
   tab-unselected-fill-color: transparent,
