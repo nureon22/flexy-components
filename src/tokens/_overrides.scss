@@ -2,6 +2,7 @@
 @use 'flexy-comp-button' as *;
 @use 'flexy-comp-checkbox' as *;
 @use 'flexy-comp-progressbar' as *;
+@use 'flexy-comp-progresscircle' as *;
 @use 'flexy-comp-radio' as *;
 @use 'flexy-comp-slider' as *;
 @use 'flexy-comp-switch' as *;
@@ -28,7 +29,19 @@
 }
 
 @mixin progressbar-overrides($tokens) {
-  @include _override($tokens, $flexy-comp-progressbar, 'flexy-comp-progressbar');
+  @include _override(
+    $tokens,
+    $flexy-comp-progressbar,
+    'flexy-comp-progressbar'
+  );
+}
+
+@mixin progresscircle-overrides($tokens) {
+  @include _override(
+    $tokens,
+    $flexy-comp-progresscircle,
+    'flexy-comp-progresscircle'
+  );
 }
 
 @mixin radio-overrides($tokens) {

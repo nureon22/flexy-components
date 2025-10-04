@@ -1,6 +1,7 @@
 import { FlexyButtonComponent } from './components/button';
 import { FlexyCheckboxComponent } from './components/checkbox';
 import { FlexyProgressbarComponent } from './components/progressbar';
+import { FlexyProgresscircleComponent } from './components/progresscircle';
 import { FlexyRadioComponent } from './components/radio';
 import { FlexySliderComponent } from './components/slider';
 import { FlexySwitchComponent } from './components/switch';
@@ -18,6 +19,9 @@ afterPageLoad().then(() => {
   });
   document.querySelectorAll('.flexy-progressbar').forEach((el) => {
     if (el instanceof HTMLElement) FlexyProgressbarComponent.attach(el);
+  });
+  document.querySelectorAll('.flexy-progresscircle').forEach((el) => {
+    if (el instanceof HTMLElement) FlexyProgresscircleComponent.attach(el);
   });
   document.querySelectorAll('.flexy-radio').forEach((el) => {
     if (el instanceof HTMLElement) FlexyRadioComponent.attach(el);
@@ -43,6 +47,7 @@ export {
   FlexyButtonComponent,
   FlexyCheckboxComponent,
   FlexyProgressbarComponent,
+  FlexyProgresscircleComponent,
   FlexyRadioComponent,
   FlexySliderComponent,
   FlexySwitchComponent,

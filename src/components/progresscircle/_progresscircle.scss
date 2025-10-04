@@ -1,0 +1,93 @@
+@use '../../tokens';
+@use '../../utils';
+
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-progresscircle, $token);
+}
+
+$_stroke-dasharray: 283;
+
+.flexy-progresscircle {
+  display: block;
+  @include utils.size(_token('container-size'));
+  position: relative;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform-origin: center;
+  }
+
+  &__inactive-track,
+  &__active-track {
+    cx: 50px;
+    cy: 50px;
+    r: calc(50px - _token('track-height') / 2);
+    fill: none;
+    stroke-dasharray: $_stroke-dasharray;
+    stroke-width: _token('track-height');
+    transform-origin: center;
+  }
+
+  &__inactive-track {
+    stroke: _token('track-inactive-color');
+    opacity: _token('track-inactive-opacity');
+  }
+
+  &__active-track {
+    stroke-dashoffset: $_stroke-dasharray;
+    stroke: _token('track-active-color');
+    transform: rotateZ(-90deg);
+    transition: stroke-dashoffset _token('jump-animation-duration') linear 0ms;
+  }
+
+  &:not([aria-valuenow]) {
+    animation: flexy-indeterminate-progresscircle-rotate-1
+      calc(_token('indeterminate-animation-duration') * 2) linear 0ms infinite;
+  }
+
+  &:not([aria-valuenow]) svg {
+    animation: flexy-indeterminate-progresscircle-rotate-2
+      _token('indeterminate-animation-duration') ease-in-out 0ms infinite;
+  }
+
+  &:not([aria-valuenow]) &__active-track {
+    animation: flexy-indeterminate-progresscircle-stroke
+      _token('indeterminate-animation-duration') ease-in-out 0ms infinite;
+  }
+}
+
+@keyframes flexy-indeterminate-progresscircle-rotate-1 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes flexy-indeterminate-progresscircle-rotate-2 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(90deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes flexy-indeterminate-progresscircle-stroke {
+  0% {
+    stroke-dashoffset: calc($_stroke-dasharray * 0.8);
+  }
+  50% {
+    stroke-dashoffset: calc($_stroke-dasharray * 0.2);
+  }
+  100% {
+    stroke-dashoffset: calc($_stroke-dasharray * 0.8);
+  }
+}

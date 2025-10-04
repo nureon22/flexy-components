@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use 'flexy-sys-color' as *;
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-shape' as *;
+@use 'flexy-sys-ref' as *;
+
+$_flexy-comp-progresscircle: (
+  container-size: 40px,
+  track-height: 10px,
+  track-inactive-color: $flexy-sys-color-primary,
+  track-inactive-opacity: 0.2,
+  track-active-color: $flexy-sys-color-primary,
+  jump-animation-duration: 250ms,
+  indeterminate-animation-duration: 1500ms,
+);
+
+$flexy-comp-progresscircle: ();
+
+@each $name, $value in $_flexy-comp-progresscircle {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-progresscircle-#{$name}, #{$value});
+  }
+  $flexy-comp-progresscircle: map.set($flexy-comp-progresscircle, $name, $value);
+}
