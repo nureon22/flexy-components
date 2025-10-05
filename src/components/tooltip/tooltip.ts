@@ -133,11 +133,12 @@ export class FlexyTooltipComponent extends FlexyBaseComponent {
 
     const anchorRect = this.anchor.getBoundingClientRect();
     const tooltipRect = this.host.getBoundingClientRect();
+    const arrow = this.host.querySelector('.flexy-tooltip__arrow');
 
     const viewportWidth = this.host.ownerDocument.documentElement.clientWidth;
     const viewportHeight = this.host.ownerDocument.documentElement.clientHeight;
 
-    const pos = { x: 0, y: 0 };
+    const pos = { x: 0, y: 0, shiftX: 0, shiftY: 0 };
 
     let placement = this.placement;
 
@@ -199,15 +200,19 @@ export class FlexyTooltipComponent extends FlexyBaseComponent {
       case 'below':
         // Prevent tooltip from overflowing the viewport on the horizontal axis
         if (pos.x < 0) {
-          pos.x = 0;
+          pos.shiftX = 0 - pos.x;
         } else if (pos.x + tooltipRect.width > viewportWidth) {
-          pos.x = viewportWidth - tooltipRect.width;
+          pos.shiftX = viewportWidth - tooltipRect.width - pos.x;
         }
         break;
     }
 
-    this.host.style.setProperty('left', pos.x + 'px');
-    this.host.style.setProperty('top', pos.y + 'px');
+    if (arrow instanceof HTMLElement) {
+      arrow.style.marginLeft = `${-pos.shiftX}px`;
+    }
+
+    this.host.style.setProperty('left', pos.x + pos.shiftX + 'px');
+    this.host.style.setProperty('top', pos.y + pos.shiftY + 'px');
 
     this.host.classList.remove(
       'flexy-tooltip--above',

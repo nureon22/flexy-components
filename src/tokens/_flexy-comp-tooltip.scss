@@ -5,6 +5,7 @@
 @use 'flexy-sys-shape' as *;
 
 $_flexy-comp-tooltip: (
+  arrow-size: 6px,
   animation-duration: 150ms,
   animation-easing: ease-out,
   fill-color: $flexy-sys-palette-grey-90,

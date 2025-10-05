@@ -34,20 +34,57 @@
       transform _token('animation-duration') _token('animation-easing');
   }
 
+  &__arrow {
+    position: absolute;
+    border: _token('arrow-size') solid transparent;
+  }
+
+  &--above &__arrow,
+  &--below &__arrow {
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+
+  &--left &__arrow,
+  &--right &__arrow {
+    top: 50%;
+    transform: translate(0%, -50%);
+  }
+
   &--above &__content {
     transform-origin: center bottom;
+  }
+
+  &--above &__arrow {
+    border-top-color: _token('fill-color');
+    top: 100%;
   }
 
   &--below &__content {
     transform-origin: center top;
   }
 
+  &--below &__arrow {
+    border-bottom-color: _token('fill-color');
+    bottom: 100%;
+  }
+
   &--left &__content {
     transform-origin: right center;
   }
 
+  &--left &__arrow {
+    border-left-color: _token('fill-color');
+    left: 100%;
+  }
+
   &--right &__content {
     transform-origin: left center;
+  }
+
+  &--right &__arrow {
+    border-right-color: _token('fill-color');
+    right: 100%;
   }
 
   &--shown {
