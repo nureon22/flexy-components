@@ -3,8 +3,6 @@ import { animateNumber, uniqueId } from '../../utils';
 import { FlexyBaseComponent } from '../base';
 
 export class FlexyTabsComponent extends FlexyBaseComponent {
-  selectedTab = 0;
-
   readonly tablist = this.host.querySelector(
     '.flexy-tablist',
   ) as HTMLElement | null;
@@ -22,6 +20,8 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
   readonly panels = Array.from(this.tabpanels?.children || []).filter((panel) =>
     panel.matches('.flexy-tab-panel'),
   ) as HTMLElement[];
+
+  selectedTab = this.tabs.findIndex((tab) => tab.ariaSelected == 'true');
 
   constructor(host: HTMLElement) {
     super(host);
