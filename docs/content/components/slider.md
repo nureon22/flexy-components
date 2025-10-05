@@ -71,7 +71,9 @@ button on the top navigation bar.
 - `thumb-shape`
 - `thumb-width`
 - `thumb-icon-color`
+- `thumb-shadow`
 - `ripple-size`
+- `ripple-color`
 
 #### Track
 

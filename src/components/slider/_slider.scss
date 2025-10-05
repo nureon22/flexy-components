@@ -139,6 +139,7 @@
     background-color: _token('thumb-color');
     border: _token('thumb-outline-width') solid _token('thumb-outline-color');
     border-radius: _token('thumb-shape');
+    box-shadow: _token('thumb-shadow');
     box-sizing: border-box;
     color: _token('thumb-icon-color');
     position: absolute;
@@ -200,7 +201,7 @@
 
   &__thumb-ripple {
     display: block;
-    color: _token('thumb-color');
+    color: _token('ripple-color');
     @include utils.absolute-center();
     @include utils.size(_token('ripple-size'));
   }
