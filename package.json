@@ -15,7 +15,8 @@
     "hugo:start": "hugo server -s docs --gc --disableFastRender --bind 0.0.0.0 --port 8000 --noHTTPCache --baseURL 'http://localhost:8000/'",
     "hugo:build": "rm -fr docs/public/* && hugo -s docs --gc --minify",
     "build:types": "npx tsc --outDir dist/types",
-    "build": "npm run esbuild:build && npm run build:types"
+    "build": "npm run esbuild:build && npm run build:types",
+    "lint": "eslint"
   },
   "keywords": [],
   "author": "",
@@ -24,12 +25,17 @@
     "url": "https://github.com/nureon22/flexy-components"
   },
   "devDependencies": {
+    "@eslint/js": "^9.37.0",
     "esbuild": "^0.25.9",
     "esbuild-sass-plugin": "^3.3.1",
+    "eslint": "^9.37.0",
+    "eslint-plugin-unicorn": "^61.0.2",
+    "globals": "^16.4.0",
     "prettier": "^3.6.2",
     "prettier-plugin-go-template": "^0.0.15",
     "sass": "^1.92.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.45.0"
   },
   "dependencies": {
     "@nureon22/ripple-effect": "^1.7.3"

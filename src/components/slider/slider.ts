@@ -73,13 +73,13 @@ export class FlexySliderComponent extends FlexyBaseComponent {
   }
 
   get ticksInterval() {
-    const interval = Number(this.host.getAttribute('data-ticks-interval'));
+    const interval = Number(this.host.dataset.ticksInterval);
     return interval > 0 && Number.isSafeInteger(interval) ? interval : 1;
   }
 
   set ticksInterval(interval: number) {
     if (interval > 0 && Number.isSafeInteger(interval)) {
-      this.host.setAttribute('data-ticks-interval', String(interval));
+      this.host.dataset.ticksInterval = String(interval);
       this.updateTicks();
     }
   }
@@ -87,12 +87,7 @@ export class FlexySliderComponent extends FlexyBaseComponent {
   update() {
     if (!this.input) return;
 
-    const {
-      activeTrack,
-      activeTicks,
-      thumb,
-      valueIndicator,
-    } = this._children;
+    const { activeTrack, activeTicks, thumb, valueIndicator } = this._children;
 
     const min = Number(this.input.min || '0');
     const max = Number(this.input.max || '100');
@@ -117,7 +112,8 @@ export class FlexySliderComponent extends FlexyBaseComponent {
     if (!this.input) return;
 
     const { activeTicks, inactiveTicks } = this._children;
-    const interval = 100 / (this.ticksInterval * Number(this.input.step || '1'));
+    const interval =
+      100 / (this.ticksInterval * Number(this.input.step || '1'));
     const marks = Array.from({ length: interval - 1 }, () => '<span></span>');
 
     if (inactiveTicks) {

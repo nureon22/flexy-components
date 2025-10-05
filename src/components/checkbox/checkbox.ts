@@ -1,4 +1,4 @@
-import { createSVGElement } from '../../utils';
+import { createSVGElement } from '../../utilities';
 import { FlexyBaseComponent } from '../base';
 
 const initedCheckboxes = new Map<Element, FlexyCheckboxComponent>();
@@ -61,18 +61,18 @@ export class FlexyCheckboxComponent extends FlexyBaseComponent {
   }
 
   syncChildrenState() {
-    this.getChildren().forEach((child) => {
+    for (const child of this.getChildren()) {
       child.checked = this.input.checked;
       child.indeterminate = false;
-    });
+    }
   }
 
-  getParent(): FlexyCheckboxComponent | null {
-    if (!this.input.id) return null;
+  getParent(): FlexyCheckboxComponent | undefined {
+    if (!this.input.id) return undefined;
 
     const selector = `input[aria-controls~="${this.input.id}"]`;
     const parentInput = this.host.ownerDocument.querySelector(selector);
-    return parentInput ? initedCheckboxes.get(parentInput) || null : null;
+    return parentInput ? initedCheckboxes.get(parentInput) : undefined;
   }
 
   getChildren(): FlexyCheckboxComponent[] {
@@ -87,7 +87,11 @@ export class FlexyCheckboxComponent extends FlexyBaseComponent {
 
   /** update aria attributes to match current checkbox state */
   updateAria() {
-    this.input.ariaChecked = this.indeterminate ? 'mixed' : null;
+    if (this.indeterminate) {
+      this.input.setAttribute('aria-checked', 'mixed');
+    } else {
+      this.input.removeAttribute('aria-checked');
+    }
   }
 
   /** add svg mark icons, do not call this function more than once */

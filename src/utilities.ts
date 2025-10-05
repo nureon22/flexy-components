@@ -1,9 +1,13 @@
-export function afterPageLoad() {
+export function afterPageLoad(callback?: () => void) {
   return new Promise<void>((resolve) => {
     if (document.readyState == 'complete') {
+      callback?.();
       resolve();
     } else {
-      window.addEventListener('load', () => resolve());
+      window.addEventListener('load', () => {
+        callback?.();
+        resolve();
+      });
     }
   });
 }

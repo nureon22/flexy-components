@@ -17,13 +17,15 @@ $_flexy-comp-switch: (
 
   focus-ring-color: $flexy-sys-color-primary,
 
-  unselected-indicator-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="20"></circle></svg>'),
+  unselected-indicator-icon:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="20"></circle></svg>'),
   unselected-indicator-color: $flexy-sys-palette-grey-100,
   unselected-track-color: $flexy-sys-palette-grey-30,
   unselected-thumb-color: #ffffff,
   unselected-icon-color: #404040,
 
-  selected-indicator-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,15 L50,85" stroke="black" stroke-width="30" stroke-linecap="round"></path></svg>'),
+  selected-indicator-icon:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,15 L50,85" stroke="black" stroke-width="30" stroke-linecap="round"></path></svg>'),
   selected-indicator-color: $flexy-sys-color-on-primary,
   selected-track-color: $flexy-sys-color-primary,
   selected-thumb-color: $flexy-sys-color-on-primary,

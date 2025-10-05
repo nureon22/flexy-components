@@ -1,4 +1,4 @@
-import { clamp } from '../../utils';
+import { clamp } from '../../utilities';
 import { FlexyBaseComponent } from '../base';
 
 export class FlexyProgresscircleComponent extends FlexyBaseComponent {

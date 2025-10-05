@@ -1,57 +1,25 @@
-import { FlexyButtonComponent } from './components/button';
-import { FlexyCheckboxComponent } from './components/checkbox';
-import { FlexyProgressbarComponent } from './components/progressbar';
-import { FlexyProgresscircleComponent } from './components/progresscircle';
-import { FlexyRadioComponent } from './components/radio';
-import { FlexySliderComponent } from './components/slider';
-import { FlexySwitchComponent } from './components/switch';
-import { FlexyTabsComponent } from './components/tabs';
-import { FlexyTextfieldComponent } from './components/textfield';
-import { FlexyTooltipComponent } from './components/tooltip';
-import { afterPageLoad } from './utils';
+export * from './components';
 
-afterPageLoad().then(() => {
-  document.querySelectorAll('.flexy-button').forEach((el) => {
-    if (el instanceof HTMLElement) FlexyButtonComponent.attach(el);
-  });
-  document.querySelectorAll('.flexy-checkbox').forEach((el) => {
-    if (el instanceof HTMLElement) FlexyCheckboxComponent.attach(el);
-  });
-  document.querySelectorAll('.flexy-progressbar').forEach((el) => {
-    if (el instanceof HTMLElement) FlexyProgressbarComponent.attach(el);
-  });
-  document.querySelectorAll('.flexy-progresscircle').forEach((el) => {
-    if (el instanceof HTMLElement) FlexyProgresscircleComponent.attach(el);
-  });
-  document.querySelectorAll('.flexy-radio').forEach((el) => {
-    if (el instanceof HTMLElement) FlexyRadioComponent.attach(el);
-  });
-  document.querySelectorAll('.flexy-switch').forEach((el) => {
-    if (el instanceof HTMLElement) FlexySwitchComponent.attach(el);
-  });
-  document.querySelectorAll('.flexy-slider').forEach((el) => {
-    if (el instanceof HTMLElement) FlexySliderComponent.attach(el);
-  });
-  document.querySelectorAll('.flexy-tabs').forEach((el) => {
-    if (el instanceof HTMLElement) FlexyTabsComponent.attach(el);
-  });
-  document.querySelectorAll('.flexy-textfield').forEach((el) => {
-    if (el instanceof HTMLElement) FlexyTextfieldComponent.attach(el);
-  });
-  document.querySelectorAll('.flexy-tooltip').forEach((el) => {
-    if (el instanceof HTMLElement) FlexyTooltipComponent.attach(el);
-  });
+import * as flexy from './components';
+import { afterPageLoad } from './utilities';
+
+afterPageLoad(() => {
+  const initializationMap = {
+    '.flexy-button': flexy.FlexyButtonComponent,
+    '.flexy-checkbox': flexy.FlexyCheckboxComponent,
+    '.flexy-progressbar': flexy.FlexyProgressbarComponent,
+    '.flexy-progresscircle': flexy.FlexyProgresscircleComponent,
+    '.flexy-radio': flexy.FlexyRadioComponent,
+    '.flexy-switch': flexy.FlexySwitchComponent,
+    '.flexy-slider': flexy.FlexySliderComponent,
+    '.flexy-tabs': flexy.FlexyTabsComponent,
+    '.flexy-textfield': flexy.FlexyTextfieldComponent,
+    '.flexy-tooltip': flexy.FlexyTooltipComponent,
+  } as const;
+
+  for (const [selector, Component] of Object.entries(initializationMap)) {
+    for (const element of document.querySelectorAll(selector)) {
+      if (element instanceof HTMLElement) Component.attach(element);
+    }
+  }
 });
-
-export {
-  FlexyButtonComponent,
-  FlexyCheckboxComponent,
-  FlexyProgressbarComponent,
-  FlexyProgresscircleComponent,
-  FlexyRadioComponent,
-  FlexySliderComponent,
-  FlexySwitchComponent,
-  FlexyTabsComponent,
-  FlexyTextfieldComponent,
-  FlexyTooltipComponent,
-};

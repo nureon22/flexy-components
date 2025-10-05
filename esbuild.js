@@ -1,10 +1,9 @@
-import process from 'process';
+import process from 'node:process';
 import esbuild from 'esbuild';
 import { sassPlugin } from 'esbuild-sass-plugin';
-import { format } from 'path/win32';
 
 const isProduction = process.env['ENV'] == 'production';
-const dest = process.env["DEST"] || 'dist';
+const destination = process.env["DEST"] || 'dist';
 
 /** @type {import('esbuild').Format} */
 const formats = ['esm', 'iife'];
@@ -17,7 +16,7 @@ const formats = ['esm', 'iife'];
 function getBuildOptions(format) {
   return {
     entryPoints: ['src/main.ts', 'src/main.scss'],
-    outdir: `${dest}/${format}`,
+    outdir: `${destination}/${format}`,
     format,
     bundle: true,
     logLevel: 'info',
@@ -25,6 +24,7 @@ function getBuildOptions(format) {
     globalName: 'flexy',
     sourcemap: !isProduction,
     sourcesContent: !isProduction,
+    target: 'es2020',
     plugins: [
       sassPlugin({
         filter: /\.(s[ac]ss|css)$/,
@@ -44,6 +44,6 @@ if (isProduction) {
     }),
   );
 } else {
-  const ctx = await esbuild.context(getBuildOptions('iife'));
-  await ctx.watch();
+  const context = await esbuild.context(getBuildOptions('iife'));
+  await context.watch();
 }

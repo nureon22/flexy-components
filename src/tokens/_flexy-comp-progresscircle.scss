@@ -20,5 +20,9 @@ $flexy-comp-progresscircle: ();
   @if not $flexy-sys-ref-hardcode-values {
     $value: var(--flexy-comp-progresscircle-#{$name}, #{$value});
   }
-  $flexy-comp-progresscircle: map.set($flexy-comp-progresscircle, $name, $value);
+  $flexy-comp-progresscircle: map.set(
+    $flexy-comp-progresscircle,
+    $name,
+    $value
+  );
 }

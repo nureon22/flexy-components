@@ -14,7 +14,15 @@ $_shapes: (
 @each $name, $px in $_shapes {
   $flexy-sys-shape: map.set($flexy-sys-shape, '#{$name}', $px);
   $flexy-sys-shape: map.set($flexy-sys-shape, '#{$name}-top', $px $px 0px 0px);
-  $flexy-sys-shape: map.set($flexy-sys-shape, '#{$name}-right', 0px $px $px 0px);
-  $flexy-sys-shape: map.set($flexy-sys-shape, '#{$name}-bottom', 0px 0px $px $px);
+  $flexy-sys-shape: map.set(
+    $flexy-sys-shape,
+    '#{$name}-right',
+    0px $px $px 0px
+  );
+  $flexy-sys-shape: map.set(
+    $flexy-sys-shape,
+    '#{$name}-bottom',
+    0px 0px $px $px
+  );
   $flexy-sys-shape: map.set($flexy-sys-shape, '#{$name}-left', $px 0px 0px $px);
 }

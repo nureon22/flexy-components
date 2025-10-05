@@ -8,14 +8,14 @@ export class FlexyBaseComponent {
   }
 
   destroy() {
-    this.destroyTasks.forEach((task) => task());
+    for (const task of this.destroyTasks) task();
     this.destroyTasks.clear();
   }
 
-  static readonly privateKey = Math.random().toString().slice(2);
-
   static attach<T extends FlexyBaseComponent>(host: HTMLElement): T {
-    const key = `__${this.privateKey}__${this.name}` as keyof HTMLElement;
-    return ((host as any)[key] ||= new this(host)) as T;
+    if (!this.instances.has(host)) this.instances.set(host, new this(host));
+    return this.instances.get(host) as T;
   }
+
+  private static readonly instances = new Map<HTMLElement, unknown>();
 }

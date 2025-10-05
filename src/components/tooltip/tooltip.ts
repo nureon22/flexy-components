@@ -1,4 +1,4 @@
-import { subscribeEvent, uniqueId } from '../../utils';
+import { subscribeEvent, uniqueId } from '../../utilities';
 import { FlexyBaseComponent } from '../base';
 
 export class FlexyTooltipComponent extends FlexyBaseComponent {
@@ -53,11 +53,16 @@ export class FlexyTooltipComponent extends FlexyBaseComponent {
 
       const onFocusChange = () => {
         stopTimeouts();
-        document.activeElement == this.anchor ? this.show() : this.hide();
+
+        if (document.activeElement == this.anchor) {
+          this.show();
+        } else {
+          this.hide();
+        }
       };
 
-      const onKeydown = (e: KeyboardEvent) => {
-        if (e.key == 'Escape') {
+      const onKeydown = (event: KeyboardEvent) => {
+        if (event.key == 'Escape') {
           stopTimeouts();
           this.hide();
         }
@@ -91,37 +96,39 @@ export class FlexyTooltipComponent extends FlexyBaseComponent {
   }
 
   get placement(): 'above' | 'right' | 'below' | 'left' {
-    const placement = this.host.getAttribute('data-flexy-tooltip-placement');
+    const placement = this.host.dataset.flexyTooltipPlacement;
 
     switch (placement) {
       case 'above':
       case 'right':
       case 'below':
-      case 'left':
+      case 'left': {
         return placement;
-      default:
+      }
+      default: {
         return 'below';
+      }
     }
   }
 
   set placement(placement) {
-    this.host.setAttribute('data-flexy-tooltip-placement', placement);
+    this.host.dataset.flexyTooltipPlacement = placement;
   }
 
   get hideDelay(): number {
-    return Number(this.host.getAttribute('data-flexy-tooltip-hidedelay')) || 0;
+    return Number(this.host.dataset.flexyTooltipHidedelay) || 0;
   }
 
   set hideDelay(delay) {
-    this.host.setAttribute('data-flexy-tooltip-hidedelay', String(delay));
+    this.host.dataset.flexyTooltipHidedelay = String(delay);
   }
 
   get showDelay(): number {
-    return Number(this.host.getAttribute('data-flexy-tooltip-showdelay')) || 0;
+    return Number(this.host.dataset.flexyTooltipShowdelay) || 0;
   }
 
   set showDelay(delay) {
-    this.host.setAttribute('data-flexy-tooltip-showdelay', String(delay));
+    this.host.dataset.flexyTooltipShowdelay = String(delay);
   }
 
   /**
@@ -150,54 +157,62 @@ export class FlexyTooltipComponent extends FlexyBaseComponent {
 
     // flip placement if necessary
     switch (placement) {
-      case 'left':
+      case 'left': {
         if (!canBeLeft && canBeRight) {
           placement = 'right';
         } else if (!canBeLeft && !canBeRight) {
           placement = 'below';
         }
         break;
-      case 'right':
+      }
+      case 'right': {
         if (!canBeRight && canBeLeft) {
           placement = 'left';
         } else if (!canBeLeft && !canBeRight) {
           placement = 'below';
         }
         break;
-      case 'above':
+      }
+      case 'above': {
         if (!canBeAbove && canBeBelow) {
           placement = 'below';
         }
         break;
-      case 'below':
+      }
+      case 'below': {
         if (!canBeBelow && canBeAbove) {
           placement = 'above';
         }
         break;
+      }
     }
 
     switch (placement) {
-      case 'above':
+      case 'above': {
         pos.x = anchorRect.x + anchorRect.width / 2 - tooltipRect.width / 2;
         pos.y = anchorRect.top - tooltipRect.height;
         break;
-      case 'below':
+      }
+      case 'below': {
         pos.x = anchorRect.x + anchorRect.width / 2 - tooltipRect.width / 2;
         pos.y = anchorRect.bottom;
         break;
-      case 'left':
+      }
+      case 'left': {
         pos.x = anchorRect.x - tooltipRect.width;
         pos.y = anchorRect.y + anchorRect.height / 2 - tooltipRect.height / 2;
         break;
-      case 'right':
+      }
+      case 'right': {
         pos.x = anchorRect.right;
         pos.y = anchorRect.y + anchorRect.height / 2 - tooltipRect.height / 2;
         break;
+      }
     }
 
     switch (placement) {
       case 'above':
-      case 'below':
+      case 'below': {
         // Prevent tooltip from overflowing the viewport on the horizontal axis
         if (pos.x < 0) {
           pos.shiftX = 0 - pos.x;
@@ -205,6 +220,7 @@ export class FlexyTooltipComponent extends FlexyBaseComponent {
           pos.shiftX = viewportWidth - tooltipRect.width - pos.x;
         }
         break;
+      }
     }
 
     if (arrow instanceof HTMLElement) {

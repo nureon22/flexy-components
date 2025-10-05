@@ -1,5 +1,5 @@
 import RippleEffect from '@nureon22/ripple-effect';
-import { animateNumber, uniqueId } from '../../utils';
+import { animateNumber, uniqueId } from '../../utilities';
 import { FlexyBaseComponent } from '../base';
 
 export class FlexyTabsComponent extends FlexyBaseComponent {
@@ -13,15 +13,15 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
     '.flexy-tab-indicator',
   ) as HTMLElement | null;
 
-  readonly tabs = Array.from(this.tablist?.children || []).filter((tab) =>
+  readonly tabs = [...(this.tablist?.children || [])].filter((tab) =>
     tab.matches('.flexy-tab'),
   ) as HTMLElement[];
 
-  readonly panels = Array.from(this.tabpanels?.children || []).filter((panel) =>
+  readonly panels = [...(this.tabpanels?.children || [])].filter((panel) =>
     panel.matches('.flexy-tab-panel'),
   ) as HTMLElement[];
 
-  selectedTab = this.tabs.findIndex((tab) => tab.ariaSelected == 'true');
+  selectedTab = 0;
 
   constructor(host: HTMLElement) {
     super(host);
@@ -36,7 +36,7 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
 
     if (this.tablist && this.tabIndicator) {
       // make sure tab indicator is the last child of the tablist
-      this.tablist.appendChild(this.tabIndicator);
+      this.tablist.append(this.tabIndicator);
 
       const observer = new ResizeObserver(() => {
         this.updateTabIndicator();
@@ -44,6 +44,9 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
       observer.observe(this.tablist);
       this.addDestroyTasks(() => observer.disconnect());
     }
+
+    this.selectedTab = this.tabs.findIndex((tab) => tab.ariaSelected == 'true');
+    this.selectedTab = this.selectedTab === -1 ? 0 : this.selectedTab;
 
     this.selectTab(this.selectedTab);
   }
@@ -79,24 +82,26 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
 
     const selectedTab = this.tabs[selectedIndex]!;
 
-    this.tabs.forEach((tab, index) => {
+    for (const [index, tab] of this.tabs.entries()) {
       const selected = selectedIndex === index;
       tab.tabIndex = selected ? 0 : -1;
       tab.ariaSelected = String(selected);
 
       if (selected && focus) tab.focus();
-    });
+    }
 
-    this.panels.forEach((panel) => {
+    for (const panel of this.panels) {
       const controls = selectedTab.getAttribute('aria-controls');
 
       if (controls) {
-        const controlElement = document.getElementById(controls.split(',')[0]!);
+        const controlElement = document.querySelector(
+          `#${controls.split(',')[0]}`,
+        );
         panel.hidden = panel != controlElement;
       } else {
         panel.hidden = true;
       }
-    });
+    }
 
     this.selectedTab = selectedIndex;
     this.updateTabIndicator(true);
@@ -120,7 +125,12 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
     }
 
     const totalTabs = this.tabs.length;
-    index = index < 0 ? totalTabs - 1 : index >= totalTabs ? 0 : index;
+
+    if (index < 0) {
+      index = totalTabs - 1;
+    } else {
+      index = index >= totalTabs ? 0 : index;
+    }
 
     if (this.tabs[index]) {
       this.tabs[index]!.tabIndex = 0;
@@ -149,11 +159,12 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
         case 'ArrowLeft':
         case 'ArrowRight':
         case 'Home':
-        case 'End':
+        case 'End': {
           // Prevent browser's native scrolling behaviour.
           // Instead, scrolling will be handled manually
           event.preventDefault();
           break;
+        }
       }
 
       // Add a 100ms delay between repeating keydown events
@@ -163,24 +174,30 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
       this._previousKeyDownTimestamp = event.timeStamp;
 
       switch (event.key) {
-        case 'ArrowLeft':
+        case 'ArrowLeft': {
           this.focusTab(this.getFocusedTab() - 1);
           break;
-        case 'ArrowRight':
+        }
+        case 'ArrowRight': {
           this.focusTab(this.getFocusedTab() + 1);
           break;
-        case 'Home':
+        }
+        case 'Home': {
           this.focusTab(0);
           break;
-        case 'End':
+        }
+        case 'End': {
           this.focusTab(this.tabs.length - 1);
           break;
+        }
         case ' ':
-        case 'Enter':
+        case 'Enter': {
           this.selectTab(this.getFocusedTab());
           break;
-        default:
+        }
+        default: {
           return;
+        }
       }
     });
     const ripple = RippleEffect.attachTo(tab, {
@@ -202,8 +219,8 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
     const tab = this.tabs[this.selectedTab]!;
 
     const position = {
-      prevLeft: parseInt(this.tabIndicator.style.left) || 0,
-      prevRight: parseInt(this.tabIndicator.style.right) || 0,
+      prevLeft: Number.parseInt(this.tabIndicator.style.left) || 0,
+      prevRight: Number.parseInt(this.tabIndicator.style.right) || 0,
       nextLeft: tab.offsetLeft,
       nextRight: this.tablist.offsetWidth - (tab.offsetLeft + tab.offsetWidth),
     };
@@ -211,11 +228,10 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
     const easeIn = 'cubic-bezier(0.47,0,0.75,0.72)';
     const easeOut = 'cubic-bezier(0.39,0.57,0.56,1)';
 
-    if (position.nextLeft > position.prevLeft) {
-      this.tabIndicator.style.transitionTimingFunction = `${easeIn}, ${easeOut}`;
-    } else {
-      this.tabIndicator.style.transitionTimingFunction = `${easeOut}, ${easeIn}`;
-    }
+    this.tabIndicator.style.transitionTimingFunction =
+      position.nextLeft > position.prevLeft
+        ? `${easeIn}, ${easeOut}`
+        : `${easeOut}, ${easeIn}`;
 
     this.tabIndicator.style.transitionDuration = animation ? '' : '0ms';
     this.tabIndicator.style.left = position.nextLeft + 'px';
@@ -241,12 +257,12 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
     }
 
     const nextTab = this.tabs[index + 1] || this.tabs[index];
-    const prevTab = this.tabs[index - 1] || this.tabs[index];
+    const previousTab = this.tabs[index - 1] || this.tabs[index];
 
     const scrollLeft = this.tablist.scrollLeft;
 
     // Get spacing between tabs to add into scrollTo() method
-    let spacing = parseFloat(getComputedStyle(this.tablist).gap);
+    const spacing = Number.parseFloat(getComputedStyle(this.tablist).gap);
     let scrollX = 0;
 
     // check if next tab is beyound the viewport
@@ -259,8 +275,8 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
     }
 
     // check if previous tab is beyound the viewport
-    if (prevTab && prevTab.offsetLeft < scrollLeft) {
-      scrollX = prevTab.offsetWidth * -1 - spacing;
+    if (previousTab && previousTab.offsetLeft < scrollLeft) {
+      scrollX = previousTab.offsetWidth * -1 - spacing;
     }
 
     if (animate) {
