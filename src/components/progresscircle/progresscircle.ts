@@ -6,9 +6,7 @@ export class FlexyProgresscircleComponent extends FlexyBaseComponent {
     'circle.flexy-progresscircle__active-track',
   ) as SVGCircleElement | null;
 
-  private readonly _pathLength = Math.ceil(
-    this._activeTrack?.getTotalLength() || 0,
-  );
+  private readonly _pathLength = 283;
 
   constructor(host: HTMLElement) {
     super(host);
