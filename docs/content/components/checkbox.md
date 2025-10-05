@@ -46,6 +46,7 @@ The value of `aria-controls` should be a space-separated list of the child check
 - `size`
 - `outline-width`
 - `mark-color`
+- `mark-size`
 - `unselected-fill-color`
 - `unselected-outline-color`
 - `unselected-hovered-outline-color`

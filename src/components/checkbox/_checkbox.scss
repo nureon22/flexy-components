@@ -33,9 +33,8 @@
   }
 
   &__mark-icon {
-    border: _token('outline-width') solid transparent;
-    box-sizing: border-box;
-    @include utils.absolute-fill();
+    @include utils.absolute-center();
+    @include utils.size(_token('mark-size'));
 
     path {
       fill: none;
