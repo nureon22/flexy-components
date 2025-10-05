@@ -27,3 +27,33 @@
     });
   </script>
 {{- end }}
+
+
+<!-- Get resources needed to highlight code blocks, after the page load -->
+<script type="module">
+  function loadCSS(src, cb) {
+    fetch(src).then(async (response) => {
+      const content = await response.text();
+      const sheet = document.createElement('style');
+      sheet.textContent = cb ? cb(content) : content;
+      document.head.appendChild(sheet);
+    });
+  }
+
+  window.addEventListener('load', () => {
+    const CDN = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1';
+
+    import(`${CDN}/build/es/highlight.min.js`).then(({ default: hljs }) => {
+      document.querySelectorAll('pre code').forEach((el) => {
+        hljs.highlightElement(el);
+      });
+
+      loadCSS(`${CDN}/build/styles/github.css`, (content) => {
+        return content.replace(/(^\.hljs|\s\.hljs)/g, '.light .hljs');
+      });
+      loadCSS(`${CDN}/build/styles/github-dark.css`, (content) => {
+        return content.replace(/(^\.hljs|\s\.hljs)/g, '.dark .hljs');
+      });
+    });
+  });
+</script>

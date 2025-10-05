@@ -62,14 +62,14 @@ Flexy Components can be used either via **NPM** or **CDN**, depending on your pr
 
 For **static websites** where all components templates are already present in the HTML from the start:
 
-```js
+```javascript
 import 'flexy-components/styles';
 import 'flexy-components';
 ```
 
 If you need to add components dynamically after the page has loaded, you can import and initialize them individually:
 
-```js
+```javascript
 import 'flexy-components/styles';
 import { FlexyCheckboxComponent } from 'flexy-components';
 

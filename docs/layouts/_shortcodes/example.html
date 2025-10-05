@@ -17,7 +17,7 @@
       {{- partial (printf "%s" $partial) . }}
     </div>
     <div class="flexy-tab-panel example-code" role="tabpanel" hidden>
-      {{ transform.Highlight (partial (printf "%s" $partial) .) "html" }}
+      <pre><code class="hljs language-xml">{{ partial (printf "%s" $partial) . | htmlEscape | htmlUnescape }}</code></pre>
     </div>
   </div>
 </div>

@@ -115,8 +115,16 @@ code {
   padding-right: 4px;
 }
 
-.highlight code {
-  background-color: initial;
+pre code.hljs,
+pre code[class*='language-'] {
+  display: block;
+  background-color: transparent;
+  border-radius: 8px;
+  border: 1px solid var(--flexy-sys-palette-grey-20);
+  box-sizing: border-box;
+  overflow-x: auto;
+  padding: 1em;
+  width: 100%;
 }
 
 ul li {
@@ -128,22 +136,8 @@ ul li {
   max-width: 900px;
 }
 
-.highlight {
-  border-radius: 8px;
-  border: 1px solid var(--flexy-sys-palette-grey-20);
-  overflow: hidden;
-}
-
-.highlight pre {
-  border-radius: 8px;
-  padding: 16px 8px;
-  max-width: 100%;
-  margin: 0px;
-  overflow: auto;
-}
-
-.example-code .highlight pre {
-  margin: 0px;
+.example-code pre {
+  margin: 0;
 }
 
 .example-preview {

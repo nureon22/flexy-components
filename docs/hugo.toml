@@ -4,8 +4,7 @@ title = 'Flexy Components Documentation'
 enableGitInfo = true
 [markup]
   [markup.highlight]
-    tabwidth = 2
-    noClasses = false
+    codeFences = false
 [params]
   repository = "https://github.com/nureon22/flexy-components"
   umami_id = "0cff7e01-0025-4eb7-823b-bd7ef61ca158"
