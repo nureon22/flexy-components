@@ -6,7 +6,7 @@
 }
 
 $_radius: calc((_token('container-size') - _token('track-height')) / 2);
-$_circumference: calc(2 * 3.147 * $_radius);
+$_circumference: calc(2 * 3.14285714 * $_radius);
 $_progress: var(--progress, 0);
 
 .flexy-progresscircle {
