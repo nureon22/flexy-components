@@ -3,6 +3,7 @@
 {{- $family := index $icon 1 }}
 {{- $weight := index $icon 2 }}
 {{- $label := default $name (index $icon 3) }}
+{{- $label := $label | replaceRE `_` " " }}
 {{- $url := printf "https://raw.githubusercontent.com/marella/material-symbols/refs/tags/v0.36.0/svg/%s/%s/%s.svg" $weight $family $name }}
 
 {{- with resources.GetRemote $url }}
