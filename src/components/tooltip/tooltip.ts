@@ -1,4 +1,4 @@
-import { subscribeEvent, uniqueId } from '../../utilities';
+import { autoPositioning, subscribeEvent, uniqueId } from '../../utilities';
 import { FlexyBaseComponent } from '../base';
 
 export class FlexyTooltipComponent extends FlexyBaseComponent {
@@ -136,92 +136,48 @@ export class FlexyTooltipComponent extends FlexyBaseComponent {
    * Always call this method before showing the tooltip.
    */
   updatePosition() {
-    if (!this.anchor) return;
+    if (!(this.anchor instanceof HTMLElement)) return;
 
-    const anchorRect = this.anchor.getBoundingClientRect();
-    const tooltipRect = this.host.getBoundingClientRect();
+    const pos = autoPositioning({
+      anchor: this.anchor,
+      container: this.host,
+      placement: this.placement,
+      margin: 0,
+      getPosition: ({ anchorRect, containerRect, placement }) => {
+        const { left, top, bottom, right, width, height } = anchorRect;
+        const { width: containerWidth, height: containerHeight } =
+          containerRect;
+
+        switch (placement) {
+          case 'above': {
+            return {
+              x: left + width / 2 - containerWidth / 2,
+              y: top - containerHeight,
+            };
+          }
+          case 'below': {
+            return {
+              x: left + width / 2 - containerWidth / 2,
+              y: bottom,
+            };
+          }
+          case 'left': {
+            return {
+              x: left - containerWidth,
+              y: top + height / 2 - containerHeight / 2,
+            };
+          }
+          case 'right': {
+            return {
+              x: right,
+              y: top + height / 2 - containerHeight / 2,
+            };
+          }
+        }
+      },
+    });
+
     const arrow = this.host.querySelector('.flexy-tooltip__arrow');
-
-    const viewportWidth = this.host.ownerDocument.documentElement.clientWidth;
-    const viewportHeight = this.host.ownerDocument.documentElement.clientHeight;
-
-    const pos = { x: 0, y: 0, shiftX: 0, shiftY: 0 };
-
-    let placement = this.placement;
-
-    // check if there is an enough space to render the tooltip within viewport
-    const canBeLeft = anchorRect.left - tooltipRect.width >= 0;
-    const canBeRight = anchorRect.right + tooltipRect.width <= viewportWidth;
-    const canBeAbove = anchorRect.top - tooltipRect.height >= 0;
-    const canBeBelow = anchorRect.bottom + tooltipRect.height <= viewportHeight;
-
-    // flip placement if necessary
-    switch (placement) {
-      case 'left': {
-        if (!canBeLeft && canBeRight) {
-          placement = 'right';
-        } else if (!canBeLeft && !canBeRight) {
-          placement = 'below';
-        }
-        break;
-      }
-      case 'right': {
-        if (!canBeRight && canBeLeft) {
-          placement = 'left';
-        } else if (!canBeLeft && !canBeRight) {
-          placement = 'below';
-        }
-        break;
-      }
-      case 'above': {
-        if (!canBeAbove && canBeBelow) {
-          placement = 'below';
-        }
-        break;
-      }
-      case 'below': {
-        if (!canBeBelow && canBeAbove) {
-          placement = 'above';
-        }
-        break;
-      }
-    }
-
-    switch (placement) {
-      case 'above': {
-        pos.x = anchorRect.x + anchorRect.width / 2 - tooltipRect.width / 2;
-        pos.y = anchorRect.top - tooltipRect.height;
-        break;
-      }
-      case 'below': {
-        pos.x = anchorRect.x + anchorRect.width / 2 - tooltipRect.width / 2;
-        pos.y = anchorRect.bottom;
-        break;
-      }
-      case 'left': {
-        pos.x = anchorRect.x - tooltipRect.width;
-        pos.y = anchorRect.y + anchorRect.height / 2 - tooltipRect.height / 2;
-        break;
-      }
-      case 'right': {
-        pos.x = anchorRect.right;
-        pos.y = anchorRect.y + anchorRect.height / 2 - tooltipRect.height / 2;
-        break;
-      }
-    }
-
-    switch (placement) {
-      case 'above':
-      case 'below': {
-        // Prevent tooltip from overflowing the viewport on the horizontal axis
-        if (pos.x < 0) {
-          pos.shiftX = 0 - pos.x;
-        } else if (pos.x + tooltipRect.width > viewportWidth) {
-          pos.shiftX = viewportWidth - tooltipRect.width - pos.x;
-        }
-        break;
-      }
-    }
 
     if (arrow instanceof HTMLElement) {
       arrow.style.marginLeft = `${-pos.shiftX}px`;
@@ -236,7 +192,7 @@ export class FlexyTooltipComponent extends FlexyBaseComponent {
       'flexy-tooltip--left',
       'flexy-tooltip--right',
     );
-    this.host.classList.add('flexy-tooltip--' + placement);
+    this.host.classList.add('flexy-tooltip--' + pos.placement);
   }
 
   /** check if currently tooltip is shown */
