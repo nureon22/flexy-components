@@ -5,8 +5,8 @@
 @use 'flexy-sys-ref' as *;
 
 $_flexy-comp-progresscircle: (
-  container-size: 40px,
-  track-height: 10px,
+  container-size: 48px,
+  track-height: 8px,
   track-inactive-color: $flexy-sys-color-primary,
   track-inactive-opacity: 0.2,
   track-active-color: $flexy-sys-color-primary,
