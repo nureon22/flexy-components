@@ -45,7 +45,7 @@ $_stroke-dasharray: 283;
 
   &:not([aria-valuenow]) {
     animation: flexy-indeterminate-progresscircle-rotate-1
-      calc(_token('indeterminate-animation-duration') * 2) linear 0ms infinite;
+      calc(_token('indeterminate-animation-duration') * 1.25) linear 0ms infinite;
   }
 
   &:not([aria-valuenow]) svg {
@@ -82,12 +82,12 @@ $_stroke-dasharray: 283;
 
 @keyframes flexy-indeterminate-progresscircle-stroke {
   0% {
-    stroke-dashoffset: calc($_stroke-dasharray * 0.8);
+    stroke-dashoffset: calc($_stroke-dasharray * 0.95);
   }
   50% {
-    stroke-dashoffset: calc($_stroke-dasharray * 0.2);
+    stroke-dashoffset: calc($_stroke-dasharray * 0.25);
   }
   100% {
-    stroke-dashoffset: calc($_stroke-dasharray * 0.8);
+    stroke-dashoffset: calc($_stroke-dasharray * 0.95);
   }
 }
