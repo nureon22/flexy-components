@@ -6,16 +6,12 @@ export class FlexyProgresscircleComponent extends FlexyBaseComponent {
     'circle.flexy-progresscircle__active-track',
   ) as SVGCircleElement | null;
 
-  private readonly _pathLength = 283;
-
   constructor(host: HTMLElement) {
     super(host);
 
     this.host.role ||= 'progressbar';
     this.host.ariaValueMin ||= '0';
     this.host.ariaValueMax ||= '100';
-
-    this.host.style.setProperty('--stroke-dasharray', String(this._pathLength));
 
     this.update();
 
@@ -41,9 +37,9 @@ export class FlexyProgresscircleComponent extends FlexyBaseComponent {
       const max = Number(this.host.ariaValueMax || '100');
       const progress = clamp(0, (value - min) / (max - min), 1);
 
-      this._activeTrack.style.strokeDashoffset = `${this._pathLength - progress * this._pathLength}`;
+      this.host.style.setProperty('--progress', progress + '');
     } else {
-      this._activeTrack.style.strokeDashoffset = '';
+      this.host.style.removeProperty('--progress');
     }
   }
 }

@@ -5,7 +5,9 @@
   @return utils.map-get(tokens.$flexy-comp-progresscircle, $token);
 }
 
-$_stroke-dasharray: 283;
+$_radius: calc((_token('container-size') - _token('track-height')) / 2);
+$_circumference: calc(2 * 3.147 * $_radius);
+$_progress: var(--progress, 0);
 
 .flexy-progresscircle {
   display: block;
@@ -22,11 +24,11 @@ $_stroke-dasharray: 283;
 
   &__inactive-track,
   &__active-track {
-    cx: 50px;
-    cy: 50px;
-    r: calc(50px - _token('track-height') / 2);
+    cx: calc(_token('container-size') / 2);
+    cy: calc(_token('container-size') / 2);
+    r: $_radius;
     fill: none;
-    stroke-dasharray: $_stroke-dasharray;
+    stroke-dasharray: $_circumference;
     stroke-width: _token('track-height');
     transform-origin: center;
   }
@@ -37,7 +39,7 @@ $_stroke-dasharray: 283;
   }
 
   &__active-track {
-    stroke-dashoffset: $_stroke-dasharray;
+    stroke-dashoffset: calc($_circumference * (1 - $_progress));
     stroke: _token('track-active-color');
     transform: rotateZ(-90deg);
     transition: stroke-dashoffset _token('jump-animation-duration') linear 0ms;
@@ -45,7 +47,8 @@ $_stroke-dasharray: 283;
 
   &:not([aria-valuenow]) {
     animation: flexy-indeterminate-progresscircle-rotate-1
-      calc(_token('indeterminate-animation-duration') * 1.25) linear 0ms infinite;
+      calc(_token('indeterminate-animation-duration') * 1.25) linear 0ms
+      infinite;
   }
 
   &:not([aria-valuenow]) svg {
@@ -82,12 +85,12 @@ $_stroke-dasharray: 283;
 
 @keyframes flexy-indeterminate-progresscircle-stroke {
   0% {
-    stroke-dashoffset: calc($_stroke-dasharray * 0.95);
+    stroke-dashoffset: calc($_circumference * 0.95);
   }
   50% {
-    stroke-dashoffset: calc($_stroke-dasharray * 0.25);
+    stroke-dashoffset: calc($_circumference * 0.25);
   }
   100% {
-    stroke-dashoffset: calc($_stroke-dasharray * 0.95);
+    stroke-dashoffset: calc($_circumference * 0.95);
   }
 }
