@@ -1,0 +1,33 @@
+<button
+  class="flexy-button flexy-button--circular"
+  id="menu-anchor-2"
+  aria-label="Open menu"
+>
+  <span class="material-symbol">
+    {{- partial "material-symbol.html" "menu/rounded/400" }}
+  </span>
+</button>
+
+<div class="flexy-menu" aria-labelledby="menu-anchor-2">
+  <div class="flexy-menuitem">
+    <span class="flexy-menuitem__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "content_copy/rounded/400" }}
+    </span>
+    <span>Copy</span>
+    <span class="flexy-menuitem__trailing-text">Ctrl+C</span>
+  </div>
+  <div class="flexy-menuitem">
+    <span class="flexy-menuitem__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "content_cut/rounded/400" }}
+    </span>
+    <span>Cut</span>
+    <span class="flexy-menuitem__trailing-text">Ctrl+X</span>
+  </div>
+  <div class="flexy-menuitem">
+    <span class="flexy-menuitem__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "content_paste/rounded/400" }}
+    </span>
+    <span>Paste</span>
+    <span class="flexy-menuitem__trailing-text">Ctrl+V</span>
+  </div>
+</div>

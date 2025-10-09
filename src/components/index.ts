@@ -1,5 +1,6 @@
 export { FlexyButtonComponent } from './button';
 export { FlexyCheckboxComponent } from './checkbox';
+export { FlexyMenuComponent } from './menu';
 export { FlexyProgressbarComponent } from './progressbar';
 export { FlexyProgresscircleComponent } from './progresscircle';
 export { FlexyRadioComponent } from './radio';

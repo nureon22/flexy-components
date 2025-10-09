@@ -7,6 +7,7 @@ afterPageLoad(() => {
   const initializationMap = {
     '.flexy-button': flexy.FlexyButtonComponent,
     '.flexy-checkbox': flexy.FlexyCheckboxComponent,
+    '.flexy-menu': flexy.FlexyMenuComponent,
     '.flexy-progressbar': flexy.FlexyProgressbarComponent,
     '.flexy-progresscircle': flexy.FlexyProgresscircleComponent,
     '.flexy-radio': flexy.FlexyRadioComponent,

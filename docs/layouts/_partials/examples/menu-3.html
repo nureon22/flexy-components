@@ -1,0 +1,98 @@
+<button
+  class="flexy-button flexy-button--circular"
+  id="menu-anchor-3"
+  aria-label="Open menu"
+>
+  <span class="material-symbol">
+    {{- partial "material-symbol.html" "menu/rounded/400" }}
+  </span>
+</button>
+
+<div class="flexy-menu" aria-labelledby="menu-anchor-3">
+  <div class="flexy-menuitem" id="submenu-anchor-3-1">
+    <span class="flexy-menuitem__leading-icon"></span>
+    <span>Open</span>
+    <span class="flexy-menuitem__trailing-icon material-symbol">
+      {{- partial "material-symbol.html" "keyboard_arrow_right/rounded/400" }}
+    </span>
+  </div>
+
+  <div
+    class="flexy-menu"
+    aria-labelledby="submenu-anchor-3-1"
+    data-flexy-menu-placement="right"
+  >
+    {{- range (slice "chrome" "firefox" "safari") }}
+      <div class="flexy-menuitem" id="submenu-anchor-3-{{ . }}">
+        <span>Open in {{ . | title }}</span>
+        <span class="flexy-menuitem__trailing-icon material-symbol">
+          {{- partial "material-symbol.html" "keyboard_arrow_right/rounded/400" }}
+        </span>
+      </div>
+
+      <div
+        class="flexy-menu"
+        aria-labelledby="submenu-anchor-3-{{ . }}"
+        data-flexy-menu-placement="right"
+      >
+        <div class="flexy-menuitem">
+          <span>Open in Current Window</span>
+        </div>
+        <div class="flexy-menuitem">
+          <span>Open in New Window</span>
+        </div>
+        <div class="flexy-menuitem">
+          <span>Open in Private Window</span>
+        </div>
+      </div>
+    {{- end }}
+  </div>
+  <hr />
+  <div class="flexy-menuitem">
+    <span class="flexy-menuitem__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "content_copy/rounded/400" }}
+    </span>
+    <span>Copy</span>
+    <span class="flexy-menuitem__trailing-text">Ctrl+C</span>
+  </div>
+  <div class="flexy-menuitem">
+    <span class="flexy-menuitem__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "content_cut/rounded/400" }}
+    </span>
+    <span>Cut</span>
+    <span class="flexy-menuitem__trailing-text">Ctrl+X</span>
+  </div>
+  <div class="flexy-menuitem">
+    <span class="flexy-menuitem__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "content_paste/rounded/400" }}
+    </span>
+    <span>Paste</span>
+    <span class="flexy-menuitem__trailing-text">Ctrl+V</span>
+  </div>
+  <hr />
+  <div class="flexy-menuitem" id="submenu-anchor-3-2">
+    <span class="flexy-menuitem__leading-icon material-symbol">
+      {{- partial "material-symbol.html" "compress/rounded/400" }}
+    </span>
+    <span>Compress</span>
+    <span class="flexy-menuitem__trailing-icon material-symbol">
+      {{- partial "material-symbol.html" "keyboard_arrow_right/rounded/400" }}
+    </span>
+  </div>
+
+  <div
+    class="flexy-menu"
+    aria-labelledby="submenu-anchor-3-2"
+    data-flexy-menu-placement="right"
+  >
+    <div class="flexy-menuitem">
+      <span>Compress Using GZIP</span>
+    </div>
+    <div class="flexy-menuitem">
+      <span>Compress Using BZIP</span>
+    </div>
+    <div class="flexy-menuitem">
+      <span>Compress Using 7ZIP</span>
+    </div>
+  </div>
+</div>

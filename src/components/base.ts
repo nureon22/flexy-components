@@ -3,8 +3,8 @@ export class FlexyBaseComponent {
 
   constructor(readonly host: HTMLElement) {}
 
-  addDestroyTasks(task: () => void) {
-    this.destroyTasks.add(task);
+  addDestroyTasks(...tasks: (() => void)[]) {
+    for (const task of tasks) this.destroyTasks.add(task);
   }
 
   destroy() {

@@ -1,0 +1,99 @@
+@use 'sass:map';
+@use '../../tokens';
+@use '../../utils';
+
+/// get component token
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-comp-menu, $token);
+}
+
+.flexy-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: _token(container-color);
+  border-radius: _token(container-shape);
+  box-sizing: border-box;
+  box-shadow: _token(container-shadow);
+  gap: _token(items-spacing);
+  opacity: 0;
+  padding: _token(container-padding);
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: auto;
+  width: max-content;
+  min-width: 160px;
+  max-width: 400px;
+  visibility: hidden;
+  z-index: 999;
+  transition:
+    visibility 0ms linear _token(close-animation-duration),
+    opacity _token(close-animation-duration) ease-out;
+
+  &--shown {
+    transition: none;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  hr {
+    border-width: 1px;
+    border-style: none none solid none;
+    border-color: _token(divider-color);
+    margin-bottom: calc(_token(divider-spacing) / 2 - 1px);
+    margin-top: calc(_token(divider-spacing) / 2);
+    opacity: 1;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+
+    &-thumb {
+      background-color: #808080;
+      border-radius: 2px;
+    }
+  }
+}
+
+.flexy-menuitem {
+  display: flex;
+  align-items: center;
+  gap: _token(item-content-spacing);
+  flex-shrink: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: _token(item-shape);
+  color: _token(item-label-color);
+  cursor: pointer;
+  font: inherit;
+  padding: 0px _token(item-padding);
+  position: relative;
+  height: _token(item-height);
+  @include utils.state-layer();
+  @include utils.focus-visible-ring($inset: true);
+
+  &::after {
+    @include utils.touchable(calc(_token(item-height) + _token(items-spacing)));
+  }
+
+  &__leading-icon,
+  &__trailing-icon {
+    font-size: _token(item-icon-size);
+    @include utils.size(1em);
+  }
+
+  &__leading-icon {
+    color: _token(item-leading-icon-color);
+  }
+
+  &__trailing-icon {
+    color: _token(item-trailing-icon-color);
+    margin-inline-start: auto;
+  }
+
+  &__trailing-text {
+    color: _token(item-trailing-text-color);
+    margin-inline-start: auto;
+  }
+}

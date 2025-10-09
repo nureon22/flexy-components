@@ -1,0 +1,39 @@
+@use 'sass:map';
+@use 'flexy-sys-color' as *;
+@use 'flexy-sys-palette' as *;
+@use 'flexy-sys-ref' as *;
+@use 'flexy-sys-shape' as *;
+@use '../utils';
+
+$_flexy-comp-menu: (
+  container-color: $flexy-sys-palette-grey-10,
+  container-padding: 8px,
+  container-shape: utils.map-get($flexy-sys-shape, 'medium'),
+  container-shadow: (
+    0px 0px 3px -1px #00000080,
+    1px 2px 9px -4px #00000080,
+  ),
+  divider-spacing: 8px,
+  divider-color: $flexy-sys-palette-grey-40,
+  item-content-spacing: 12px,
+  item-height: 36px,
+  item-icon-size: 20px,
+  item-label-color: $flexy-sys-color-on-surface,
+  item-padding: 12px,
+  item-shape: utils.map-get($flexy-sys-shape, 'small'),
+  item-leading-icon-color: $flexy-sys-color-on-surface,
+  item-trailing-icon-color: $flexy-sys-palette-grey-70,
+  item-trailing-text-color: $flexy-sys-palette-grey-70,
+  items-spacing: 4px,
+
+  close-animation-duration: 200ms,
+);
+
+$flexy-comp-menu: ();
+
+@each $name, $value in $_flexy-comp-menu {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-comp-menu-#{$name}, #{$value});
+  }
+  $flexy-comp-menu: map.set($flexy-comp-menu, $name, $value);
+}

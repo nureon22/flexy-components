@@ -34,9 +34,50 @@
   max-height: $height;
 }
 
-@mixin touchable() {
+@mixin touchable($touch-size: $flexy-sys-ref-touch-size) {
   content: '';
   @include absolute-center();
   @include size(100%);
-  @include min-size($flexy-sys-ref-touch-size);
+  @include min-size($touch-size);
+}
+
+@mixin state-layer(
+  $hovered: 0.1,
+  $focused: 0.1,
+  $pressed: 0.2,
+  $color: currentColor
+) {
+  &::before {
+    content: '';
+    background-color: $color;
+    border-radius: inherit;
+    @include absolute-fill();
+    pointer-events: none;
+    opacity: 0;
+  }
+  &:hover::before {
+    opacity: $hovered;
+  }
+  &:focus::before {
+    opacity: $focused;
+  }
+  &:active::before {
+    opacity: $pressed;
+  }
+}
+
+@mixin outline($width, $style, $color, $inset: false) {
+  outline-width: $width;
+  outline-style: $style;
+  outline-color: $color;
+
+  @if $inset {
+    outline-offset: calc(-1 * $width);
+  }
+}
+
+@mixin focus-visible-ring($width: 2px, $color: currentColor, $inset: false) {
+  &:focus-visible {
+    @include outline($width, solid, $color, $inset);
+  }
 }

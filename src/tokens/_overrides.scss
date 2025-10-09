@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use 'flexy-comp-button' as *;
 @use 'flexy-comp-checkbox' as *;
+@use 'flexy-comp-menu' as *;
 @use 'flexy-comp-progressbar' as *;
 @use 'flexy-comp-progresscircle' as *;
 @use 'flexy-comp-radio' as *;
@@ -26,6 +27,10 @@
 
 @mixin checkbox-overrides($tokens) {
   @include _override($tokens, $flexy-comp-checkbox, 'flexy-comp-checkbox');
+}
+
+@mixin menu-overrides($tokens) {
+  @include _override($tokens, $flexy-comp-menu, 'flexy-comp-menu');
 }
 
 @mixin progressbar-overrides($tokens) {

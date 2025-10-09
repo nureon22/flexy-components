@@ -1,0 +1,17 @@
+<div class="flex-row">
+  {{- range (slice "above" "below" "left" "right" ) }}
+    <button class="flexy-button" id="menu-anchor-3-{{ . }}">
+      <span>{{ . | title }}</span>
+    </button>
+
+    <div
+      class="flexy-menu"
+      aria-labelledby="menu-anchor-3-{{ . }}"
+      data-flexy-menu-placement="{{ . }}"
+    >
+      <div class="flexy-menuitem">Copy</div>
+      <div class="flexy-menuitem">Cut</div>
+      <div class="flexy-menuitem">Paste</div>
+    </div>
+  {{- end }}
+</div>

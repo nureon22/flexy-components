@@ -12,46 +12,16 @@ export function afterPageLoad(callback?: () => void) {
   });
 }
 
-export function subscribeEvent<
-  T extends HTMLElement,
-  K extends keyof HTMLElementEventMap,
->(
+export function subscribeEvent<T extends EventTarget, E extends Event>(
   target: T,
-  type: K,
-  listener: (this: T, event: HTMLElementEventMap[K]) => void,
-  options?: boolean | AddEventListenerOptions,
-): () => void;
-
-export function subscribeEvent<
-  T extends SVGElement,
-  K extends keyof SVGElementEventMap,
->(
-  target: T,
-  type: K,
-  listener: (this: T, event: SVGElementEventMap[K]) => void,
-  options?: boolean | AddEventListenerOptions,
-): () => void;
-
-export function subscribeEvent<
-  T extends Window,
-  K extends keyof WindowEventMap,
->(
-  target: T,
-  type: K,
-  listener: (this: T, event: WindowEventMap[K]) => void,
-  options?: boolean | AddEventListenerOptions,
-): () => void;
-
-export function subscribeEvent<T extends EventTarget, K extends string>(
-  target: T,
-  type: K,
-  listener: (this: T, event: Event) => void,
+  type: string,
+  listener: (this: T, event: E) => void,
   options?: boolean | AddEventListenerOptions,
 ): () => void {
-  target.addEventListener(type, listener, options);
+  target.addEventListener(type, listener as () => void, options);
 
   return () => {
-    target.removeEventListener(type, listener, options);
+    target.removeEventListener(type, listener as () => void, options);
   };
 }
 
@@ -150,4 +120,128 @@ export function animateNumber(options: {
   }
 
   requestAnimationFrame(step);
+}
+
+/** Set the attribute if it isn't defined or it is a empty string */
+export function setDefaultAttribute(
+  element: Element,
+  name: string,
+  value: string,
+) {
+  if (!element.getAttribute(name)) element.setAttribute(name, value);
+}
+
+export function autoPositioning<
+  A extends Element,
+  B extends Element,
+>(options: {
+  anchor: A;
+  container: B;
+  margin?: number;
+  placement: 'above' | 'below' | 'left' | 'right';
+  fixed?: boolean;
+  getPosition: (options: {
+    anchor: A;
+    anchorRect: DOMRect;
+    container: B;
+    containerRect: DOMRect;
+    fixed: boolean;
+    margin: number;
+    placement: 'above' | 'below' | 'left' | 'right';
+    viewportHeight: number;
+    viewportWidth: number;
+  }) => { x: number; y: number };
+}) {
+  const { anchor, container, fixed = false, getPosition, margin = 0 } = options;
+  let { placement } = options;
+
+  const viewportWidth = anchor.ownerDocument.documentElement.clientWidth;
+  const viewportHeight = anchor.ownerDocument.documentElement.clientHeight;
+
+  const anchorRect = anchor.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+
+  const containerWidth = containerRect.width;
+  const containerHeight = containerRect.height;
+
+  const anchorLeft = anchorRect.left;
+  const anchorRight = anchorRect.right;
+  const anchorTop = anchorRect.top;
+  const anchorBottom = anchorRect.bottom;
+
+  if (!fixed) {
+    // check if there is an enough space to render the container within viewport
+    const canBeLeft = anchorLeft - containerWidth - margin >= 0;
+    const canBeRight = anchorRight + containerWidth + margin <= viewportWidth;
+    const canBeAbove = anchorTop - containerHeight - margin >= 0;
+    const canBeBelow =
+      anchorBottom + containerHeight + margin <= viewportHeight;
+
+    // flip placement if necessary
+    switch (placement) {
+      case 'left': {
+        if (!canBeLeft && canBeRight) {
+          placement = 'right';
+        } else if (!canBeLeft && !canBeRight && canBeBelow) {
+          placement = 'below';
+        } else if (!canBeLeft && !canBeRight && !canBeBelow && canBeAbove) {
+          placement = 'above';
+        }
+        break;
+      }
+      case 'right': {
+        if (!canBeRight && canBeLeft) {
+          placement = 'left';
+        } else if (!canBeRight && !canBeLeft && canBeBelow) {
+          placement = 'below';
+        } else if (!canBeRight && !canBeLeft && !canBeBelow && canBeAbove) {
+          placement = 'above';
+        }
+        break;
+      }
+      case 'above': {
+        if (!canBeAbove && canBeBelow) {
+          placement = 'below';
+        }
+        break;
+      }
+      case 'below': {
+        if (!canBeBelow && canBeAbove) {
+          placement = 'above';
+        }
+        break;
+      }
+    }
+  }
+
+  const pos = { x: 0, y: 0, shiftX: 0, shiftY: 0, placement };
+
+  Object.assign(
+    pos,
+    getPosition({
+      anchor,
+      anchorRect,
+      container,
+      containerRect,
+      fixed,
+      margin,
+      placement,
+      viewportHeight,
+      viewportWidth,
+    }),
+  );
+
+  // Prevent container from overflowing the viewport on the horizontal axis
+  if (pos.x < margin) {
+    pos.shiftX = margin - pos.x;
+  } else if (pos.x + margin + containerWidth > viewportWidth) {
+    pos.shiftX = viewportWidth - containerWidth - pos.x - margin;
+  }
+  if (pos.y < margin) {
+    pos.shiftY = margin - pos.y;
+  } else if (pos.y + margin + containerHeight > viewportHeight) {
+    pos.shiftY = viewportHeight - containerHeight - pos.y - margin;
+  }
+
+  return pos;
 }
