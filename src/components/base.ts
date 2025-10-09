@@ -17,5 +17,5 @@ export class FlexyBaseComponent {
     return this.instances.get(host) as T;
   }
 
-  private static readonly instances = new Map<HTMLElement, unknown>();
+  private static readonly instances = new WeakMap<HTMLElement, unknown>();
 }
