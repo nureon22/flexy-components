@@ -28,8 +28,9 @@
   </script>
 {{- end }}
 
+{{- with resources.Get "workers/prettier.js" }}
 
-<!-- Get resources needed to highlight code blocks, after the page load -->
+  <!-- Get resources needed to highlight code blocks, after the page load -->
 <script type="module">
   function loadCSS(src, cb) {
     fetch(src).then(async (response) => {
@@ -41,19 +42,50 @@
   }
 
   window.addEventListener('load', () => {
-    const CDN = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1';
+    const worker = new Worker('{{ .RelPermalink }}');
 
-    import(`${CDN}/build/es/highlight.min.js`).then(({ default: hljs }) => {
-      document.querySelectorAll('pre code').forEach((el) => {
-        hljs.highlightElement(el);
-      });
+    let workerLastActive = performance.now();
 
-      loadCSS(`${CDN}/build/styles/github.css`, (content) => {
-        return content.replace(/(^\.hljs|\s\.hljs)/g, '.light .hljs');
+    const workerOnMessage = ({ data }) => {
+      if (data.error) return;
+      const code = document.getElementById(data.id);
+      if (code) code.innerHTML = data.highlightedCode;
+
+      workerLastActive = performance.now();
+    }
+
+    worker.addEventListener('message', workerOnMessage);
+
+    // Terminate the worker after 10s of inactivity
+    const interval = setInterval(() => {
+      if (performance.now() - workerLastActive >= 10e3) {
+        worker.terminate();
+        worker.removeEventListener('message', workerOnMessage);
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    const selectors = {
+      'html': 'pre code.language-xml, pre code.language-html',
+      'javascript': 'pre code.language-javascript',
+    };
+
+    for (const language in selectors) {
+      document.querySelectorAll(selectors[language]).forEach(code => {
+        code.id ||= Math.random().toString(16).slice(2);
+        worker.postMessage({id:code.id,code: code.textContent, language});
       });
-      loadCSS(`${CDN}/build/styles/github-dark.css`, (content) => {
-        return content.replace(/(^\.hljs|\s\.hljs)/g, '.dark .hljs');
-      });
+    }
+
+
+    const CDN = 'https://unpkg.com/@highlightjs/cdn-assets@11.11.1';
+
+    loadCSS(`${CDN}/styles/github.css`, (content) => {
+      return content.replace(/(^\.hljs|\s\.hljs)/g, '.light .hljs');
+    });
+    loadCSS(`${CDN}/styles/github-dark.css`, (content) => {
+      return content.replace(/(^\.hljs|\s\.hljs)/g, '.dark .hljs');
     });
   });
 </script>
+{{- end }}
