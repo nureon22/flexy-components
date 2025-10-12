@@ -2,7 +2,8 @@
 @use '../../tokens';
 @use '../../utils';
 
-$_transition: 150ms ease-out;
+$_transition-duration: 200ms;
+$_transition: $_transition-duration ease-out;
 
 /// get component token
 @function _token($token) {
@@ -39,12 +40,11 @@ $_transition: 150ms ease-out;
 
     &::before {
       content: '';
+      background-color: _token('selected-track-color');
       border-radius: inherit;
-      opacity: 0.12;
+      opacity: 0;
       @include utils.absolute-fill();
-      transition:
-        background-color $_transition,
-        filter $_transition;
+      transition: opacity $_transition;
     }
   }
 
@@ -92,7 +92,9 @@ $_transition: 150ms ease-out;
       box-shadow: _token('thumb-shadow');
       @include utils.absolute-center();
       @include utils.size(_token('thumb-width'), _token('thumb-height'));
-      transition: background-color $_transition;
+      transition:
+        background-color $_transition,
+        transform $_transition;
     }
   }
 
@@ -114,12 +116,10 @@ $_transition: 150ms ease-out;
     opacity: 0;
   }
 
-  &__input:hover ~ &__track::before {
-    background-color: tokens.$flexy-sys-palette-grey-80;
-  }
-
-  &__input:active ~ &__track::before {
-    filter: invert(1);
+  &__input:active ~ &__thumb::before {
+    transform: translate(-50%, -50%) scale(_token('pressed-thumb-scaling'));
+    transition-delay: 0ms;
+    transition-duration: $_transition-duration, 80ms;
   }
 
   &__input:focus-visible ~ &__track {
@@ -127,8 +127,8 @@ $_transition: 150ms ease-out;
     outline-offset: 2px;
   }
 
-  &__input:checked ~ &__track {
-    background-color: _token('selected-track-color');
+  &__input:checked ~ &__track::before {
+    opacity: 1;
   }
 
   &__input:checked ~ &__thumb {
@@ -165,6 +165,10 @@ $_transition: 150ms ease-out;
 
   &__input:disabled ~ &__track {
     background-color: _token('disabled-unselected-track-color');
+
+    &::before {
+      background-color: _token('disabled-selected-track-color');
+    }
   }
 
   &__input:disabled ~ &__thumb {
@@ -177,10 +181,6 @@ $_transition: 150ms ease-out;
   &__input:disabled ~ &__thumb &__icon,
   &__input:disabled ~ &__thumb &__unselected-icon {
     color: _token('disabled-unselected-icon-color');
-  }
-
-  &__input:checked:disabled ~ &__track {
-    background-color: _token('disabled-selected-track-color');
   }
 
   &__input:checked:disabled ~ &__thumb {
