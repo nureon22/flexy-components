@@ -32,12 +32,17 @@ The menu supports above, below, left, and right placements relative to its ancho
 
 {{< example example=menu-4 >}}
 
+### Context Menu
+
+You can also use FlexyMenu as a context menu by adding the `flexy-menu--contextmenu` CSS class name. The context menu will open on right-click at the near of the cursor. Submenus cannot be context menus.
+
+{{< example example=menu-5 >}}
+
 ## Accessibility
 
 Flexy menus are fully compatible with WAI-ARIA keyboard navigation standards.
 
 Refer to the [W3C Menu Accessibility Guidelines](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/#keyboardinteraction).
-
 
 ## Customization
 

@@ -1,0 +1,45 @@
+<div class="flex-row">
+  <div
+    style="
+      border: 1px solid  #80808080;
+      color: var(--flexy-sys-palette-grey-80);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      width: 200px;
+      user-select: none;
+    "
+    id="menu-anchor-5"
+  >
+    Right-Click on Me
+  </div>
+
+  <div
+    class="flexy-menu flexy-menu--contextmenu"
+    aria-labelledby="menu-anchor-5"
+  >
+    <div class="flexy-menuitem">Pause</div>
+    <div class="flexy-menuitem">Mute</div>
+    <div class="flexy-menuitem" id="menu-anchor-5-submenu">
+      <span>Speed</span>
+      <span class="flexy-menuitem__trailing-icon material-symbol">
+        {{- partial "material-symbol.html" "keyboard_arrow_right/rounded/400" }}
+      </span>
+    </div>
+    <div class="flexy-menuitem">Show controls</div>
+
+    <div
+      class="flexy-menu"
+      aria-labelledby="menu-anchor-5-submenu"
+      data-flexy-menu-placement="right"
+    >
+      <div class="flexy-menuitem">0.25x</div>
+      <div class="flexy-menuitem">0.5x</div>
+      <div class="flexy-menuitem">1x</div>
+      <div class="flexy-menuitem">1.25x</div>
+      <div class="flexy-menuitem">1.5x</div>
+      <div class="flexy-menuitem">2x</div>
+    </div>
+  </div>
+</div>

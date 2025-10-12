@@ -131,20 +131,19 @@ export function setDefaultAttribute(
   if (!element.getAttribute(name)) element.setAttribute(name, value);
 }
 
-export function autoPositioning<
-  A extends Element,
-  B extends Element,
->(options: {
+export function autoPositioning<A extends Element, B extends Element>(options: {
   anchor: A;
   container: B;
   margin?: number;
   placement: 'above' | 'below' | 'left' | 'right';
   fixed?: boolean;
+  cursor?: { x: number; y: number } | undefined;
   getPosition: (options: {
     anchor: A;
     anchorRect: DOMRect;
     container: B;
     containerRect: DOMRect;
+    cursor?: { x: number; y: number } | undefined;
     fixed: boolean;
     margin: number;
     placement: 'above' | 'below' | 'left' | 'right';
@@ -153,6 +152,7 @@ export function autoPositioning<
   }) => { x: number; y: number };
 }) {
   const { anchor, container, fixed = false, getPosition, margin = 0 } = options;
+  const { cursor } = options;
   let { placement } = options;
 
   const viewportWidth = anchor.ownerDocument.documentElement.clientWidth;
@@ -164,10 +164,10 @@ export function autoPositioning<
   const containerWidth = containerRect.width;
   const containerHeight = containerRect.height;
 
-  const anchorLeft = anchorRect.left;
-  const anchorRight = anchorRect.right;
-  const anchorTop = anchorRect.top;
-  const anchorBottom = anchorRect.bottom;
+  const anchorLeft = cursor ? cursor.x : anchorRect.left;
+  const anchorRight = cursor ? cursor.x : anchorRect.right;
+  const anchorTop = cursor ? cursor.y : anchorRect.top;
+  const anchorBottom = cursor ? cursor.y : anchorRect.bottom;
 
   if (!fixed) {
     // check if there is an enough space to render the container within viewport
@@ -223,6 +223,7 @@ export function autoPositioning<
       anchorRect,
       container,
       containerRect,
+      cursor: options.cursor,
       fixed,
       margin,
       placement,

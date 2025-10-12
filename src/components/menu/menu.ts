@@ -14,6 +14,7 @@ export class FlexyMenuComponent extends FlexyBaseComponent {
 
   private _ownerDoc = this.host.ownerDocument;
   private _isOpened = false;
+  private _cursor: { x: number; y: number } | undefined;
 
   constructor(host: HTMLElement) {
     super(host);
@@ -47,13 +48,23 @@ export class FlexyMenuComponent extends FlexyBaseComponent {
     // Only the root menu handles repositioning
     this.addDestroyTasks(
       subscribeEvent(globalThis, 'scroll', () => {
-        if (this._isOpened && !this.parentMenu) this.updatePosition();
+        if (this._isOpened && !this.parentMenu && !this.isContextMenu()) {
+          this.updatePosition();
+        }
       }),
       subscribeEvent(globalThis, 'resize', () => {
         if (this._isOpened) this.updatePosition();
       }),
       subscribeEvent(globalThis, 'click', this.globalClickHandler.bind(this)),
-      subscribeEvent(this.anchor, 'click', this.toggle.bind(this)),
+      subscribeEvent(this.anchor, 'click', () => {
+        void (this.isContextMenu() ? this.close() : this.toggle());
+      }),
+      subscribeEvent(this.anchor, 'contextmenu', (event: MouseEvent) => {
+        if (!this.isContextMenu()) return;
+        this._cursor = { x: event.x, y: event.y };
+        event.preventDefault();
+        this.toggle();
+      }),
     );
   }
 
@@ -155,13 +166,18 @@ export class FlexyMenuComponent extends FlexyBaseComponent {
     anchorRect: DOMRect;
     container: Element;
     containerRect: DOMRect;
+    cursor?: { x: number; y: number } | undefined;
     margin: number;
     placement: 'above' | 'below' | 'left' | 'right';
     viewportWidth: number;
     viewportHeight: number;
   }): { x: number; y: number } {
-    const { placement, containerRect, margin } = options;
+    const { placement, containerRect, cursor, margin } = options;
     const { top, right, bottom, left } = options.anchorRect;
+
+    if (this.isContextMenu() && cursor) {
+      return { x: cursor.x + margin, y: cursor.y + margin };
+    }
 
     switch (placement) {
       case 'above': {
@@ -191,8 +207,9 @@ export class FlexyMenuComponent extends FlexyBaseComponent {
       anchor: this.anchor,
       container: this.host,
       placement: this.placement,
+      cursor: this.isContextMenu() && !this.parentMenu ? this._cursor : undefined,
       margin: 8,
-      getPosition: this.getPosition,
+      getPosition: this.getPosition.bind(this),
     });
 
     const left = pos.x + pos.shiftX;
@@ -220,6 +237,10 @@ export class FlexyMenuComponent extends FlexyBaseComponent {
       this.anchor.removeAttribute('aria-controls');
       this.anchor.removeAttribute('aria-expanded');
     }
+  }
+
+  isContextMenu() {
+    return this.host.classList.contains('flexy-menu--contextmenu');
   }
 
   isOpened(): boolean {
