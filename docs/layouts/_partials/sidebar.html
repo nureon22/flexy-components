@@ -25,17 +25,16 @@
     if (anchor) anchor.classList.add('flexy-button--tonal-primary');
 
     // inside top navbar
-    const menuBtn = document.getElementById('menu-button');
     const sidebar = document.querySelector('.sidebar');
 
-    if (menuBtn) {
-      document.addEventListener('click', (event) => {
-        if (event.target == menuBtn || event.target.closest('[menu-button]')) {
-          sidebar.classList.toggle('sidebar--open');
-        } else if (!event.target.closest('.sidebar')) {
-          sidebar.classList.remove('sidebar--open');
-        }
-      });
-    }
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+
+      if (event.target.closest('#menu-button')) {
+        sidebar.classList.toggle('sidebar--open');
+      } else if (!event.target.closest('.sidebar')) {
+        sidebar.classList.remove('sidebar--open');
+      }
+    });
   })();
 </script>
