@@ -71,6 +71,10 @@
     @include utils.touchable();
   }
 
+  &:hover &__ripple::before {
+    opacity: 0.12;
+  }
+
   &[aria-selected='false'] {
     background-color: _token('tab-unselected-fill-color');
     color: _token('tab-unselected-label-color');

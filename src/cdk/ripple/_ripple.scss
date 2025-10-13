@@ -1,0 +1,48 @@
+@use '../../tokens';
+@use '../../utils';
+
+@function _token($token) {
+  @return utils.map-get(tokens.$flexy-cdk-ripple, $token);
+}
+
+.flexy-ripple {
+  display: block;
+  pointer-events: none;
+  @include utils.absolute-fill();
+
+  /* Used for hovered and focused styles */
+  &::before {
+    content: '';
+    background-color: _token(color);
+    border-radius: inherit;
+    position: absolute;
+    opacity: 0;
+    @include utils.absolute-fill();
+  }
+
+  &__effect {
+    display: block;
+    background-color: _token(color);
+    border-radius: 50%;
+    opacity: _token(opacity);
+    position: absolute;
+    transform: translate(-50%, -50%) scale(1);
+    animation: flexy-ripple-enter _token(enter-duration) _token(enter-easing);
+
+    &--exit {
+      animation: flexy-ripple-exit _token(exit-duration) _token(exit-easing);
+    }
+  }
+}
+
+@keyframes flexy-ripple-enter {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+@keyframes flexy-ripple-exit {
+  100% {
+    opacity: 0;
+  }
+}

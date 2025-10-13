@@ -38,20 +38,30 @@ export function clamp(min: number, now: number, max: number): number {
 
 export interface ElementCreationConfig {
   attributes?: Record<string, string>;
+  classList?: string[];
+  style?: Record<string, string>;
   children?: Array<Node | string>;
   id?: string;
 }
 
-export function configureElement<T extends Element>(
+export function configureElement<T extends HTMLElement | SVGElement>(
   element: T,
   config?: ElementCreationConfig,
 ): T {
-  const { attributes, children, id } = config || {};
+  const { attributes, classList, children, id, style } = config || {};
 
   for (const name in attributes) {
     if (attributes[name]) {
       element.setAttribute(name, attributes[name]);
     }
+  }
+
+  if (classList) {
+    element.classList.add(...classList.filter((className) => !!className));
+  }
+
+  if (style) {
+    Object.assign(element.style, style);
   }
 
   if (children) {

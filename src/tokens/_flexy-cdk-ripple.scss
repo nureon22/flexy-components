@@ -1,0 +1,20 @@
+@use 'sass:map';
+@use '../tokens/flexy-sys-ref' as *;
+
+$_flexy-cdk-ripple: (
+  color: currentColor,
+  enter-duration: 300ms,
+  enter-easing: ease-out,
+  exit-duration: 200ms,
+  exit-easing: linear,
+  opacity: 0.12,
+);
+
+$flexy-cdk-ripple: ();
+
+@each $name, $value in $_flexy-cdk-ripple {
+  @if not $flexy-sys-ref-hardcode-values {
+    $value: var(--flexy-cdk-ripple-#{$name}, #{$value});
+  }
+  $flexy-cdk-ripple: map.set($flexy-cdk-ripple, $name, $value);
+}

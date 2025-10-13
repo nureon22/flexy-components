@@ -1,6 +1,7 @@
 @use './themes/dark';
 @use './themes/light';
 @use './global';
+@use './cdk/ripple';
 @use './components/button';
 @use './components/checkbox';
 @use './components/menu';

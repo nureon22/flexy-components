@@ -1,4 +1,4 @@
-import RippleEffect from '@nureon22/ripple-effect';
+import { FlexyRipple } from '../../cdk/ripple';
 import { animateNumber, uniqueId } from '../../utilities';
 import { FlexyBaseComponent } from '../base';
 
@@ -200,13 +200,8 @@ export class FlexyTabsComponent extends FlexyBaseComponent {
         }
       }
     });
-    const ripple = RippleEffect.attachTo(tab, {
-      duration: 200,
-      exitdelay: 100,
-      hoveredOpacity: 0.08,
-      focusedOpacity: 0,
-      pressedOpacity: 0.12,
-      keydown: false,
+    const ripple = FlexyRipple.attachTo(tab, {
+      className: 'flexy-tab__ripple',
     });
     this.addDestroyTasks(() => ripple.destroy());
   }
