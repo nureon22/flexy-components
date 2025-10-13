@@ -36,8 +36,5 @@
     "sass": "^1.92.0",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.45.0"
-  },
-  "dependencies": {
-    "@nureon22/ripple-effect": "^1.7.3"
   }
 }
