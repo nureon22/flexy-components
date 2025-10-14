@@ -1,14 +1,31 @@
 {{- $icon := split . "/" }}
 {{- $name := index $icon 0 }}
-{{- $family := index $icon 1 }}
-{{- $weight := index $icon 2 }}
-{{- $label := default $name (index $icon 3) }}
+{{- $weight := default "400" (index $icon 1) }}
+{{- $family := default "rounded" (index $icon 2) }}
+{{- $opsz := default "24" (index $icon 3) }}
+{{- $label := default $name (index $icon 4) }}
 {{- $label := $label | replaceRE `_` " " }}
-{{- $url := printf "https://raw.githubusercontent.com/marella/material-symbols/refs/tags/v0.36.0/svg/%s/%s/%s.svg" $weight $family $name }}
+
+{{- $opts := "" }}
+
+{{- if ne $weight "400" }}
+  {{- $opts = printf "wght%s" $weight }}
+{{- end }}
+
+{{- if strings.Contains $name "-fill" }}
+  {{- $name = replace $name "-fill" "" }}
+  {{- $opts = printf "%s%s" $opts "fill1" }}
+{{- end }}
+
+{{- $opts = default "default" $opts }}
+
+{{- $url := printf "https://fonts.gstatic.com/s/i/short-term/release/materialsymbols%s/%s/%s/%spx.svg" $family $name $opts $opsz }}
 
 {{- with resources.GetRemote $url }}
   {{- $svg := .Content }}
   {{- $svg := $svg | replaceRE ` (width|height)="48"` "" }}
   {{- $svg := $svg | replaceRE `><path` (printf " role=\"img\" aria-label=\"%s\"><path" $label) }}
-  {{- $svg | safeHTML }}
+  {{ $svg | safeHTML }}
+{{- else }}
+  {{ warnf "Unable to fetch '%s'" $url }}
 {{- end }}
