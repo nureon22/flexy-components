@@ -45,20 +45,10 @@ $_progress: var(--progress, 0);
     transition: stroke-dashoffset _token('jump-animation-duration') linear 0ms;
   }
 
-  &:not([aria-valuenow]) {
-    animation: flexy-indeterminate-progresscircle-rotate-1
-      calc(_token('indeterminate-animation-duration') * 1.25) linear 0ms
-      infinite;
-  }
-
-  &:not([aria-valuenow]) svg {
-    animation: flexy-indeterminate-progresscircle-rotate-2
-      _token('indeterminate-animation-duration') ease-in-out 0ms infinite;
-  }
-
   &:not([aria-valuenow]) &__active-track {
-    animation: flexy-indeterminate-progresscircle-stroke
-      _token('indeterminate-animation-duration') ease-in-out 0ms infinite;
+    animation: flexy-indeterminate-progresscircle-rotate-1
+      _token('indeterminate-animation-duration') linear 0ms infinite;
+    stroke-dashoffset: calc($_circumference * 0.75);
   }
 }
 
