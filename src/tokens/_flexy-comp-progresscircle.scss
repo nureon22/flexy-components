@@ -11,7 +11,7 @@ $_flexy-comp-progresscircle: (
   track-inactive-opacity: 0.2,
   track-active-color: $flexy-sys-color-primary,
   jump-animation-duration: 250ms,
-  indeterminate-animation-duration: 1500ms,
+  indeterminate-animation-duration: 1000ms,
 );
 
 $flexy-comp-progresscircle: ();
