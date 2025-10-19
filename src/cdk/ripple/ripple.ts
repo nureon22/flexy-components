@@ -26,12 +26,6 @@ export class FlexyRipple {
     this.surface = createHTMLElement('span', { classList: ['flexy-ripple'] });
     this.target.prepend(this.surface);
 
-    if (
-      !['relative', 'absolute'].includes(getComputedStyle(this.target).position)
-    ) {
-      this.target.style.position = 'relative';
-    }
-
     this.options = {};
 
     this.configure({
