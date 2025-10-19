@@ -12,13 +12,13 @@ A progress bar can be used to display the progress of an action or task (e.g., d
 
 In this example, simulated determinate progress is used. To update the progress, simply change the value of aria-valuenow, and the rest will be handled automatically by JavaScript when the attribute is updated.
 
-{{< example example=progressbar-default >}}
+{{< example example=progressbar/progressbar-default >}}
 
 ### Indeterminate
 
 To use an indeterminate progress bar, simply remove the aria-valuenow attribute.
 
-{{< example example=progressbar-indeterminate >}}
+{{< example example=progressbar/progressbar-indeterminate >}}
 
 ## Customization
 

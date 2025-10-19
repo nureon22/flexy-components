@@ -13,20 +13,20 @@ option from a set of options.
 
 ### Default
 
-{{< example example=radio-default >}}
+{{< example example=radio/radio-default >}}
 
 ### Disabled
 
 To render a radio as non-interactive, add the disabled attribute to the &lt;input&gt; element
 
-{{< example example=radio-disabled >}}
+{{< example example=radio/radio-disabled >}}
 
 ### Custom
 
 You can customize the radio by modifying its tokens, this example modifies the
 outline with and dot size to get classic appearance
 
-{{< example example=radio-custom >}}
+{{< example example=radio/radio-custom >}}
 
 ## Customization
 

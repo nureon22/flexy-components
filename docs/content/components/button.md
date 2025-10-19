@@ -12,25 +12,25 @@ Buttons are one of the most common and basic user interface elements. Buttons su
 
 ### Default
 
-{{< example example=button-default >}}
+{{< example example=button/button-default >}}
 
 ### Colors
 
-{{< example example=button-colors >}}
+{{< example example=button/button-colors >}}
 
 ### Sizes
 
 Supported Sizes: xxs, xs, sm, lg, xl, xxl
 
-{{< example example=button-sizes >}}
+{{< example example=button/button-sizes >}}
 
 ### Icon Prefix
 
-{{< example example=button-icon-prefix >}}
+{{< example example=button/button-icon-prefix >}}
 
 ### Icon Button
 
-{{< example example=button-icon-only >}}
+{{< example example=button/button-icon-only >}}
 
 ## Customization
 

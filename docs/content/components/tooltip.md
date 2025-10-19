@@ -21,7 +21,7 @@ If you don't want to set the ID manually, you can place the tooltip element as t
 
 ### Default
 
-{{< example example=tooltip-default >}}
+{{< example example=tooltip/tooltip-default >}}
 
 ### Placement
 
@@ -29,7 +29,7 @@ Tooltips support four placements: above, right, below (default), and left. In so
 
 To preview this behavior, try resizing your window to a very small width.
 
-{{< example example=tooltip-placements >}}
+{{< example example=tooltip/tooltip-placements >}}
 
 ### Delays
 
@@ -40,7 +40,7 @@ and keyboard Events will ignore them.
 
 Following example set 0.5s for show delay and 1s for hide delay.
 
-{{< example example=tooltip-delays >}}
+{{< example example=tooltip/tooltip-delays >}}
 
 ### NoInteractive
 
@@ -48,7 +48,7 @@ Normally, you can interact with rendered tooltips (e.g., you can hover over
 them or select their text). If you want, you can disable this behavior with
 `flexy-tooltip--nointeractive` CSS class.
 
-{{< example example=tooltip-nointeractive >}}
+{{< example example=tooltip/tooltip-nointeractive >}}
 
 ## Customization
 

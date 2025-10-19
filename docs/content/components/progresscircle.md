@@ -12,13 +12,13 @@ A progress circle can be used to display the progress of an action or task (e.g.
 
 In this example, simulated determinate progress is used. To update the progress, simply change the value of aria-valuenow, and the rest will be handled automatically by JavaScript when the attribute is updated.
 
-{{< example example=progresscircle-default >}}
+{{< example example=progresscircle/progresscircle-default >}}
 
 ### Indeterminate
 
 To use an indeterminate progress circle, simply remove the aria-valuenow attribute.
 
-{{< example example=progresscircle-indeterminate >}}
+{{< example example=progresscircle/progresscircle-indeterminate >}}
 
 ## Customization
 

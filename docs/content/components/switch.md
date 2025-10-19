@@ -12,7 +12,7 @@ Switches can be used for controlling features, settings or hardware that have a 
 
 ### Default
 
-{{< example example=switch-default >}}
+{{< example example=switch/switch-default >}}
 
 ### Indicator
 
@@ -21,26 +21,26 @@ can be enabled by adding an element with the class `flexy-switch__indicator`
 after the track element. You can customize its icon and color using the tokens
 described in the customization section at the bottom of this page.
 
-{{< example example=switch-indicator >}}
+{{< example example=switch/switch-indicator >}}
 
 ### Thumb Icon
 
 In this example, horizontal line and checkmark icons are used, but you can use
 whatever icon you want.
 
-{{< example example=switch-thumb-icon >}}
+{{< example example=switch/switch-thumb-icon >}}
 
 ### Disabled
 
 To render a switch as selected by default, add the checked attribute to the &lt;input&gt; element.
 
-{{< example example=switch-disabled >}}
+{{< example example=switch/switch-disabled >}}
 
 ### Custom
 
 You can use design tokens to customize the appearance of the switch to your preferences. In this example, the switch is customized to look like a Material Design 2 switch.
 
-{{< example example=switch-custom >}}
+{{< example example=switch/switch-custom >}}
 
 ## Customization
 

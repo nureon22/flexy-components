@@ -14,26 +14,26 @@ when multiple selections or partial states are involved.
 
 ### Default
 
-{{< example example=checkbox-default >}}
+{{< example example=checkbox/checkbox-default >}}
 
 ### Checked
 
 To render a checkbox as selected by default, add the `checked` attribute to the &lt;input&gt; element.
 
-{{< example example=checkbox-checked >}}
+{{< example example=checkbox/checkbox-checked >}}
 
 ### Disabled
 
 To render a checkbox as non-interactive, add the `disabled` attribute to the &lt;input&gt; element.
 
-{{< example example=checkbox-disabled >}}
+{{< example example=checkbox/checkbox-disabled >}}
 
 ### Indeterminate
 
 To render a checkbox in an indeterminate (partially selected) state, define its related child checkboxes using the `aria-controls` attribute.
 The value of `aria-controls` should be a space-separated list of the child checkbox IDs.
 
-{{< example example=checkbox-indeterminate >}}
+{{< example example=checkbox/checkbox-indeterminate >}}
 
 ## Customization
 

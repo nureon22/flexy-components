@@ -12,31 +12,31 @@ Menus are just like the context menu you often see in most web browsers and appl
 
 Normally, the menu opens below its anchor element while still preserving the overflowing outside the viewport. If there isn't enough space at the bottom of the anchor element to display the menu, the menu will try to be displayed above, left, or right.
 
-{{< example example=menu-1 >}}
+{{< example example=menu/menu-1 >}}
 
 ### Leading icon and Trailing text
 
 Menu items can include a leading icon, trailing icon, and trailing text. Trailing text is primarily used to display the keyboard shortcut of that menu item, and they are displayed in a lower contrast than the item's label.
 
-{{< example example=menu-2 >}}
+{{< example example=menu/menu-2 >}}
 
 ### Nested Sub-Menus
 
 Menus can also include nested submenus that also contain other nested submenus. However, using deeply nested menus isn't recommended; they can be hard to navigate and confuse the user.
 
-{{< example example=menu-3 >}}
+{{< example example=menu/menu-3 >}}
 
 ### Placement
 
 The menu supports above, below, left, and right placements relative to its anchor element. Default placement is below. You can modify the placement using `data-flexy-menu-placement` attribute.
 
-{{< example example=menu-4 >}}
+{{< example example=menu/menu-4 >}}
 
 ### Context Menu
 
 You can also use FlexyMenu as a context menu by adding the `flexy-menu--contextmenu` CSS class name. The context menu will open on right-click at the near of the cursor. Submenus cannot be context menus.
 
-{{< example example=menu-5 >}}
+{{< example example=menu/menu-5 >}}
 
 ## Accessibility
 

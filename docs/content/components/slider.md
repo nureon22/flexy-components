@@ -12,23 +12,23 @@ A slider allows quickly selecting a value from a range. Common uses include seek
 
 ### Default
 
-{{< example example=slider-default >}}
+{{< example example=slider/slider-default >}}
 
 ### Thumb Ripple
 
-{{< example example=slider-ripple >}}
+{{< example example=slider/slider-ripple >}}
 
 ### Tick Marks
 
-{{< example example=slider-tick-marks >}}
+{{< example example=slider/slider-tick-marks >}}
 
 ### Value Indicator
 
-{{< example example=slider-value-indicator >}}
+{{< example example=slider/slider-value-indicator >}}
 
 ### Material 3 Value Indicator
 
-{{< example example=slider-value-indicator-m3 >}}
+{{< example example=slider/slider-value-indicator-m3 >}}
 
 ### Material 3 Latest Design
 
@@ -39,7 +39,7 @@ Material 3 slider.
 See [Material 3 Slider](https://m3.material.io/components/sliders/overview) for
 Latest Material 3 Design slider.
 
-{{< example example=slider-m3-latest >}}
+{{< example example=slider/slider-m3-latest >}}
 
 ### Gradient Track
 
@@ -51,7 +51,7 @@ active track. You can also apply a gradient to the inactive track using the
 To see the result more clearly, use the dark mode by clicking the theme toggle
 button on the top navigation bar.
 
-{{< example example=slider-gradient >}}
+{{< example example=slider/slider-gradient >}}
 
 ## Customization
 
