@@ -13,9 +13,17 @@
     <span class="flexy-tooltip">
       <div class="flexy-tooltip__content">Go back to Home</div>
     </span>
-    <button class="flexy-button" id="menu-button">
-      <span>Components</span>
+    <button class="flexy-button flexy-button--icon" id="menu-button">
+      <span class="material-symbol">
+        {{- partial "material-symbol.html" "menu" }}
+      </span>
     </button>
+    <a class="flexy-button" href="{{ relURL "components/" }}">
+      <span>Components</span>
+    </a>
+    <a class="flexy-button" href="{{ relURL "cdk/" }}">
+      <span>CDK</span>
+    </a>
     <span class="flexy-tooltip">
       <div class="flexy-tooltip__content">See components list</div>
     </span>
