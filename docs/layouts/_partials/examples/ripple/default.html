@@ -1,0 +1,178 @@
+<style>
+  #box-34 {
+    border-radius: 8px;
+    box-shadow:
+      1px 1px 5px -2px black,
+      0px 0px 0px 1px #80808080 inset;
+    display: block;
+    height: 200px;
+    margin-bottom: 48px;
+    position: relative;
+    width: 200px;
+  }
+  #ripple-eg1 .form-value-displayer {
+    display: inline-block;
+    font-size: 14px;
+    margin-left: auto;
+    opacity: 0.75;
+  }
+  #ripple-eg1 input[type='color'] {
+    padding-top: 16px;
+    padding-bottom: 8px;
+  }
+</style>
+
+<div id="ripple-eg1">
+  <div id="box-34"></div>
+
+  <form id="form-34" class="flex-column" style="gap: 24px; max-width: 400px;">
+    <div
+      class="flexy-textfield flexy-textfield--outlined flexy-textfield--with-floating-label"
+    >
+      <input
+        id="color"
+        name="color"
+        type="color"
+        placeholder=" "
+        value="#808080"
+      />
+      <div class="flexy-textfield__outlined">
+        <div class="flexy-textfield__outlined-notch">
+          <label class="flexy-textfield__floating-label" for="color"
+            >Color</label
+          >
+        </div>
+      </div>
+    </div>
+
+    <hr style="margin: 0;" />
+
+    <div>
+      <div class="flex-row" style="padding: 0px 8px; margin-bottom: 8px;">
+        <label for="duration" style="width: 8ch;">Duration: </label>
+        <span id="duration-displayer" class="form-value-displayer">400ms</span>
+      </div>
+      <div class="flexy-slider" style="width: 100%;">
+        <input
+          id="duration"
+          name="duration"
+          type="range"
+          value="400"
+          step="10"
+          min="200"
+          max="800"
+          class="flexy-slider__input"
+          oninput="
+          this.ariaValueText = this.value + ' milliseconds';
+          document.querySelector('#duration-displayer').textContent = this.value + 'ms';
+        "
+        />
+        <div class="flexy-slider__track">
+          <div class="flexy-slider__inactive-track"></div>
+          <div class="flexy-slider__active-track"></div>
+        </div>
+        <div class="flexy-slider__thumb-rail">
+          <div class="flexy-slider__thumb">
+            <div class="flexy-slider__thumb-knob"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex-row" style="padding: 0px 8px; margin-bottom: 8px;">
+        <label for="opacity" style="width: 8ch;">Opacity: </label>
+        <span id="opacity-displayer" class="form-value-displayer">25%</span>
+      </div>
+      <div class="flexy-slider" style="width: 100%;">
+        <input
+          id="opacity"
+          name="opacity"
+          type="range"
+          value="25"
+          min="10"
+          max="50"
+          class="flexy-slider__input"
+          oninput="
+          this.ariaValueText = this.value + ' percent';
+          document.querySelector('#opacity-displayer').textContent = this.value + '%';
+        "
+        />
+        <div class="flexy-slider__track">
+          <div class="flexy-slider__inactive-track"></div>
+          <div class="flexy-slider__active-track"></div>
+        </div>
+        <div class="flexy-slider__thumb-rail">
+          <div class="flexy-slider__thumb">
+            <div class="flexy-slider__thumb-knob"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr style="margin: 0;" />
+
+    <div>
+      <div class="flex-row" style="gap: 12px; margin-bottom: 16px;">
+        <div class="flexy-switch">
+          <input
+            id="unbound"
+            name="unbound"
+            type="checkbox"
+            class="flexy-switch__input"
+          />
+          <div class="flexy-switch__track"></div>
+          <div class="flexy-switch__thumb"></div>
+        </div>
+        <label for="unbound">Unbound</label>
+      </div>
+      <div class="flex-row" style="gap: 12px;">
+        <div class="flexy-switch">
+          <input
+            id="centered"
+            name="centered"
+            type="checkbox"
+            class="flexy-switch__input"
+          />
+          <div class="flexy-switch__track"></div>
+          <div class="flexy-switch__thumb"></div>
+        </div>
+        <label for="centered">Centered</label>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script defer>
+  window.addEventListener('load', () => {
+    const box = document.querySelector('#box-34');
+    const form = document.querySelector('#form-34');
+    const ripple = flexy.FlexyRipple.attachTo(box);
+
+    const configure = () => {
+      const formData = new FormData(form);
+      const prefix = '--flexy-cdk-ripple';
+
+      box.style.cssText += `
+        ${prefix}-enter-duration: ${formData.get('duration') || '400'}ms;
+        ${prefix}-color: ${formData.get('color') || 'currentcolor'};
+        ${prefix}-opacity: ${+(formData.get('opacity') || '12') / 100};
+      `;
+
+      ripple.configure({
+        centered: formData.has('centered'),
+        unbounded: formData.has('unbound'),
+      });
+    };
+
+    configure();
+
+    form.addEventListener('change', () => {
+      configure();
+    });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      configure();
+    });
+  });
+</script>
