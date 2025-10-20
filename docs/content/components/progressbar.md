@@ -6,6 +6,8 @@ title = 'Progressbar'
 
 A progress bar can be used to display the progress of an action or task (e.g., download progress). Progress bars should be read-only for users. A progress bar can be either determinate or indeterminate. In the determinate state, its value can be defined using aria-valuenow between 1 and 100. Indeterminate progress should be used only when the estimated time of the task cannot be calculated.
 
+<!--more-->
+
 ## Examples
 
 ### Default

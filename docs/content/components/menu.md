@@ -6,6 +6,8 @@ title = 'Menu'
 
 Menus are just like the context menu you often see in most web browsers and applications. They are really helpful components because they don't take up any permanent space on the UI; they are hidden until the user clicks the related anchor element.
 
+<!--more-->
+
 ## Examples
 
 ### Default
