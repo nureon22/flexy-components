@@ -1,4 +1,5 @@
 export * from './components';
+export * from './cdk';
 
 import * as flexy from './components';
 import { afterPageLoad } from './utilities';
