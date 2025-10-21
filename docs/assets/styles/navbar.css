@@ -1,5 +1,5 @@
 body {
-  margin-top: 56px;
+  margin-top:var(--navbar-height);
 }
 
 h1,
@@ -8,7 +8,7 @@ h3,
 h4,
 h5,
 h6 {
-  scroll-margin-top: 56px;
+  scroll-margin-top: var(--navbar-height);
 }
 
 .navbar {
@@ -22,7 +22,7 @@ h6 {
   left: 0;
   top: 0;
   right: 0;
-  height: 56px;
+  height: var(--navbar-height);
   z-index: 9;
 }
 
@@ -42,4 +42,14 @@ h6 {
 
 #menu-button {
   display: none;
+}
+
+@media (max-width: 420px) {
+  :root {
+    --navbar-height: 112px;
+  }
+  .navbar {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 }

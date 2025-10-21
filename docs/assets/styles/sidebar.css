@@ -10,7 +10,7 @@ body {
   box-sizing: border-box;
   position: fixed;
   left: 0;
-  top: 56px;
+  top: var(--navbar-height);
   height: 100%;
   width: 200px;
   padding: 12px 6px;
